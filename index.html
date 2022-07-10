@@ -1,64 +1,10 @@
-<!-- <html>
-<canvas id="wheel" width="500" height="500">  
-  <p>Upgrade your browser!</p>
-</canvas>
-
-<script type="text/javascript">
-
-var images = ["http://bahaaaaal.com/wp-content/uploads/2013/01/siam-food-gallery.jpg","http://images.sciencedaily.com/2013/03/130307124701-large.jpg"] // sample images
-
-function drawSlice(startAngle, i) {
-	var canvasNode = document.getElementById('wheel');
-	var ctx = canvasNode.getContext('2d');
-
-	var image = new Image();
-	image.onload = function() {
-		ctx.drawImage(image, startX - 250, startY - 250);
-		ctx.restore();
-		ctx.stroke();
-	};
-
-	image.src = images[i];
-
-	var startX = 250;
-	var startY = 250;
-
-	ctx.clearRect (0,0,500,500);
-
-	var radius = 200;
-	var arc = Math.PI / 6;
-	var angle = startAngle + i * arc;
-
-	ctx.beginPath();
-	ctx.moveTo(startX, startY);
-	ctx.arc(startX, startY, radius, angle, angle + arc, false);
-	ctx.arc(250, 250, 1, angle + arc, angle, true);
-	ctx.save();
-	ctx.fillStyle = "black";
-	ctx.fill();
-	ctx.clip();
-}
-
-var qty = 2500;
-var counter = 1;
-
-function next() {
-	if (counter < qty) {
-		drawSlice(counter, 0);
-		drawSlice(counter, 1);
-		setTimeout(next, 1000);
-		counter++;
-	}
-}
-next();
-
-</script>
-</html> -->
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<style>
 		.div{
 			display: none;
@@ -70,7 +16,8 @@ next();
 			height: 100vh;
 			width:100%;
 		}
-		.item span{
+
+		/*.item span{
 			padding:0px;
 			border-radius:6px;
 			padding:4px;
@@ -79,20 +26,73 @@ next();
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		}*/
+		.display{
+		    display:flex;
+		    justify-content:center;
+		    align-items:center;
+		    padding:30px 6px 40px 6px;
+		    background-color:#eee;
+		    border-radius:10px;
+		    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.4) 0px -39px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+		    /*height: 200px;*/
+		}
+		.slot{
+		    background-color:#04e0dd;
+		    border-radius:7px;
+		    /*box-shadow:3px 3px 5px rgba(0,0,0,.4);*/
+		    margin:1px;
+		    /*height: 200px;*/
+		}
+		.value{
+		    display:flex;
+		    justify-content:center;
+		    align-items:center;
+		    flex-wrap:wrap;
+		    width:65px;
+		    height:65px;
+		    position:relative;
+		    /*border:2px solid #ddd;*/
+		    overflow:hidden;
+		    z-index:1;
+		    box-shadow:-2px -2px 4px rgba(0,0,0,.3);
+		    border-radius:7px;
+		    height: 195px;
+		}
+		.slot .value div{
+		    width:65px;
+		    height: 65px;
+		    display:flex;
+		    justify-content:center;
+		    align-items:center;
+		    flex-wrap:wrap;
+		    font-weight:bold;
+		    border-radius:5px;
 		}
 		.normal{
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height:70px;
-			width:70px;
-			margin:2px;
-			padding:10px;
-			background-color: #dbdbdb;
+			/*height:70px;
+			width:70px;*/
+			/*margin:2px;*/
+			padding:3px;
+			/*background-color: #04e0dd;*/
 			overflow: hidden;
 		}
+		.spingo{
+		    animation: spin .6s linear;
+		}
+		@keyframes spin{
+		    0%{
+		        transform: translateY(-40rem);
+		    }
+		    100% {
+		        transform: translateY(0rem);
+		    }
+		}
 		.bounce7 {
-	        animation: bounce7 2s ease;
+	        /*animation: bounce7 2s ease;*/
 	        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 	      }
 	      @keyframes bounce7 {
@@ -104,31 +104,147 @@ next();
 	          64%  { transform: scale(1,1)      translateY(0px); }
 	          100% { transform: scale(1,1)      translateY(0); }
 	      }
+	      .garis1,.garis2{
+	      	position: absolute;
+	      	height: 2px;
+	      	background-color:#ccc;
+	      	width: 96%;
+	      	z-index: 10;
+	      	box-shadow:-2px -2px 4px rgba(0,0,0,.1),1px 0px 4px rgba(0,0,0,.1),-1px 0px 4px rgba(0,0,0,.1);
+	      }
+	      .garis1{
+	      	top:95px;
+	      }
+	      .garis2{
+	      	top: 160px;
+	      }
+	      .gelap::after{
+	      	content: "";
+	      	position: absolute;
+	      	width:65px;
+	      	height:65px;
+	      	background-color:black;
+	      	opacity: 0.5;
+	      	border-radius:7px;
+	      	margin-top:-65px;
+	      	padding: 0;
+	      	margin:0;
+	      	/*top: -65px;*/
+	      }
 	</style>
 </head>
 <body>
-	<div style="display:none;">
-	<div class="div" data-nilai="1">1</div>
-	<div class="div" data-nilai="1">2</div>
-	<div class="div" data-nilai="1">3</div>
-	<div class="div" data-nilai="4">4</div>
-	<div class="div" data-nilai="5">5</div>
-	<div class="div" data-nilai="6">6</div>
-
-
-
-	<div class="ok">ok1</div>
-	<div class="ok">ok2</div>
-	<div class="ok">ok3</div>
-	<div class="ok">ok4</div>
-	<div class="ok">ok5</div>
-	<div class="ok">ok6</div>
-	</div>
 
 	<div style="position: relative;">
-	<div>
-	<div class="increcount" style="position:absolute;top:-55px;font-size:30px;font-weight:bold;border-radius:10px;background-color:orange;padding:5px;"></div>
-	<div class="item" style="font-size:30px;">
+	<!-- <div> -->
+	<div class="increcount" style="position:absolute;top:-65px;font-size:30px;font-weight:bold;border-radius:10px;background-color:orange;padding:5px;"></div>
+
+	<!-- display -->
+        <div class="display">
+          <div class="slot">
+          	<div class="garis1"></div>
+          	<div class="garis2"></div>
+            <div class="value">
+              <div class="item0 normal"><img src="img/item/kakekmerah.png" width="100%" height="100%"></div>
+              <div class="item5 normal"><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div class="item10 normal"><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div class="item0_0 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:0;display:none;"></div>
+              <div class="item5_5 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:65px;display:none;"></div>
+              <div class="item10_10 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:130px;display:none;"></div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="value">
+              <div class="item1 normal"><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div class="item6 normal"><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div class="item11 normal"><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekmerah.png" width="100%" height="100%"></div>
+              <div class="item1_1 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:0;display:none;"></div>
+              <div class="item6_6 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:65px;display:none;"></div>
+              <div class="item11_11 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:130px;display:none;"></div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="value">
+              <div class="item2 normal"><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div class="item7 normal"><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div class="item12 normal"><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekmerah.png" width="100%" height="100%"></div>
+              <div class="item2_2 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:0;display:none;"></div>
+              <div class="item7_7 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:65px;display:none;"></div>
+              <div class="item12_12 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:130px;display:none;"></div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="value">
+              <div class="item3 normal"><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div class="item8 normal"><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div class="item13 normal"><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/wild.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekmerah.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div><img src="img/item/wild.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div class="item3_3 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:0;display:none;"></div>
+              <div class="item8_8 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:65px;display:none;"></div>
+              <div class="item13_13 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:130px;display:none;"></div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="value">
+              <div class="item4 normal"><img src="img/item/bocilijo.png" width="100%" height="100%"></div>
+              <div class="item9 normal"><img src="img/item/kakekmerah.png" width="100%" height="100%"></div>
+              <div class="item14 normal"><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kendang.png" width="100%" height="100%"></div>
+              <div><img src="img/item/wild.png" width="100%" height="100%"></div>
+              <div><img src="img/item/kakekbiru.png" width="100%" height="100%"></div>
+              <div><img src="img/item/koin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div><img src="img/item/bocilping.png" width="100%" height="100%"></div>
+              <div><img src="img/item/petasan.png" width="100%" height="100%"></div>
+              <div><img src="img/item/wild.png" width="100%" height="100%"></div>
+              <div><img src="img/item/liontin.png" width="100%" height="100%"></div>
+              <div class="item4_4 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:0;display:none;"></div>
+              <div class="item9_9 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:65px;display:none;"></div>
+              <div class="item14_14 gelap" style="position:absolute;height:65px;width:65px;background-color:black;opacity:.6;top:130px;display:none;"></div>
+            </div>
+          </div>
+        </div>
+	<!-- <div class="item" style="font-size:30px;">
 		<span class="normal item0"><img src="img/item/wild.png" width="100%" height="100%"></span>
 		<span class="normal item1"><img src="img/item/wild.png" width="100%" height="100%"></span>
 		<span class="normal item2"><img src="img/item/wild.png" width="100%" height="100%"></span>
@@ -154,18 +270,27 @@ next();
 		<div class="itemjadi1" style="font-size:30px;"></div>
 		<div class="itemjadi2" style="font-size:30px;"></div>
 		</div>
-	</div>
+	</div> -->
 	<div style="display:flex;justify-content:center;margin-top:50px;">
 	<button style="background-color:green;padding:10px;border-radius:5px;color:white;font-weight:bold;border:0;font-size:18px;box-shadow:3px 2px 4px rgba(0,0,0,.3)" class="acak">SPIN</button>
 	</div>
 
-	</div>
+	<!-- </div> -->
 	</div>
 
 	<audio id="gift">
       <source src="gift.mp3" type="audio/mpeg">
     </audio>
-
+    <audio id="gift1">
+      <source src="gift1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gift2">
+      <source src="gift2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="reelstop">
+      <source src="reelstop.mp3" type="audio/mpeg">
+    </audio>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
@@ -182,22 +307,34 @@ next();
 		}, 1500*(index+1));
 	})
 
-	function animaterotate(dataimgrotate,timeanimate){
+	function animaterotate(dataimgrotate,timeanimate,gelape,warna){
 		setTimeout(function() {
 			$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
-				'color':'black',
-				'background-color':'#dbdbdb'
+				'color':'orange',
+				'background-color':'#04e0dd',
+				'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
 			});
-			dataimgrotate.addClass('bounce7');
-		}, 500*timeanimate);
+			gelape.hide();
+			setTimeout(function() {
+				warna.css('background-color','orange');
+			}, 5);
+			dataimgrotate.css('animation','bounce7 2s ease')
+			setTimeout(function() {
+				dataimgrotate.addClass('bounce7');
+			}, 2000);
+		}, 500*timeanimate+500);
 	}
 
 	var arrinti;
 	var gift=document.getElementById('gift');
+	var gift1=document.getElementById('gift1');
+	var gift2=document.getElementById('gift2');
+	var reelstop=document.getElementById('reelstop');
 	var increcount=0;
 	$('.acak').on('click',function(){
 	increcount=0;
 	$('.increcount').html('');
+	$('.gelap').hide();
 	var randaimage=['<img src="img/item/wild.png" width="100%" height="100%">',
 				'<img src="img/item/koin.png" width="100%" height="100%">',
 				'<img src="img/item/petasan.png" width="100%" height="100%">',
@@ -249,29 +386,92 @@ next();
 	];
 
 
-	$('.itemjadi1,.itemjadi2').html('');
+		$('.value div').addClass('spingo');
+		$('.value div').css({
+			'animation-play-state':'running',
+            'animation-iteration-count':'100'
+        });
+        $('.valuekali div').addClass('spinkali');
+		$('.valuekali div').css({
+			'animation-play-state':'running',
+            'animation-iteration-count':'100'
+        });
 
+        spinkolom1 = setTimeout(function() {
+			$('#reelstop')[0].play();
+            reelstop.currentTime = 0;
+           	$('.slot:nth-child(1) .value div').removeClass('spingo'); 
+           	$('.item0').html(randaimage[ran0]);
+           	$('.item5').html(randaimage[ran5]);
+           	$('.item10').html(randaimage[ran10]);
+		}, 1000);
+		spinkolom2 = setTimeout(function() {
+			$('#reelstop')[0].play();
+            reelstop.currentTime = 0;
+           	$('.slot:nth-child(2) .value div').removeClass('spingo'); 
+           	$('.item1').html(randaimage[ran1]);
+           	$('.item6').html(randaimage[ran6]);
+           	$('.item11').html(randaimage[ran11]);
+		}, 1400);
+		spinkolom3 = setTimeout(function() {
+			$('#reelstop')[0].play();
+            reelstop.currentTime = 0;
+           	$('.slot:nth-child(3) .value div').removeClass('spingo'); 
+           	$('.item2').html(randaimage[ran2]);
+			$('.item7').html(randaimage[ran7]);
+			$('.item12').html(randaimage[ran12]);
+		}, 1800);
+		spinkolom4 = setTimeout(function() {
+			$('#reelstop')[0].play();
+            reelstop.currentTime = 0;
+           	$('.slot:nth-child(4) .value div').removeClass('spingo'); 
+           	$('.item3').html(randaimage[ran3]);
+			$('.item8').html(randaimage[ran8]);
+			$('.item13').html(randaimage[ran13]);
+		}, 2200);
+		spinkolom5 = setTimeout(function() {
+			$('#reelstop')[0].play();
+            reelstop.currentTime = 0;
+           	$('.slot:nth-child(5) .value div').removeClass('spingo'); 
+           	$('.item4').html(randaimage[ran4]);
+			$('.item9').html(randaimage[ran9]);
+			$('.item14').html(randaimage[ran14]);
+
+
+           	// localStorage.setItem('random1',rand11);
+           	// localStorage.setItem('random2',rand22);
+           	// localStorage.setItem('random3',rand33);
+		}, 2600);
 	
-		$('.item0').html(randaimage[ran0]);
-		$('.item1').html(randaimage[ran1]);
-		$('.item2').html(randaimage[ran2]);
-		$('.item3').html(randaimage[ran3]);
-		$('.item4').html(randaimage[ran4]);
-		$('.item5').html(randaimage[ran5]);
-		$('.item6').html(randaimage[ran6]);
-		$('.item7').html(randaimage[ran7]);
-		$('.item8').html(randaimage[ran8]);
-		$('.item9').html(randaimage[ran9]);
-		$('.item10').html(randaimage[ran10]);
-		$('.item11').html(randaimage[ran11]);
-		$('.item12').html(randaimage[ran12]);
-		$('.item13').html(randaimage[ran13]);
-		$('.item14').html(randaimage[ran14]);
+		// $('.item0').html(randaimage[ran0]);
+		// $('.item1').html(randaimage[ran1]);
+		// $('.item2').html(randaimage[ran2]);
+		// $('.item3').html(randaimage[ran3]);
+		// $('.item4').html(randaimage[ran4]);
+		// $('.item5').html(randaimage[ran5]);
+		// $('.item6').html(randaimage[ran6]);
+		// $('.item7').html(randaimage[ran7]);
+		// $('.item8').html(randaimage[ran8]);
+		// $('.item9').html(randaimage[ran9]);
+		// $('.item10').html(randaimage[ran10]);
+		// $('.item11').html(randaimage[ran11]);
+		// $('.item12').html(randaimage[ran12]);
+		// $('.item13').html(randaimage[ran13]);
+		// $('.item14').html(randaimage[ran14]);
 
-		$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
-			'color':'black',
-			'background-color':'#dbdbdb'
+
+
+		// $('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
+		// 	'color':'orange',
+		// 	'background-color':'#04e0dd'
+		// });
+		$('.value').css({
+			'color':'orange',
+			'background-color':'#04e0dd',
+			'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
 		});
+		$('.normal').css('background-color','#04e0dd');
+
 
 
 	var tampunghasil=[];	
@@ -665,23 +865,23 @@ next();
 		}
 	}
 	//tutup data2_3 ===================================================================
-	console.log(baruarr1[0])
-	console.log(baruarr1[1])
-	console.log(baruarr1[2])
-	console.log(baruarr1[3])
-	console.log(baruarr1[4])
-	console.log(baruarr1[5])
-	console.log(baruarr1[6])
-	console.log(baruarr1[7])
-	console.log(baruarr1[8])
-	console.log('=========================================')
-	console.log(tampunghasil)
+	// console.log(baruarr1[0])
+	// console.log(baruarr1[1])
+	// console.log(baruarr1[2])
+	// console.log(baruarr1[3])
+	// console.log(baruarr1[4])
+	// console.log(baruarr1[5])
+	// console.log(baruarr1[6])
+	// console.log(baruarr1[7])
+	// console.log(baruarr1[8])
+	// console.log('=========================================')
+	// console.log(tampunghasil)
 
 
 
 
 
-
+	setTimeout(function() {
 		tampunghasil.map(function(data,incre){
 		var timeanimate=Number(tampunghasil.length);
 		setTimeout(function() {
@@ -689,605 +889,1057 @@ next();
 			$('.increcount').html(increcount+'x bonus');
 
 			if(data[5]=='0_1LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item2_2,.item3_3,.item4_4').hide();
 				$('.item0,.item1,.item2,.item3,.item4').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item2 img,.item3 img,.item4 img'),(timeanimate-incre));
+				animaterotate($('.item0 img,.item1 img,.item2 img,.item3 img,.item4 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item2_2,.item3_3,.item4_4'),$('.item0,.item1,.item2,.item3,.item4'));
 			}
 			if(data[5]=='0_1LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item2_2,.item3_3').hide();
 				$('.item0,.item1,.item2,.item3').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item2 img,.item3 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item1 img,.item2 img,.item3 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item2_2,.item3_3'),$('.item0,.item1,.item2,.item3'))
 			}
 			if(data[5]=='0_1LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item2_2').hide();
 				$('.item0,.item1,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item1 img,.item2 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item2_2'),$('.item0,.item1,.item2'))
 			}
 			if(data[5]=='0_1RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item3_3,.item2_2,.item1_1').hide();
 				$('.item4,.item3,.item2,.item1').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item3 img,.item2 img,.item1 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item3 img,.item2 img,.item1 img'),(timeanimate-incre),$('.item4_4,.item3_3,.item2_2,.item1_1'),$('.item4,.item3,.item2,.item1'))
 			}
 			if(data[5]=='0_1RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item3_3,.item2_2').hide();
 				$('.item4,.item3,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item3 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item3 img,.item2 img'),(timeanimate-incre),$('.item4_4,.item3_3,.item2_2'),$('.item4,.item3,.item2'))
 			}
 			// =========================================================================
 			if(data[5]=='0_2LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item7_7,.item3_3,.item4_4').hide();
 				$('.item0,.item1,.item7,.item3,.item4').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item7 img,.item3 img,.item4 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item1 img,.item7 img,.item3 img,.item4 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item7_7,.item3_3,.item4_4'),$('.item0,.item1,.item7,.item3,.item4'))
 			}
 			if(data[5]=='0_2LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item7_7,.item3_3').hide();
 				$('.item0,.item1,.item7,.item3').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item7 img,.item3 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item1 img,.item7 img,.item3 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item7_7,.item3_3'),$('.item0,.item1,.item7,.item3'))
 			}
 			if(data[5]=='0_2LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item1_1,.item7_7').hide();
 				$('.item0,.item1,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item1 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item1 img,.item7 img'),(timeanimate-incre),$('.item0_0,.item1_1,.item7_7'),$('.item0,.item1,.item7'))
 			}
 			if(data[5]=='0_2RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item3_3,.item7_7,.item1_1').hide();
 				$('.item4,.item3,.item7,.item1').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item3 img,.item7 img,.item1 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item3 img,.item7 img,.item1 img'),(timeanimate-incre),$('.item4_4,.item3_3,.item7_7,.item1_1'),$('.item4,.item3,.item7,.item1'))
 			}
 			if(data[5]=='0_2RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item3_3,.item7_7').hide();
 				$('.item4,.item3,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item3 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item3 img,.item7 img'),(timeanimate-incre),$('.item4_4,.item3_3,.item7_7'),$('.item4,.item3,.item7'))
 			}
 			// =========================================================================
 			if(data[5]=='0_3LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item6_6,.item12_12,.item8_8,.item4_4').hide();
 				$('.item0,.item6,.item12,.item8,.item4').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item6 img,.item12 img,.item8 img,.item4 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item6 img,.item12 img,.item8 img,.item4 img'),(timeanimate-incre),$('.item0_0,.item6_6,.item12_12,.item8_8,.item4_4'),$('.item0,.item6,.item12,.item8,.item4'))
 			}
 			if(data[5]=='0_3LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item6_6,.item12_12,.item8_8').hide();
 				$('.item0,.item6,.item12,.item8').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item6 img,.item12 img,.item8 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item6 img,.item12 img,.item8 img'),(timeanimate-incre),$('.item0_0,.item6_6,.item12_12,.item8_8'),$('.item0,.item6,.item12,.item8'))
 			}
 			if(data[5]=='0_3LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item0_0,.item6_6,.item12_12').hide();
 				$('.item0,.item6,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item0 img,.item6 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item0 img,.item6 img,.item12 img'),(timeanimate-incre),$('.item0_0,.item6_6,.item12_12'),$('.item0,.item6,.item12'))
 			}
 			if(data[5]=='0_3RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item8_8,.item12_12,.item6_6').hide();
 				$('.item4,.item8,.item12,.item6').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item8 img,.item12 img,.item6 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item8 img,.item12 img,.item6 img'),(timeanimate-incre),$('.item4_4,.item8_8,.item12_12,.item6_6'),$('.item4,.item8,.item12,.item6'))
 			}
 			if(data[5]=='0_3RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item4_4,.item8_8,.item12_12').hide();
 				$('.item4,.item8,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item4 img,.item8 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item4 img,.item8 img,.item12 img'),(timeanimate-incre),$('.item4_4,.item8_8,.item12_12'),$('.item4,.item8,.item12'))
 			}
 			// =========================================================================
 			if(data[5]=='1_1LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item1_1,.item2_2,.item3_3,.item9_9').hide();
 				$('.item5,.item1,.item2,.item3,.item9').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item1 img,.item2 img,.item3 img,.item9 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item1 img,.item2 img,.item3 img,.item9 img'),(timeanimate-incre),$('.item5_5,.item1_1,.item2_2,.item3_3,.item9_9'),$('.item5,.item1,.item2,.item3,.item9'))
 			}
 			if(data[5]=='1_1LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item1_1,.item2_2,.item3_3').hide();
 				$('.item5,.item1,.item2,.item3').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item1 img,.item2 img,.item3 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item1 img,.item2 img,.item3 img'),(timeanimate-incre),$('.item5_5,.item1_1,.item2_2,.item3_3'),$('.item5,.item1,.item2,.item3'))
 			}
 			if(data[5]=='1_1LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item1_1,.item2_2').hide();
 				$('.item5,.item1,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item1 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item1 img,.item2 img'),(timeanimate-incre),$('.item5_5,.item1_1,.item2_2'),$('.item5,.item1,.item2'))
 
 			}
 			if(data[5]=='1_1RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item3_3,.item2_2,.item1_1').hide();
 				$('.item9,.item3,.item2,.item1').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item3 img,.item2 img,.item1 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item3 img,.item2 img,.item1 img'),(timeanimate-incre),$('.item9_9,.item3_3,.item2_2,.item1_1'),$('.item9,.item3,.item2,.item1'))
 			}
 			if(data[5]=='1_1RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item3_3,.item2_2').hide();
 				$('.item9,.item3,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item3 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item3 img,.item2 img'),(timeanimate-incre),$('.item9_9,.item3_3,.item2_2'),$('.item9,.item3,.item2'))
 			}
 			// =========================================================================
 			if(data[5]=='1_2LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item6_6,.item7_7,.item8_8,.item9_9').hide();
 				$('.item5,.item6,.item7,.item8,.item9').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item6 img,.item7 img,.item8 img,.item9 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item6 img,.item7 img,.item8 img,.item9 img'),(timeanimate-incre),$('.item5_5,.item6_6,.item7_7,.item8_8,.item9_9'),$('.item5,.item6,.item7,.item8,.item9'))
 			}
 			if(data[5]=='1_2LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item6_6,.item7_7,.item8_8').hide();
 				$('.item5,.item6,.item7,.item8').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item6 img,.item7 img,.item8 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item6 img,.item7 img,.item8 img'),(timeanimate-incre),$('.item5_5,.item6_6,.item7_7,.item8_8'),$('.item5,.item6,.item7,.item8'))
 			}
 			if(data[5]=='1_2LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item6_6,.item7_7').hide();
 				$('.item5,.item6,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item6 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item6 img,.item7 img'),(timeanimate-incre),$('.item5_5,.item6_6,.item7_7'),$('.item5,.item6,.item7'))
 			}
 			if(data[5]=='1_2RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item8_8,.item7_7,.item6_6').hide();
 				$('.item9,.item8,.item7,.item6').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item8 img,.item7 img,.item6 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item8 img,.item7 img,.item6 img'),(timeanimate-incre),$('.item9_9,.item8_8,.item7_7,.item6_6'),$('.item9,.item8,.item7,.item6'))
 			}
 			if(data[5]=='1_2RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item8_8,.item7_7').hide();
 				$('.item9,.item8,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item8 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item8 img,.item7 img'),(timeanimate-incre),$('.item9_9,.item8_8,.item7_7'),$('.item9,.item8,.item7'))
 			}
 			// =========================================================================
 			if(data[5]=='1_3LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item11_11,.item12_12,.item13_13,.item9_9').hide();
 				$('.item5,.item11,.item12,.item13,.item9').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item11 img,.item12 img,.item13 img,.item9 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item11 img,.item12 img,.item13 img,.item9 img'),(timeanimate-incre),$('.item5_5,.item11_11,.item12_12,.item13_13,.item9_9'),$('.item5,.item11,.item12,.item13,.item9'))
 			}
 			if(data[5]=='1_3LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item11_11,.item12_12,.item13_13').hide();
 				$('.item5,.item11,.item12,.item13').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item11 img,.item12 img,.item13 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item11 img,.item12 img,.item13 img'),(timeanimate-incre),$('.item5_5,.item11_11,.item12_12,.item13_13'),$('.item5,.item11,.item12,.item13'))
 			}
 			if(data[5]=='1_3LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item5_5,.item11_11,.item12_12').hide();
 				$('.item5,.item11,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item5 img,.item11 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item5 img,.item11 img,.item12 img'),(timeanimate-incre),$('.item5_5,.item11_11,.item12_12'),$('.item5,.item11,.item12'))
 			}
 			if(data[5]=='1_3RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item13_13,.item12_12,.item11_11').hide();
 				$('.item9,.item13,.item12,.item11').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item13 img,.item12 img,.item11 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item13 img,.item12 img,.item11 img'),(timeanimate-incre),$('.item9_9,.item13_13,.item12_12,.item11_11'),$('.item9,.item13,.item12,.item11'))
 			}
 			if(data[5]=='1_3RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item9_9,.item13_13,.item12_12').hide();
 				$('.item9,.item13,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item9 img,.item13 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item9 img,.item13 img,.item12 img'),(timeanimate-incre),$('.item9_9,.item13_13,.item12_12'),$('.item9,.item13,.item12'))
 			}
 			// =========================================================================
 			if(data[5]=='2_1LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item6_6,.item2_2,.item8_8,.item14_14').hide();
 				$('.item10,.item6,.item2,.item8,.item14').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item6 img,.item2 img,.item8 img,.item14 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item6 img,.item2 img,.item8 img,.item14 img'),(timeanimate-incre),$('.item10_10,.item6_6,.item2_2,.item8_8,.item14_14'),$('.item10,.item6,.item2,.item8,.item14'))
 			}
 			if(data[5]=='2_1LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item6_6,.item2_2,.item8_8').hide();
 				$('.item10,.item6,.item2,.item8').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item6 img,.item2 img,.item8 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item6 img,.item2 img,.item8 img'),(timeanimate-incre),$('.item10_10,.item6_6,.item2_2,.item8_8'),$('.item10,.item6,.item2,.item8'))
 			}
 			if(data[5]=='2_1LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item6_6,.item2_2').hide();
 				$('.item10,.item6,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item6 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item6 img,.item2 img'),(timeanimate-incre),$('.item10_10,.item6_6,.item2_2'),$('.item10,.item6,.item2'))
 			}
 			if(data[5]=='2_1RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item8_8,.item2_2,.item6_6').hide();
 				$('.item14,.item8,.item2,.item6').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item8 img,.item2 img,.item6 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item8 img,.item2 img,.item6 img'),(timeanimate-incre),$('.item14_14,.item8_8,.item2_2,.item6_6'),$('.item14,.item8,.item2,.item6'))
 			}
 			if(data[5]=='2_1RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item8_8,.item2_2').hide();
 				$('.item14,.item8,.item2').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item8 img,.item2 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item8 img,.item2 img'),(timeanimate-incre),$('.item14_14,.item8_8,.item2_2'),$('.item14,.item8,.item2'))
 			}
 			// =========================================================================
 			if(data[5]=='2_2LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item7_7,.item13_13,.item14_14').hide();
 				$('.item10,.item11,.item7,.item13,.item14').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item7 img,.item13 img,.item14 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item7 img,.item13 img,.item14 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item7_7,.item13_13,.item14_14'),$('.item10,.item11,.item7,.item13,.item14'))
 			}
 			if(data[5]=='2_2LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item7_7,.item13_13').hide();
 				$('.item10,.item11,.item7,.item13').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item7 img,.item13 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item7 img,.item13 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item7_7,.item13_13'),$('.item10,.item11,.item7,.item13'))
 			}
 			if(data[5]=='2_2LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item7_7').hide();
 				$('.item10,.item11,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item7 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item7_7'),$('.item10,.item11,.item7'))
 			}
 			if(data[5]=='2_2RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item13_13,.item7_7,.item11_11').hide();
 				$('.item14,.item13,.item7,.item11').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item13 img,.item7 img,.item11 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item13 img,.item7 img,.item11 img'),(timeanimate-incre),$('.item14_14,.item13_13,.item7_7,.item11_11'),$('.item14,.item13,.item7,.item11'))
 			}
 			if(data[5]=='2_2RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item13_13,.item7_7').hide();
 				$('.item14,.item13,.item7').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item13 img,.item7 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item13 img,.item7 img'),(timeanimate-incre),$('.item14_14,.item13_13,.item7_7'),$('.item14,.item13,.item7'))
 			}
 			// =========================================================================
 			if(data[5]=='2_3LFULL5'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item12_12,.item13_13,.item14_14').hide();
 				$('.item10,.item11,.item12,.item13,.item14').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item12 img,.item13 img,.item14 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item12 img,.item13 img,.item14 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item12_12,.item13_13,.item14_14'),$('.item10,.item11,.item12,.item13,.item14'))
 			}
 			if(data[5]=='2_3LFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item12_12,.item13_13').hide();
 				$('.item10,.item11,.item12,.item13').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item12 img,.item13 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item12 img,.item13 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item12_12,.item13_13'),$('.item10,.item11,.item12,.item13'))
 			}
 			if(data[5]=='2_3LFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item10_10,.item11_11,.item12_12').hide();
 				$('.item10,.item11,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item10 img,.item11 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item10 img,.item11 img,.item12 img'),(timeanimate-incre),$('.item10_10,.item11_11,.item12_12'),$('.item10,.item11,.item12'))
 			}
 			if(data[5]=='2_3RFULL4'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item13_13,.item12_12,.item11_11').hide();
 				$('.item14,.item13,.item12,.item11').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item13 img,.item12 img,.item11 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item13 img,.item12 img,.item11 img'),(timeanimate-incre),$('.item14_14,.item13_13,.item12_12,.item11_11'),$('.item14,.item13,.item12,.item11'))
 			}
 			if(data[5]=='2_3RFULL3'){
-				$('#gift')[0].play();
-				gift.currentTime=0;
+				if(incre==0){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else{
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}
 				$('.normal').css({
-					'color':'black',
-					'background-color':'#dbdbdb'
+					'color':'orange',
+					'background-color':'#04e0dd'
 				});
+				$('.gelap').show();
+				$('.item14_14,.item13_13,.item12_12').hide();
 				$('.item14,.item13,.item12').css({
 					'color':'red',
-					'background-color':'black'
+					'background-color':'orange',
 				});
-				animaterotate($('.item14 img,.item13 img,.item12 img'),(timeanimate-incre))
+				animaterotate($('.item14 img,.item13 img,.item12 img'),(timeanimate-incre),$('.item14_14,.item13_13,.item12_12'),$('.item14,.item13,.item12'))
 			}
 		}, 500*(incre+1));
 	})
+}, 2600);
 
 	
 		
 	})
+
 
 
 	// console.log(arr)
