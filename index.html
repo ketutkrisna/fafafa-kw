@@ -307,7 +307,7 @@
 		}, 1500*(index+1));
 	})
 
-	function animaterotate(dataimgrotate,timeanimate,gelape,warna){
+	function animaterotate(dataimgrotate,timeanimate,gelape){
 		setTimeout(function() {
 			$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
 				'color':'orange',
@@ -315,9 +315,9 @@
 				'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
 			});
 			gelape.hide();
-			setTimeout(function() {
-				warna.css('background-color','orange');
-			}, 5);
+			// setTimeout(function() {
+			// 	warna.css('background-color','orange');
+			// }, 5);
 			dataimgrotate.css('animation','bounce7 2s ease')
 			setTimeout(function() {
 				dataimgrotate.addClass('bounce7');
