@@ -780,6 +780,7 @@
 				'filter':'blur(0px)'
 			})
 			$('.fillclip').hide();
+			$('#midwin')[0].play();
 			dataimgrotate.css('animation','bounce7 '+speedrotate+'s ease');
 			setTimeout(function() {
 				dataimgrotate.addClass('bounce7');
@@ -803,6 +804,7 @@
 	var reelstop=document.getElementById('reelstop');
 	var btn_spin=document.getElementById('btn_spin');
 	var btn_stop=document.getElementById('btn_stop');
+	var midwin=document.getElementById('midwin');
 	var increcount=0;
 
 
