@@ -651,7 +651,8 @@
 					'<img src="img/item/bocilijo.png" width="100%" height="100%">',
 					'<img src="img/item/kakekbiru.png" width="100%" height="100%">',
 					'<img src="img/item/kakekmerah.png" width="100%" height="100%">',
-					'<img src="img/item/koin.png" width="100%" height="100%">'];
+					'<img src="img/item/koin.png" width="100%" height="100%">',
+					'<img src="img/item/scatter.png" width="100%" height="100%">'];
 	var randaimagetirai=['<img src="img/item/wild.png" width="100%" height="100%">',
 					'<img src="img/item/koin.png" width="100%" height="100%">',
 					'<img src="img/item/petasan.png" width="100%" height="100%">',
@@ -664,10 +665,11 @@
 					'<img src="img/item/koin.png" width="100%" height="100%">',
 					'<img src="img/item/tirai.png" width="100%" height="100%">',
 					'<img src="img/item/tirai.png" width="100%" height="100%">',
-					'<img src="img/item/tirai.png" width="100%" height="100%">'];
+					'<img src="img/item/tirai.png" width="100%" height="100%">',
+					'<img src="img/item/scatter.png" width="100%" height="100%">'];
 	var bonusalltheway=['Semoga beruntung','Rezeki melimpah','Jangan lupa sedekah','Bonus all the way'];
-	var randa=[0,1,2,3,4,5,6,7,8,1];
-	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,100,100];
+	var randa=[0,1,2,3,4,5,6,7,8,1,50];
+	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,100,100,50];
 	var ran0,ran1,ran2,ran3,ran4,ran5,ran6,ran7,ran8,ran9,ran10,ran11,ran12,ran13,ran14;
 	var data0_1Lbounce,data0_1Rbounce;
 	var baruarr1;
@@ -841,6 +843,7 @@
 	var datatirai;
 	var indexdatatirai;
 	var cekdatatirai;
+	var arrscatter;
 
 
 
@@ -876,21 +879,21 @@
 		$('.gelap').hide();
 		
 		
-		ran0=Math.floor(Math.random()*13);
-		ran1=Math.floor(Math.random()*13);
-		ran2=Math.floor(Math.random()*13);
-		ran3=Math.floor(Math.random()*13);
-		ran4=Math.floor(Math.random()*13);
-		ran5=Math.floor(Math.random()*10);
-		ran6=Math.floor(Math.random()*10);
-		ran7=Math.floor(Math.random()*10);
-		ran8=Math.floor(Math.random()*10);
-		ran9=Math.floor(Math.random()*10);
-		ran10=Math.floor(Math.random()*10);
-		ran11=Math.floor(Math.random()*10);
-		ran12=Math.floor(Math.random()*10);
-		ran13=Math.floor(Math.random()*10);
-		ran14=Math.floor(Math.random()*10);
+		ran0=Math.floor(Math.random()*14);
+		ran1=Math.floor(Math.random()*14);
+		ran2=Math.floor(Math.random()*14);
+		ran3=Math.floor(Math.random()*14);
+		ran4=Math.floor(Math.random()*14);
+		ran5=Math.floor(Math.random()*11);
+		ran6=Math.floor(Math.random()*11);
+		ran7=Math.floor(Math.random()*11);
+		ran8=Math.floor(Math.random()*11);
+		ran9=Math.floor(Math.random()*11);
+		ran10=Math.floor(Math.random()*11);
+		ran11=Math.floor(Math.random()*11);
+		ran12=Math.floor(Math.random()*11);
+		ran13=Math.floor(Math.random()*11);
+		ran14=Math.floor(Math.random()*11);
 
 
 		// data0_1Lbounce=[randa[ran0],randa[ran1],randa[ran2],randa[ran3],randa[ran4]];
@@ -909,6 +912,12 @@
 			[randa[ran10],randa[ran11],randa[ran7],randa[ran13],randa[ran14]],
 			[randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]]
 		];
+
+		arrscatter=[
+			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
+			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
+			randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]
+			];
 
 		tampunghasil=[];
 		$('.value div').css({
@@ -929,6 +938,36 @@
 		// 	'animation-play-state':'running',
   //           'animation-iteration-count':'100'
   //       });
+
+  		var jumlahscatter = arrscatter.filter(function(element,index){
+  			return element==50;
+  		})
+
+  		// console.log(jumlahscatter);
+  		// console.log(jumlahscatter.length);
+
+		datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
+		indexdatatirai=[];
+		cekdatatirai=datatirai.filter(function(element,index){
+			return element==100;
+		})
+		datatirai.filter(function(element,index){
+			if(cekdatatirai.length>1){
+				if (element==100) {
+					if(index==0){
+						indexdatatirai.push(0,5,10);
+					}else if(index==1){
+						indexdatatirai.push(1,6,11);
+					}else if(index==2){
+						indexdatatirai.push(2,7,12);
+					}else if(index==3){
+						indexdatatirai.push(3,8,13);
+					}else if(index==4){
+						indexdatatirai.push(4,9,14);
+					}
+				}
+			}
+		})
 
         spinkolom1 = setTimeout(function() {
 			$('#reelstop')[0].play();
@@ -976,7 +1015,7 @@
 				if(tampunghasil.length==0){
 					spinotomatis(0,0);
 				}
-				}, speeder);
+				}, 200);
 				if(cekdatatirai.length>1){
 					tunggus();
 				}else{
@@ -987,6 +1026,7 @@
 				spinoto=false;
 				setTimeout(function() {
 				if(tampunghasil.length==0){
+					// starts();
 					if(cekdatatirai.length>1){
 						tunggus();
 					}else{
@@ -994,7 +1034,8 @@
 					}
 				}
 				$('#startspin').html('SPIN')
-				}, speeder);
+				console.log(tampunghasil.length)
+				}, 200);
 			}
 		}, speed5);
 	
@@ -1005,29 +1046,6 @@
 		});
 		$('.normal').css('background-color','#04e0dd');
 
-
-	datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
-	indexdatatirai=[];
-	cekdatatirai=datatirai.filter(function(element,index){
-		return element==100;
-	})
-	datatirai.filter(function(element,index){
-		if(cekdatatirai.length>1){
-			if (element==100) {
-				if(index==0){
-					indexdatatirai.push(0,5,10);
-				}else if(index==1){
-					indexdatatirai.push(1,6,11);
-				}else if(index==2){
-					indexdatatirai.push(2,7,12);
-				}else if(index==3){
-					indexdatatirai.push(3,8,13);
-				}else if(index==4){
-					indexdatatirai.push(4,9,14);
-				}
-			}
-		}
-	})
 
 
 	stopini1 = setTimeout(function() {
@@ -1101,24 +1119,24 @@
 	//data0_1 ===================================================================
 	data0_1L=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 	cek0_1L=data0_1L.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_1L.filter(function(element,index){
 		if(cek0_1L.length==0){
-			data0_1L.splice(index, 1, 'wild');
+			data0_1L.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
-			data0_1L.splice(index, 1, cek0_1L[0]);	
+				data0_1L.splice(index, 1, cek0_1L[0]);
 		}
 	})
 	data0_1R=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 	cek0_1R=data0_1R.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_1R.filter(function(element,index){
 		if(cek0_1R.length==0){
-			data0_1R.splice(index, 1, 'wild');
+			data0_1R.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
-			data0_1R.splice(index, 1, cek0_1R[cek0_1R.length-1]);	
+				data0_1R.splice(index, 1, cek0_1R[cek0_1R.length-1]);	
 		}
 	})
 	if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]&&data0_1L[0]==data0_1L[3]&&data0_1L[0]==data0_1L[4]){
@@ -1145,24 +1163,24 @@
 	//data0_2 ===================================================================
 	data0_2L=[randatirai[ran0],randatirai[ran1],randa[ran7],randatirai[ran3],randatirai[ran4]];
 	cek0_2L=data0_2L.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_2L.filter(function(element,index){
 		if(cek0_2L.length==0){
-			data0_2L.splice(index, 1, 'wild');
+			data0_2L.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
-			data0_2L.splice(index, 1, cek0_2L[0]);	
+				data0_2L.splice(index, 1, cek0_2L[0]);
 		}
 	})
 	data0_2R=[randatirai[ran0],randatirai[ran1],randa[ran7],randatirai[ran3],randatirai[ran4]];
 	cek0_2R=data0_2R.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_2R.filter(function(element,index){
 		if(cek0_2R.length==0){
-			data0_2R.splice(index, 1, 'wild');
+			data0_2R.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
-			data0_2R.splice(index, 1, cek0_2R[cek0_2R.length-1]);	
+				data0_2R.splice(index, 1, cek0_2R[cek0_2R.length-1]);
 		}
 	})
 	if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]&&data0_2L[0]==data0_2L[3]&&data0_2L[0]==data0_2L[4]){
@@ -1189,22 +1207,22 @@
 	//data0_3 ===================================================================
 	data0_3L=[randatirai[ran0],randa[ran6],randa[ran12],randa[ran8],randatirai[ran4]];
 	cek0_3L=data0_3L.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_3L.filter(function(element,index){
 		if(cek0_3L.length==0){
-			data0_3L.splice(index, 1, 'wild');
+			data0_3L.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data0_3L.splice(index, 1, cek0_3L[0]);	
 		}
 	})
 	data0_3R=[randatirai[ran0],randa[ran6],randa[ran12],randa[ran8],randatirai[ran4]];
 	cek0_3R=data0_3R.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data0_3R.filter(function(element,index){
 		if(cek0_3R.length==0){
-			data0_3R.splice(index, 1, 'wild');
+			data0_3R.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data0_3R.splice(index, 1, cek0_3R[cek0_3R.length-1]);	
 		}
@@ -1233,22 +1251,22 @@
 	//data1_1 ===================================================================
 	data1_1L=[randa[ran5],randatirai[ran1],randatirai[ran2],randatirai[ran3],randa[ran9]];
 	cek1_1L=data1_1L.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data1_1L.filter(function(element,index){
 		if(cek1_1L.length==0){
-			data1_1L.splice(index, 1, 'wild');
+			data1_1L.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data1_1L.splice(index, 1, cek1_1L[0]);	
 		}
 	})
 	data1_1R=[randa[ran5],randatirai[ran1],randatirai[ran2],randatirai[ran3],randa[ran9]];
 	cek1_1R=data1_1R.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data1_1R.filter(function(element,index){
 		if(cek1_1R.length==0){
-			data1_1R.splice(index, 1, 'wild');
+			data1_1R.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data1_1R.splice(index, 1, cek1_1R[cek1_1R.length-1]);	
 		}
@@ -1276,22 +1294,22 @@
 	//data1_2 ===================================================================
 	data1_2L=[randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9]];
 	cek1_2L=data1_2L.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data1_2L.filter(function(element,index){
 		if(cek1_2L.length==0){
-			data1_2L.splice(index, 1, 'wild');
+			data1_2L.splice(index, index+1, index+55);
 		}else if(element==0){
 			data1_2L.splice(index, 1, cek1_2L[0]);	
 		}
 	})
 	data1_2R=[randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9]];
 	cek1_2R=data1_2R.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data1_2R.filter(function(element,index){
 		if(cek1_2R.length==0){
-			data1_2R.splice(index, 1, 'wild');
+			data1_2R.splice(index, index+1, index+55);
 		}else if(element==0){
 			data1_2R.splice(index, 1, cek1_2R[cek1_2R.length-1]);	
 		}
@@ -1319,22 +1337,22 @@
 	//data1_3 ===================================================================
 	data1_3L=[randa[ran5],randa[ran11],randa[ran12],randa[ran13],randa[ran9]];
 	cek1_3L=data1_3L.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data1_3L.filter(function(element,index){
 		if(cek1_3L.length==0){
-			data1_3L.splice(index, 1, 'wild');
+			data1_3L.splice(index, index+1, index+55);
 		}else if(element==0){
 			data1_3L.splice(index, 1, cek1_3L[0]);	
 		}
 	})
 	data1_3R=[randa[ran5],randa[ran11],randa[ran12],randa[ran13],randa[ran9]];
 	cek1_3R=data1_3R.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data1_3R.filter(function(element,index){
 		if(cek1_3R.length==0){
-			data1_3R.splice(index, 1, 'wild');
+			data1_3R.splice(index, index+1, index+55);
 		}else if(element==0){
 			data1_3R.splice(index, 1, cek1_3R[cek1_3R.length-1]);	
 		}
@@ -1362,22 +1380,22 @@
 	//data2_1 ===================================================================
 	data2_1L=[randa[ran10],randa[ran6],randatirai[ran2],randa[ran8],randa[ran14]];
 	cek2_1L=data2_1L.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data2_1L.filter(function(element,index){
 		if(cek2_1L.length==0){
-			data2_1L.splice(index, 1, 'wild');
+			data2_1L.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data2_1L.splice(index, 1, cek2_1L[0]);	
 		}
 	})
 	data2_1R=[randa[ran10],randa[ran6],randatirai[ran2],randa[ran8],randa[ran14]];
 	cek2_1R=data2_1R.filter(function(element,index){
-		return element!=0&&element!=100;
+		return element!=0&&element!=100&&element!=50;
 	})
 	data2_1R.filter(function(element,index){
 		if(cek2_1R.length==0){
-			data2_1R.splice(index, 1, 'wild');
+			data2_1R.splice(index, index+1, index+55);
 		}else if(element==0||element==100){
 			data2_1R.splice(index, 1, cek2_1R[cek2_1R.length-1]);	
 		}
@@ -1405,22 +1423,22 @@
 	//data2_2 ===================================================================
 	data2_2L=[randa[ran10],randa[ran11],randa[ran7],randa[ran13],randa[ran14]];
 	cek2_2L=data2_2L.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data2_2L.filter(function(element,index){
 		if(cek2_2L.length==0){
-			data2_2L.splice(index, 1, 'wild');
+			data2_2L.splice(index, index+1, index+55);
 		}else if(element==0){
 			data2_2L.splice(index, 1, cek2_2L[0]);	
 		}
 	})
 	data2_2R=[randa[ran10],randa[ran11],randa[ran7],randa[ran13],randa[ran14]];
 	cek2_2R=data2_2R.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data2_2R.filter(function(element,index){
 		if(cek2_2R.length==0){
-			data2_2R.splice(index, 1, 'wild');
+			data2_2R.splice(index, index+1, index+55);
 		}else if(element==0){
 			data2_2R.splice(index, 1, cek2_2R[cek2_2R.length-1]);	
 		}
@@ -1448,22 +1466,22 @@
 	//data2_3 ===================================================================
 	data2_3L=[randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]];
 	cek2_3L=data2_3L.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data2_3L.filter(function(element,index){
 		if(cek2_3L.length==0){
-			data2_3L.splice(index, 1, 'wild');
+			data2_3L.splice(index, index+1, index+55);
 		}else if(element==0){
 			data2_3L.splice(index, 1, cek2_3L[0]);	
 		}
 	})
 	data2_3R=[randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]];
 	cek2_3R=data2_3R.filter(function(element,index){
-		return element!=0;
+		return element!=0&&element!=50;
 	})
 	data2_3R.filter(function(element,index){
 		if(cek2_3R.length==0){
-			data2_3R.splice(index, 1, 'wild');
+			data2_3R.splice(index, index+1, index+55);
 		}else if(element==0){
 			data2_3R.splice(index, 1, cek2_3R[cek2_3R.length-1]);	
 		}
@@ -2767,15 +2785,21 @@
 			// setTimeout(function() {
 			// if(tampunghasil.length==0){
 				if(cekdatatirai.length>1){
-					tunggus();
-				}else{
 					setTimeout(function() {
 					if(tampunghasil.length==0){
-						// setTimeout(function() {
-							starts();
-						// }, 200);
+						starts();
+					}else{
+						tunggus();
 					}
-				}, 200);
+					}, 200);
+				}else{
+					setTimeout(function() {
+						if(tampunghasil.length==0){
+							// setTimeout(function() {
+								starts();
+							// }, 200);
+						}
+					}, 200);
 				}
 			// }
 			// $('#startspin').html('SPIN')
@@ -2857,22 +2881,22 @@
 		//data0_1 ===================================================================
 		data0_1L=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 		cek0_1L=data0_1L.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_1L.filter(function(element,index){
 			if(cek0_1L.length==0){
-				data0_1L.splice(index, 1, 'wild');
+				data0_1L.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_1L.splice(index, 1, cek0_1L[0]);	
 			}
 		})
 		data0_1R=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 		cek0_1R=data0_1R.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_1R.filter(function(element,index){
 			if(cek0_1R.length==0){
-				data0_1R.splice(index, 1, 'wild');
+				data0_1R.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_1R.splice(index, 1, cek0_1R[cek0_1R.length-1]);	
 			}
@@ -2901,22 +2925,22 @@
 		//data0_2 ===================================================================
 		data0_2L=[randatirai[ran0],randatirai[ran1],randa[ran7],randatirai[ran3],randatirai[ran4]];
 		cek0_2L=data0_2L.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_2L.filter(function(element,index){
 			if(cek0_2L.length==0){
-				data0_2L.splice(index, 1, 'wild');
+				data0_2L.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_2L.splice(index, 1, cek0_2L[0]);	
 			}
 		})
 		data0_2R=[randatirai[ran0],randatirai[ran1],randa[ran7],randatirai[ran3],randatirai[ran4]];
 		cek0_2R=data0_2R.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_2R.filter(function(element,index){
 			if(cek0_2R.length==0){
-				data0_2R.splice(index, 1, 'wild');
+				data0_2R.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_2R.splice(index, 1, cek0_2R[cek0_2R.length-1]);	
 			}
@@ -2945,22 +2969,22 @@
 		//data0_3 ===================================================================
 		data0_3L=[randatirai[ran0],randa[ran6],randa[ran12],randa[ran8],randatirai[ran4]];
 		cek0_3L=data0_3L.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_3L.filter(function(element,index){
 			if(cek0_3L.length==0){
-				data0_3L.splice(index, 1, 'wild');
+				data0_3L.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_3L.splice(index, 1, cek0_3L[0]);	
 			}
 		})
 		data0_3R=[randatirai[ran0],randa[ran6],randa[ran12],randa[ran8],randatirai[ran4]];
 		cek0_3R=data0_3R.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data0_3R.filter(function(element,index){
 			if(cek0_3R.length==0){
-				data0_3R.splice(index, 1, 'wild');
+				data0_3R.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data0_3R.splice(index, 1, cek0_3R[cek0_3R.length-1]);	
 			}
@@ -2989,22 +3013,22 @@
 		//data1_1 ===================================================================
 		data1_1L=[randa[ran5],randatirai[ran1],randatirai[ran2],randatirai[ran3],randa[ran9]];
 		cek1_1L=data1_1L.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data1_1L.filter(function(element,index){
 			if(cek1_1L.length==0){
-				data1_1L.splice(index, 1, 'wild');
+				data1_1L.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data1_1L.splice(index, 1, cek1_1L[0]);	
 			}
 		})
 		data1_1R=[randa[ran5],randatirai[ran1],randatirai[ran2],randatirai[ran3],randa[ran9]];
 		cek1_1R=data1_1R.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data1_1R.filter(function(element,index){
 			if(cek1_1R.length==0){
-				data1_1R.splice(index, 1, 'wild');
+				data1_1R.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data1_1R.splice(index, 1, cek1_1R[cek1_1R.length-1]);	
 			}
@@ -3032,22 +3056,22 @@
 		//data1_2 ===================================================================
 		data1_2L=[randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9]];
 		cek1_2L=data1_2L.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data1_2L.filter(function(element,index){
 			if(cek1_2L.length==0){
-				data1_2L.splice(index, 1, 'wild');
+				data1_2L.splice(index, index+1, index+55);
 			}else if(element==0){
 				data1_2L.splice(index, 1, cek1_2L[0]);	
 			}
 		})
 		data1_2R=[randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9]];
 		cek1_2R=data1_2R.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data1_2R.filter(function(element,index){
 			if(cek1_2R.length==0){
-				data1_2R.splice(index, 1, 'wild');
+				data1_2R.splice(index, index+1, index+55);
 			}else if(element==0){
 				data1_2R.splice(index, 1, cek1_2R[cek1_2R.length-1]);	
 			}
@@ -3075,22 +3099,22 @@
 		//data1_3 ===================================================================
 		data1_3L=[randa[ran5],randa[ran11],randa[ran12],randa[ran13],randa[ran9]];
 		cek1_3L=data1_3L.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data1_3L.filter(function(element,index){
 			if(cek1_3L.length==0){
-				data1_3L.splice(index, 1, 'wild');
+				data1_3L.splice(index, index+1, index+55);
 			}else if(element==0){
 				data1_3L.splice(index, 1, cek1_3L[0]);	
 			}
 		})
 		data1_3R=[randa[ran5],randa[ran11],randa[ran12],randa[ran13],randa[ran9]];
 		cek1_3R=data1_3R.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data1_3R.filter(function(element,index){
 			if(cek1_3R.length==0){
-				data1_3R.splice(index, 1, 'wild');
+				data1_3R.splice(index, index+1, index+55);
 			}else if(element==0){
 				data1_3R.splice(index, 1, cek1_3R[cek1_3R.length-1]);	
 			}
@@ -3118,22 +3142,22 @@
 		//data2_1 ===================================================================
 		data2_1L=[randa[ran10],randa[ran6],randatirai[ran2],randa[ran8],randa[ran14]];
 		cek2_1L=data2_1L.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data2_1L.filter(function(element,index){
 			if(cek2_1L.length==0){
-				data2_1L.splice(index, 1, 'wild');
+				data2_1L.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data2_1L.splice(index, 1, cek2_1L[0]);	
 			}
 		})
 		data2_1R=[randa[ran10],randa[ran6],randatirai[ran2],randa[ran8],randa[ran14]];
 		cek2_1R=data2_1R.filter(function(element,index){
-			return element!=0&&element!=100;
+			return element!=0&&element!=100&&element!=50;
 		})
 		data2_1R.filter(function(element,index){
 			if(cek2_1R.length==0){
-				data2_1R.splice(index, 1, 'wild');
+				data2_1R.splice(index, index+1, index+55);
 			}else if(element==0||element==100){
 				data2_1R.splice(index, 1, cek2_1R[cek2_1R.length-1]);	
 			}
@@ -3161,22 +3185,22 @@
 		//data2_2 ===================================================================
 		data2_2L=[randa[ran10],randa[ran11],randa[ran7],randa[ran13],randa[ran14]];
 		cek2_2L=data2_2L.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data2_2L.filter(function(element,index){
 			if(cek2_2L.length==0){
-				data2_2L.splice(index, 1, 'wild');
+				data2_2L.splice(index, index+1, index+55);
 			}else if(element==0){
 				data2_2L.splice(index, 1, cek2_2L[0]);	
 			}
 		})
 		data2_2R=[randa[ran10],randa[ran11],randa[ran7],randa[ran13],randa[ran14]];
 		cek2_2R=data2_2R.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data2_2R.filter(function(element,index){
 			if(cek2_2R.length==0){
-				data2_2R.splice(index, 1, 'wild');
+				data2_2R.splice(index, index+1, index+55);
 			}else if(element==0){
 				data2_2R.splice(index, 1, cek2_2R[cek2_2R.length-1]);	
 			}
@@ -3204,22 +3228,22 @@
 		//data2_3 ===================================================================
 		data2_3L=[randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]];
 		cek2_3L=data2_3L.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data2_3L.filter(function(element,index){
 			if(cek2_3L.length==0){
-				data2_3L.splice(index, 1, 'wild');
+				data2_3L.splice(index, index+1, index+55);
 			}else if(element==0){
 				data2_3L.splice(index, 1, cek2_3L[0]);	
 			}
 		})
 		data2_3R=[randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]];
 		cek2_3R=data2_3R.filter(function(element,index){
-			return element!=0;
+			return element!=0&&element!=50;
 		})
 		data2_3R.filter(function(element,index){
 			if(cek2_3R.length==0){
-				data2_3R.splice(index, 1, 'wild');
+				data2_3R.splice(index, index+1, index+55);
 			}else if(element==0){
 				data2_3R.splice(index, 1, cek2_3R[cek2_3R.length-1]);	
 			}
