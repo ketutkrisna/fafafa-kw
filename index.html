@@ -668,7 +668,7 @@
 					'<img src="img/item/tirai.png" width="100%" height="100%">',
 					'<img src="img/item/scatter.png" width="100%" height="100%">'];
 	var bonusalltheway=['Semoga beruntung','Rezeki melimpah','Jangan lupa sedekah','Bonus all the way'];
-	var randa=[0,1,2,3,4,5,6,7,8,1,50];
+	var randa=[0,1,2,3,4,5,6,7,8,1,50,50,50];
 	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,100,100,50];
 	var ran0,ran1,ran2,ran3,ran4,ran5,ran6,ran7,ran8,ran9,ran10,ran11,ran12,ran13,ran14;
 	var data0_1Lbounce,data0_1Rbounce;
@@ -844,6 +844,7 @@
 	var indexdatatirai;
 	var cekdatatirai;
 	var arrscatter;
+	var jumlahscatter;
 
 
 
@@ -919,32 +920,10 @@
 			randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]
 			];
 
-		tampunghasil=[];
-		$('.value div').css({
-            'animation-name': 'spin .3s linear'
-        });
+		jumlahscatter = arrscatter.filter(function(element,index){
+			return element==50;
+		})
 
-		setTimeout(function() {
-		$('.value div').addClass('spingo');
-		$('.value div').css({
-			'animation-play-state':'running',
-            'animation-iteration-count':'100',
-        });
-
-		$('.normal').html('<img src="img/item/koin.png" width="100%" height="100%">')
-		}, 200);
-  //       $('.valuekali div').addClass('spinkali');
-		// $('.valuekali div').css({
-		// 	'animation-play-state':'running',
-  //           'animation-iteration-count':'100'
-  //       });
-
-  		var jumlahscatter = arrscatter.filter(function(element,index){
-  			return element==50;
-  		})
-
-  		// console.log(jumlahscatter);
-  		// console.log(jumlahscatter.length);
 
 		datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 		indexdatatirai=[];
@@ -968,6 +947,99 @@
 				}
 			}
 		})
+
+		// console.log(indexdatatirai.length)
+
+		var acakjikaadatirai1=Math.floor(Math.random()*9);
+		var acakjikaadatirai2=Math.floor(Math.random()*9);
+		var acakjikaadatirai3=Math.floor(Math.random()*9);
+		var acakjikaadatirai4=Math.floor(Math.random()*9);
+		var acakjikaadatirai5=Math.floor(Math.random()*9);
+		var indexscatter=[];
+
+		arrscatter.filter(function(element,index){
+			if(element==50){
+			indexscatter.push(index);
+			}
+		})
+
+		if(jumlahscatter.length>2){
+			indexscatter.filter(function(elf,inf){
+				if(indexdatatirai.length>1){
+					if(elf==5||elf==10){
+						if(randaimagetirai[ran0]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+							ran0=acakjikaadatirai1;
+							setTimeout(function() {
+								$('.item0').html(randaimagetirai[acakjikaadatirai1]);
+							}, 500);
+						}
+					}
+					if(elf==6||elf==11){
+						if(randaimagetirai[ran1]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+							ran1=acakjikaadatirai2;
+							setTimeout(function() {
+								$('.item1').html(randaimagetirai[acakjikaadatirai2]);
+							}, 500);
+						}
+					}
+					if(elf==7||elf==12){
+						if(randaimagetirai[ran2]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+							ran2=acakjikaadatirai3;
+							setTimeout(function() {
+								$('.item2').html(randaimagetirai[acakjikaadatirai3]);
+							}, 500);
+						}
+					}
+					if(elf==8||elf==13){
+						if(randaimagetirai[ran3]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+							ran3=acakjikaadatirai4;
+							setTimeout(function() {
+								$('.item3').html(randaimagetirai[acakjikaadatirai4]);
+							}, 500);
+						}
+					}
+					if(elf==9||elf==14){
+						if(randaimagetirai[ran4]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+							ran4=acakjikaadatirai5;
+							setTimeout(function() {
+								$('.item4').html(randaimagetirai[acakjikaadatirai5]);
+							}, 500);						
+						}
+					}
+				}
+			})
+		}
+
+
+  		// console.log(posisiscatter);
+  		// console.log(jumlahscatter.length);
+
+		tampunghasil=[];
+		$('.value div').css({
+            'animation-name': 'spin .3s linear'
+        });
+
+		setTimeout(function() {
+		$('.value div').addClass('spingo');
+		$('.value div').css({
+			'animation-play-state':'running',
+            'animation-iteration-count':'100',
+        });
+
+		$('.normal').html('<img src="img/item/koin.png" width="100%" height="100%">')
+		}, 200);
+  //       $('.valuekali div').addClass('spinkali');
+		// $('.valuekali div').css({
+		// 	'animation-play-state':'running',
+  //           'animation-iteration-count':'100'
+  //       });
+
+  		
+		
+
+		
+
+
 
         spinkolom1 = setTimeout(function() {
 			$('#reelstop')[0].play();
@@ -1034,7 +1106,7 @@
 					}
 				}
 				$('#startspin').html('SPIN')
-				console.log(tampunghasil.length)
+				// console.log(tampunghasil.length)
 				}, 200);
 			}
 		}, speed5);
@@ -1049,6 +1121,8 @@
 
 
 	stopini1 = setTimeout(function() {
+		
+		// console.log(indexdatatirai.length)
 
 	data0_1tirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 	indextirai=[];
@@ -1088,11 +1162,13 @@
 		}
 	})
 
+
+
 	if(indextirai.length>1){
 		indextirai.map(function(el,ind){
 			$('.itemtirai'+el).show();
 			setTimeout(function() {
-				$('.tiraihide').fadeOut(50);
+				$('.tiraihide').fadeOut(100);
 				$('.item'+el).html('<img src="img/item/tirai.png" width="100%" height="100%">');
 				// $('.itemtirai'+el).html('<img src="img/item/tirai.png" width="100%" height="100%">');
 			}, speeder+speeder+speeder);
@@ -1140,22 +1216,32 @@
 		}
 	})
 	if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]&&data0_1L[0]==data0_1L[3]&&data0_1L[0]==data0_1L[4]){
-		data0_1L.push('0_1LFULL5');
-		tampunghasil.push(data0_1L);
-	}else{
-		if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]&&data0_1L[0]==data0_1L[3]){
-			data0_1L.push('0_1LFULL4');
-			tampunghasil.push(data0_1L);
-		}else if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]){
-			data0_1L.push('0_1LFULL3');
+		if(data0_1L[0]!=50&&data0_1L[0]!=0){
+			data0_1L.push('0_1LFULL5');
 			tampunghasil.push(data0_1L);
 		}
+	}else{
+		if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]&&data0_1L[0]==data0_1L[3]){
+			if(data0_1L[0]!=50&&data0_1L[0]!=0){
+				data0_1L.push('0_1LFULL4');
+				tampunghasil.push(data0_1L);
+			}
+		}else if(data0_1L[0]==data0_1L[1]&&data0_1L[0]==data0_1L[2]){
+			if(data0_1L[0]!=50&&data0_1L[0]!=0){
+				data0_1L.push('0_1LFULL3');
+				tampunghasil.push(data0_1L);
+			}
+		}
 		if(data0_1R[4]==data0_1R[3]&&data0_1R[4]==data0_1R[2]&&data0_1R[4]==data0_1R[1]){
-			data0_1R.push('0_1RFULL4');
-			tampunghasil.push(data0_1R);
+			if(data0_1R[4]!=50&&data0_1R[4]!=0){
+				data0_1R.push('0_1RFULL4');
+				tampunghasil.push(data0_1R);
+			}
 		}else if(data0_1R[4]==data0_1R[3]&&data0_1R[4]==data0_1R[2]){
-			data0_1R.push('0_1RFULL3');
-			tampunghasil.push(data0_1R);
+			if(data0_1R[4]!=50&&data0_1R[4]!=0){
+				data0_1R.push('0_1RFULL3');
+				tampunghasil.push(data0_1R);
+			}
 		}
 	}
 	//tutup data0_1 ===================================================================
@@ -1184,22 +1270,32 @@
 		}
 	})
 	if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]&&data0_2L[0]==data0_2L[3]&&data0_2L[0]==data0_2L[4]){
-		data0_2L.push('0_2LFULL5');
-		tampunghasil.push(data0_2L);
-	}else{
-		if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]&&data0_2L[0]==data0_2L[3]){
-			data0_2L.push('0_2LFULL4');
-			tampunghasil.push(data0_2L);
-		}else if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]){
-			data0_2L.push('0_2LFULL3');
+		if(data0_2L[0]!=50&&data0_2L[0]!=0){
+			data0_2L.push('0_2LFULL5');
 			tampunghasil.push(data0_2L);
 		}
+	}else{
+		if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]&&data0_2L[0]==data0_2L[3]){
+			if(data0_2L[0]!=50&&data0_2L[0]!=0){
+				data0_2L.push('0_2LFULL4');
+				tampunghasil.push(data0_2L);
+			}
+		}else if(data0_2L[0]==data0_2L[1]&&data0_2L[0]==data0_2L[2]){
+			if(data0_2L[0]!=50&&data0_2L[0]!=0){
+				data0_2L.push('0_2LFULL3');
+				tampunghasil.push(data0_2L);
+			}
+		}
 		if(data0_2R[4]==data0_2R[3]&&data0_2R[4]==data0_2R[2]&&data0_2R[4]==data0_2R[1]){
-			data0_2R.push('0_2RFULL4');
-			tampunghasil.push(data0_2R);
+			if(data0_2R[4]!=50&&data0_2R[4]!=0){
+				data0_2R.push('0_2RFULL4');
+				tampunghasil.push(data0_2R);
+			}
 		}else if(data0_2R[4]==data0_2R[3]&&data0_2R[4]==data0_2R[2]){
-			data0_2R.push('0_2RFULL3');
-			tampunghasil.push(data0_2R);
+			if(data0_2R[4]!=50&&data0_2R[4]!=0){
+				data0_2R.push('0_2RFULL3');
+				tampunghasil.push(data0_2R);
+			}
 		}
 	}
 	//tutup data0_2 ===================================================================
@@ -1228,22 +1324,32 @@
 		}
 	})
 	if(data0_3L[0]==data0_3L[1]&&data0_3L[0]==data0_3L[2]&&data0_3L[0]==data0_3L[3]&&data0_3L[0]==data0_3L[4]){
-		data0_3L.push('0_3LFULL5');
-		tampunghasil.push(data0_3L);
-	}else{
-		if(data0_3L[0]==data0_3L[1]&&data0_3L[0]==data0_3L[2]&&data0_3L[0]==data0_3L[3]){
-			data0_3L.push('0_3LFULL4');
-			tampunghasil.push(data0_3L);
-		}else if(data0_3L[0]==data0_3L[1]&&data0_3L[0]==data0_3L[2]){
-			data0_3L.push('0_3LFULL3');
+		if(data0_3L[0]!=50&&data0_3L[0]!=0){
+			data0_3L.push('0_3LFULL5');
 			tampunghasil.push(data0_3L);
 		}
+	}else{
+		if(data0_3L[0]==data0_3L[1]&&data0_3L[0]==data0_3L[2]&&data0_3L[0]==data0_3L[3]){
+			if(data0_3L[0]!=50&&data0_3L[0]!=0){
+				data0_3L.push('0_3LFULL4');
+				tampunghasil.push(data0_3L);
+			}
+		}else if(data0_3L[0]==data0_3L[1]&&data0_3L[0]==data0_3L[2]){
+			if(data0_3L[0]!=50&&data0_3L[0]!=0){
+				data0_3L.push('0_3LFULL3');
+				tampunghasil.push(data0_3L);
+			}
+		}
 		if(data0_3R[4]==data0_3R[3]&&data0_3R[4]==data0_3R[2]&&data0_3R[4]==data0_3R[1]){
-			data0_3R.push('0_3RFULL4');
-			tampunghasil.push(data0_3R);
+			if(data0_3R[4]!=50&&data0_3R[4]!=0){
+				data0_3R.push('0_3RFULL4');
+				tampunghasil.push(data0_3R);
+			}
 		}else if(data0_3R[4]==data0_3R[3]&&data0_3R[4]==data0_3R[2]){
-			data0_3R.push('0_3RFULL3');
-			tampunghasil.push(data0_3R);
+			if(data0_3R[4]!=50&&data0_3R[4]!=0){
+				data0_3R.push('0_3RFULL3');
+				tampunghasil.push(data0_3R);
+			}
 		}
 	}
 	//tutup data0_3 ===================================================================
@@ -1272,22 +1378,32 @@
 		}
 	})
 	if(data1_1L[0]==data1_1L[1]&&data1_1L[0]==data1_1L[2]&&data1_1L[0]==data1_1L[3]&&data1_1L[0]==data1_1L[4]){
-		data1_1L.push('1_1LFULL5');
-		tampunghasil.push(data1_1L);
-	}else{
-		if(data1_1L[0]==data1_1L[1]&&data1_1L[0]==data1_1L[2]&&data1_1L[0]==data1_1L[3]){
-			data1_1L.push('1_1LFULL4');
-			tampunghasil.push(data1_1L);
-		}else if(data1_1L[0]==data1_1L[1]&&data1_1L[0]==data1_1L[2]){
-			data1_1L.push('1_1LFULL3');
+		if(data1_1L[0]!=50&&data1_1L[0]!=0){
+			data1_1L.push('1_1LFULL5');
 			tampunghasil.push(data1_1L);
 		}
+	}else{
+		if(data1_1L[0]==data1_1L[1]&&data1_1L[0]==data1_1L[2]&&data1_1L[0]==data1_1L[3]){
+			if(data1_1L[0]!=50&&data1_1L[0]!=0){
+				data1_1L.push('1_1LFULL4');
+				tampunghasil.push(data1_1L);
+			}
+		}else if(data1_1L[0]==data1_1L[1]&&data1_1L[0]==data1_1L[2]){
+			if(data1_1L[0]!=50&&data1_1L[0]!=0){
+				data1_1L.push('1_1LFULL3');
+				tampunghasil.push(data1_1L);
+			}
+		}
 		if(data1_1R[4]==data1_1R[3]&&data1_1R[4]==data1_1R[2]&&data1_1R[4]==data1_1R[1]){
-			data1_1R.push('1_1RFULL4');
-			tampunghasil.push(data1_1R);
+			if(data1_1R[4]!=50&&data1_1R[4]!=0){
+				data1_1R.push('1_1RFULL4');
+				tampunghasil.push(data1_1R);
+			}
 		}else if(data1_1R[4]==data1_1R[3]&&data1_1R[4]==data1_1R[2]){
-			data1_1R.push('1_1RFULL3');
-			tampunghasil.push(data1_1R);
+			if(data1_1R[4]!=50&&data1_1R[4]!=0){
+				data1_1R.push('1_1RFULL3');
+				tampunghasil.push(data1_1R);
+			}
 		}
 	}
 	//tutup data1_1 ===================================================================
@@ -1315,22 +1431,32 @@
 		}
 	})
 	if(data1_2L[0]==data1_2L[1]&&data1_2L[0]==data1_2L[2]&&data1_2L[0]==data1_2L[3]&&data1_2L[0]==data1_2L[4]){
-		data1_2L.push('1_2LFULL5');
-		tampunghasil.push(data1_2L);
-	}else{
-		if(data1_2L[0]==data1_2L[1]&&data1_2L[0]==data1_2L[2]&&data1_2L[0]==data1_2L[3]){
-			data1_2L.push('1_2LFULL4');
-			tampunghasil.push(data1_2L);
-		}else if(data1_2L[0]==data1_2L[1]&&data1_2L[0]==data1_2L[2]){
-			data1_2L.push('1_2LFULL3');
+		if(data1_2L[0]!=50&&data1_2L[0]!=0){
+			data1_2L.push('1_2LFULL5');
 			tampunghasil.push(data1_2L);
 		}
+	}else{
+		if(data1_2L[0]==data1_2L[1]&&data1_2L[0]==data1_2L[2]&&data1_2L[0]==data1_2L[3]){
+			if(data1_2L[0]!=50&&data1_2L[0]!=0){
+				data1_2L.push('1_2LFULL4');
+				tampunghasil.push(data1_2L);
+			}
+		}else if(data1_2L[0]==data1_2L[1]&&data1_2L[0]==data1_2L[2]){
+			if(data1_2L[0]!=50&&data1_2L[0]!=0){
+				data1_2L.push('1_2LFULL3');
+				tampunghasil.push(data1_2L);
+			}
+		}
 		if(data1_2R[4]==data1_2R[3]&&data1_2R[4]==data1_2R[2]&&data1_2R[4]==data1_2R[1]){
-			data1_2R.push('1_2RFULL4');
-			tampunghasil.push(data1_2R);
+			if(data1_2R[4]!=50&&data1_2R[4]!=0){
+				data1_2R.push('1_2RFULL4');
+				tampunghasil.push(data1_2R);
+			}
 		}else if(data1_2R[4]==data1_2R[3]&&data1_2R[4]==data1_2R[2]){
-			data1_2R.push('1_2RFULL3');
-			tampunghasil.push(data1_2R);
+			if(data1_2R[4]!=50&&data1_2R[4]!=0){
+				data1_2R.push('1_2RFULL3');
+				tampunghasil.push(data1_2R);
+			}
 		}
 	}
 	//tutup data1_2 ===================================================================
@@ -1358,22 +1484,32 @@
 		}
 	})
 	if(data1_3L[0]==data1_3L[1]&&data1_3L[0]==data1_3L[2]&&data1_3L[0]==data1_3L[3]&&data1_3L[0]==data1_3L[4]){
-		data1_3L.push('1_3LFULL5');
-		tampunghasil.push(data1_3L);
-	}else{
-		if(data1_3L[0]==data1_3L[1]&&data1_3L[0]==data1_3L[2]&&data1_3L[0]==data1_3L[3]){
-			data1_3L.push('1_3LFULL4');
-			tampunghasil.push(data1_3L);
-		}else if(data1_3L[0]==data1_3L[1]&&data1_3L[0]==data1_3L[2]){
-			data1_3L.push('1_3LFULL3');
+		if(data1_3L[0]!=50&&data1_3L[0]!=0){
+			data1_3L.push('1_3LFULL5');
 			tampunghasil.push(data1_3L);
 		}
+	}else{
+		if(data1_3L[0]==data1_3L[1]&&data1_3L[0]==data1_3L[2]&&data1_3L[0]==data1_3L[3]){
+			if(data1_3L[0]!=50&&data1_3L[0]!=0){
+				data1_3L.push('1_3LFULL4');
+				tampunghasil.push(data1_3L);
+			}
+		}else if(data1_3L[0]==data1_3L[1]&&data1_3L[0]==data1_3L[2]){
+			if(data1_3L[0]!=50&&data1_3L[0]!=0){
+				data1_3L.push('1_3LFULL3');
+				tampunghasil.push(data1_3L);
+			}
+		}
 		if(data1_3R[4]==data1_3R[3]&&data1_3R[4]==data1_3R[2]&&data1_3R[4]==data1_3R[1]){
-			data1_3R.push('1_3RFULL4');
-			tampunghasil.push(data1_3R);
+			if(data1_3R[4]!=50&&data1_3R[4]!=0){
+				data1_3R.push('1_3RFULL4');
+				tampunghasil.push(data1_3R);
+			}
 		}else if(data1_3R[4]==data1_3R[3]&&data1_3R[4]==data1_3R[2]){
-			data1_3R.push('1_3RFULL3');
-			tampunghasil.push(data1_3R);
+			if(data1_3R[4]!=50&&data1_3R[4]!=0){
+				data1_3R.push('1_3RFULL3');
+				tampunghasil.push(data1_3R);
+			}
 		}
 	}
 	//tutup data1_3 ===================================================================
@@ -1401,22 +1537,32 @@
 		}
 	})
 	if(data2_1L[0]==data2_1L[1]&&data2_1L[0]==data2_1L[2]&&data2_1L[0]==data2_1L[3]&&data2_1L[0]==data2_1L[4]){
-		data2_1L.push('2_1LFULL5');
-		tampunghasil.push(data2_1L);
-	}else{
-		if(data2_1L[0]==data2_1L[1]&&data2_1L[0]==data2_1L[2]&&data2_1L[0]==data2_1L[3]){
-			data2_1L.push('2_1LFULL4');
-			tampunghasil.push(data2_1L);
-		}else if(data2_1L[0]==data2_1L[1]&&data2_1L[0]==data2_1L[2]){
-			data2_1L.push('2_1LFULL3');
+		if(data2_1L[0]!=50&&data2_1L[0]!=0){
+			data2_1L.push('2_1LFULL5');
 			tampunghasil.push(data2_1L);
 		}
+	}else{
+		if(data2_1L[0]==data2_1L[1]&&data2_1L[0]==data2_1L[2]&&data2_1L[0]==data2_1L[3]){
+			if(data2_1L[0]!=50&&data2_1L[0]!=0){
+				data2_1L.push('2_1LFULL4');
+				tampunghasil.push(data2_1L);
+			}
+		}else if(data2_1L[0]==data2_1L[1]&&data2_1L[0]==data2_1L[2]){
+			if(data2_1L[0]!=50&&data2_1L[0]!=0){
+				data2_1L.push('2_1LFULL3');
+				tampunghasil.push(data2_1L);
+			}
+		}
 		if(data2_1R[4]==data2_1R[3]&&data2_1R[4]==data2_1R[2]&&data2_1R[4]==data2_1R[1]){
-			data2_1R.push('2_1RFULL4');
-			tampunghasil.push(data2_1R);
+			if(data2_1R[4]!=50&&data2_1R[4]!=0){
+				data2_1R.push('2_1RFULL4');
+				tampunghasil.push(data2_1R);
+			}
 		}else if(data2_1R[4]==data2_1R[3]&&data2_1R[4]==data2_1R[2]){
-			data2_1R.push('2_1RFULL3');
-			tampunghasil.push(data2_1R);
+			if(data2_1R[4]!=50&&data2_1R[4]!=0){
+				data2_1R.push('2_1RFULL3');
+				tampunghasil.push(data2_1R);
+			}
 		}
 	}
 	//tutup data2_1 ===================================================================
@@ -1444,22 +1590,32 @@
 		}
 	})
 	if(data2_2L[0]==data2_2L[1]&&data2_2L[0]==data2_2L[2]&&data2_2L[0]==data2_2L[3]&&data2_2L[0]==data2_2L[4]){
-		data2_2L.push('2_2LFULL5');
-		tampunghasil.push(data2_2L);
-	}else{
-		if(data2_2L[0]==data2_2L[1]&&data2_2L[0]==data2_2L[2]&&data2_2L[0]==data2_2L[3]){
-			data2_2L.push('2_2LFULL4');
-			tampunghasil.push(data2_2L);
-		}else if(data2_2L[0]==data2_2L[1]&&data2_2L[0]==data2_2L[2]){
-			data2_2L.push('2_2LFULL3');
+		if(data2_2L[0]!=50&&data2_2L[0]!=0){
+			data2_2L.push('2_2LFULL5');
 			tampunghasil.push(data2_2L);
 		}
+	}else{
+		if(data2_2L[0]==data2_2L[1]&&data2_2L[0]==data2_2L[2]&&data2_2L[0]==data2_2L[3]){
+			if(data2_2L[0]!=50&&data2_2L[0]!=0){
+				data2_2L.push('2_2LFULL4');
+				tampunghasil.push(data2_2L);
+			}
+		}else if(data2_2L[0]==data2_2L[1]&&data2_2L[0]==data2_2L[2]){
+			if(data2_2L[0]!=50&&data2_2L[0]!=0){
+				data2_2L.push('2_2LFULL3');
+				tampunghasil.push(data2_2L);
+			}
+		}
 		if(data2_2R[4]==data2_2R[3]&&data2_2R[4]==data2_2R[2]&&data2_2R[4]==data2_2R[1]){
-			data2_2R.push('2_2RFULL4');
-			tampunghasil.push(data2_2R);
+			if(data2_2R[4]!=50&&data2_2R[4]!=0){
+				data2_2R.push('2_2RFULL4');
+				tampunghasil.push(data2_2R);
+			}
 		}else if(data2_2R[4]==data2_2R[3]&&data2_2R[4]==data2_2R[2]){
-			data2_2R.push('2_2RFULL3');
-			tampunghasil.push(data2_2R);
+			if(data2_2R[4]!=50&&data2_2R[4]!=0){
+				data2_2R.push('2_2RFULL3');
+				tampunghasil.push(data2_2R);
+			}
 		}
 	}
 	//tutup data2_2 ===================================================================
@@ -1487,22 +1643,32 @@
 		}
 	})
 	if(data2_3L[0]==data2_3L[1]&&data2_3L[0]==data2_3L[2]&&data2_3L[0]==data2_3L[3]&&data2_3L[0]==data2_3L[4]){
-		data2_3L.push('2_3LFULL5');
-		tampunghasil.push(data2_3L);
-	}else{
-		if(data2_3L[0]==data2_3L[1]&&data2_3L[0]==data2_3L[2]&&data2_3L[0]==data2_3L[3]){
-			data2_3L.push('2_3LFULL4');
-			tampunghasil.push(data2_3L);
-		}else if(data2_3L[0]==data2_3L[1]&&data2_3L[0]==data2_3L[2]){
-			data2_3L.push('2_3LFULL3');
+		if(data2_3L[0]!=50&&data2_3L[0]!=0){
+			data2_3L.push('2_3LFULL5');
 			tampunghasil.push(data2_3L);
 		}
+	}else{
+		if(data2_3L[0]==data2_3L[1]&&data2_3L[0]==data2_3L[2]&&data2_3L[0]==data2_3L[3]){
+			if(data2_3L[0]!=50&&data2_3L[0]!=0){
+				data2_3L.push('2_3LFULL4');
+				tampunghasil.push(data2_3L);
+			}
+		}else if(data2_3L[0]==data2_3L[1]&&data2_3L[0]==data2_3L[2]){
+			if(data2_3L[0]!=50&&data2_3L[0]!=0){
+				data2_3L.push('2_3LFULL3');
+				tampunghasil.push(data2_3L);
+			}
+		}
 		if(data2_3R[4]==data2_3R[3]&&data2_3R[4]==data2_3R[2]&&data2_3R[4]==data2_3R[1]){
-			data2_3R.push('2_3RFULL4');
-			tampunghasil.push(data2_3R);
+			if(data2_3R[4]!=50&&data2_3R[4]!=0){
+				data2_3R.push('2_3RFULL4');
+				tampunghasil.push(data2_3R);
+			}
 		}else if(data2_3R[4]==data2_3R[3]&&data2_3R[4]==data2_3R[2]){
-			data2_3R.push('2_3RFULL3');
-			tampunghasil.push(data2_3R);
+			if(data2_3R[4]!=50&&data2_3R[4]!=0){
+				data2_3R.push('2_3RFULL3');
+				tampunghasil.push(data2_3R);
+			}
 		}
 	}
 
