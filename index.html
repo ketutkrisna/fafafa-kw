@@ -733,15 +733,16 @@
 		if(timespin==0){
 			setTimeout(function(){
 				$('#startspin').click();
-			},speedanimate*timespin+speeder+speeder);
-			// tunggus();
+			},speedanimate*timespin+speeder);
+		}else if(timespin==500){
+			setTimeout(function(){
+				$('#startspin').click();
+			},speedanimate*1+speeder+speeder+speeder+speeder+speeder);
 		}else{
 			setTimeout(function(){
 				$('#startspin').click();
-			},speedanimate*timespin+speeder+speeder+speeder+speeder+speeder);
-			// tunggus();
+			},speedanimate*timespin+speeder+speeder+speeder+speeder+speeder+speeder);
 		}
-		// console.log(jumlahspin);
 	}
 
 	$('.speeder').on('change',function(){
@@ -967,7 +968,7 @@
 			indexscatter.filter(function(elf,inf){
 				if(indexdatatirai.length>1){
 					if(elf==5||elf==10){
-						if(randaimagetirai[ran0]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+						if(randatirai[ran0]==100){
 							ran0=acakjikaadatirai1;
 							setTimeout(function() {
 								$('.item0').html(randaimagetirai[acakjikaadatirai1]);
@@ -975,7 +976,7 @@
 						}
 					}
 					if(elf==6||elf==11){
-						if(randaimagetirai[ran1]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+						if(randatirai[ran1]==100){
 							ran1=acakjikaadatirai2;
 							setTimeout(function() {
 								$('.item1').html(randaimagetirai[acakjikaadatirai2]);
@@ -983,7 +984,7 @@
 						}
 					}
 					if(elf==7||elf==12){
-						if(randaimagetirai[ran2]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+						if(randatirai[ran2]==100){
 							ran2=acakjikaadatirai3;
 							setTimeout(function() {
 								$('.item2').html(randaimagetirai[acakjikaadatirai3]);
@@ -991,7 +992,7 @@
 						}
 					}
 					if(elf==8||elf==13){
-						if(randaimagetirai[ran3]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+						if(randatirai[ran3]==100){
 							ran3=acakjikaadatirai4;
 							setTimeout(function() {
 								$('.item3').html(randaimagetirai[acakjikaadatirai4]);
@@ -999,7 +1000,7 @@
 						}
 					}
 					if(elf==9||elf==14){
-						if(randaimagetirai[ran4]=='<img src="img/item/tirai.png" width="100%" height="100%">'){
+						if(randatirai[ran4]==100){
 							ran4=acakjikaadatirai5;
 							setTimeout(function() {
 								$('.item4').html(randaimagetirai[acakjikaadatirai5]);
@@ -1010,11 +1011,32 @@
 			})
 		}
 
+		datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
+		indexdatatirai=[];
+		cekdatatirai=datatirai.filter(function(element,index){
+			return element==100;
+		})
+		datatirai.filter(function(element,index){
+			if(cekdatatirai.length>1){
+				if (element==100) {
+					if(index==0){
+						indexdatatirai.push(0,5,10);
+					}else if(index==1){
+						indexdatatirai.push(1,6,11);
+					}else if(index==2){
+						indexdatatirai.push(2,7,12);
+					}else if(index==3){
+						indexdatatirai.push(3,8,13);
+					}else if(index==4){
+						indexdatatirai.push(4,9,14);
+					}
+				}
+			}
+		})
 
-  		// console.log(posisiscatter);
-  		// console.log(jumlahscatter.length);
 
 		tampunghasil=[];
+
 		$('.value div').css({
             'animation-name': 'spin .3s linear'
         });
@@ -1083,30 +1105,37 @@
 
 			
 			if(jumlahspin>0){
-				setTimeout(function() {
-				if(tampunghasil.length==0){
-					spinotomatis(0,0);
-				}
-				}, 200);
-				if(cekdatatirai.length>1){
+				if(cekdatatirai.length>=2){
 					tunggus();
+					setTimeout(function() {
+						if(tampunghasil.length==0){
+							spinotomatis(500,0);
+						}
+					}, 200);
 				}else{
-					stops();	
+					stops();
+					setTimeout(function() {
+						if(tampunghasil.length==0){
+							spinotomatis(0,0);
+						}
+					}, 200);	
 				}
 			}else{
 				jumlahspin=0;
 				spinoto=false;
 				setTimeout(function() {
-				if(tampunghasil.length==0){
-					// starts();
 					if(cekdatatirai.length>1){
-						tunggus();
+						if(tampunghasil.length==0){
+							starts();
+						}else{
+							tunggus();
+						}
 					}else{
-						starts();	
+						if(tampunghasil.length==0){
+							starts();
+						}
 					}
-				}
-				$('#startspin').html('SPIN')
-				// console.log(tampunghasil.length)
+					$('#startspin').html('SPIN')
 				}, 200);
 			}
 		}, speed5);
@@ -1165,6 +1194,7 @@
 
 
 	if(indextirai.length>1){
+		setTimeout(function() {
 		indextirai.map(function(el,ind){
 			$('.itemtirai'+el).show();
 			setTimeout(function() {
@@ -1189,6 +1219,7 @@
 				})
 			}
 		})
+		}, speeder+speeder);
 	}
 
 
@@ -1693,7 +1724,7 @@
 	}, speed5);
 
 	if(indexdatatirai.length>1){
-		speed5=speed5+speeder+speeder+speeder;
+		speed5=speed5+speeder+speeder+speeder+speeder+speeder;
 	}else{
 		speed5=speed5;
 	}
