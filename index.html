@@ -1356,6 +1356,64 @@
 			// }
 		})
 
+
+
+		// var rancok=Math.ceil(Math.random()*3);
+		// console.log(indexwild)
+		// console.log(okehardwild)
+		
+
+		// if(indexscatter.length>5){
+			// console.log(jumlahscatter.length);
+		// }
+		// setTimeout(function() {
+
+		// var ggg=jumlahscatter.length;
+		// console.log(ggg);
+		// }, 200);
+
+		datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
+		indexdatatirai=[];
+		cekdatatirai=datatirai.filter(function(element,index){
+			return element==100;
+		})
+		datatirai.filter(function(element,index){
+			if(cekdatatirai.length>1){
+				if (element==100) {
+					if(index==0){
+						indexdatatirai.push(0,5,10);
+					}else if(index==1){
+						indexdatatirai.push(1,6,11);
+					}else if(index==2){
+						indexdatatirai.push(2,7,12);
+					}else if(index==3){
+						indexdatatirai.push(3,8,13);
+					}else if(index==4){
+						indexdatatirai.push(4,9,14);
+					}
+				}
+			}
+		})
+
+
+
+		arrscatter=[
+			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
+			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
+			randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]
+			];
+		indexscatter1=[];
+		jumlahscatter = arrscatter.filter(function(element,index){
+			return element==50;
+		})
+
+		arrscatter.filter(function(element,index){
+			if(element==50){
+			indexscatter1.push(index);
+			}
+		})
+
+
 		if(freespin==true){
 			var jumlahtiraifreeout=[1,1,1,1,1,1,1,1,1,1,
 									2,2,2,2,2,1,1,1,1,1,
@@ -1612,59 +1670,7 @@
 			// })
 		}
 
-		// var rancok=Math.ceil(Math.random()*3);
-		// console.log(indexwild)
-		// console.log(okehardwild)
 		
-
-		// if(indexscatter.length>5){
-			// console.log(jumlahscatter.length);
-		// }
-		// setTimeout(function() {
-
-		// var ggg=jumlahscatter.length;
-		// console.log(ggg);
-		// }, 200);
-
-		datatirai=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
-		indexdatatirai=[];
-		cekdatatirai=datatirai.filter(function(element,index){
-			return element==100;
-		})
-		datatirai.filter(function(element,index){
-			if(cekdatatirai.length>1){
-				if (element==100) {
-					if(index==0){
-						indexdatatirai.push(0,5,10);
-					}else if(index==1){
-						indexdatatirai.push(1,6,11);
-					}else if(index==2){
-						indexdatatirai.push(2,7,12);
-					}else if(index==3){
-						indexdatatirai.push(3,8,13);
-					}else if(index==4){
-						indexdatatirai.push(4,9,14);
-					}
-				}
-			}
-		})
-
-
-		arrscatter=[
-			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
-			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
-			randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]
-			];
-		indexscatter1=[];
-		jumlahscatter = arrscatter.filter(function(element,index){
-			return element==50;
-		})
-
-		arrscatter.filter(function(element,index){
-			if(element==50){
-			indexscatter1.push(index);
-			}
-		})
 
 		if(freespin==true){
 			jumlahfreespin--;
