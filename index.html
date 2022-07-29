@@ -782,6 +782,7 @@
 	var jumlahfreespin=0;
 	var oke=0;
 	var persulit=true;
+    var freeawal=false;
 
 	function starts(){
 		$('#tunggus').hide();
@@ -1126,98 +1127,98 @@
 				if(inf>okehard){
 					// console.log(elf)
 					if(elf==1){
-						var rankater1=Math.floor(Math.random()*9);
+						var rankater1=Math.ceil(Math.random()*7);
 						ran1=rankater1;
 						setTimeout(function() {
 							$('.item1').html(randaimagetirai[rankater1]);
 						}, 500);
 					}
 					if(elf==2){
-						var rankater2=Math.floor(Math.random()*9);
+						var rankater2=Math.ceil(Math.random()*7);
 						ran2=rankater2;
 						setTimeout(function() {
 							$('.item2').html(randaimagetirai[rankater2]);
 						}, 500);
 					}
 					if(elf==3){
-						var rankater3=Math.floor(Math.random()*9);
+						var rankater3=Math.ceil(Math.random()*7);
 						ran3=rankater3;
 						setTimeout(function() {
 							$('.item3').html(randaimagetirai[rankater3]);
 						}, 500);
 					}
 					if(elf==4){
-						var rankater4=Math.floor(Math.random()*9);
+						var rankater4=Math.ceil(Math.random()*7);
 						ran4=rankater4;
 						setTimeout(function() {
 							$('.item4').html(randaimagetirai[rankater4]);
 						}, 500);
 					}
 					if(elf==5){
-						var rankater5=Math.floor(Math.random()*9);
+						var rankater5=Math.ceil(Math.random()*7);
 						ran5=rankater5;
 						setTimeout(function() {
 							$('.item5').html(randaimagetirai[rankater5]);
 						}, 500);
 					}
 					if(elf==6){
-						var rankater6=Math.floor(Math.random()*9);
+						var rankater6=Math.ceil(Math.random()*7);
 						ran6=rankater6;
 						setTimeout(function() {
 							$('.item6').html(randaimagetirai[rankater6]);
 						}, 500);
 					}
 					if(elf==7){
-						var rankater7=Math.floor(Math.random()*9);
+						var rankater7=Math.ceil(Math.random()*7);
 						ran7=rankater7;
 						setTimeout(function() {
 							$('.item7').html(randaimagetirai[rankater7]);
 						}, 500);
 					}
 					if(elf==8){
-						var rankater8=Math.floor(Math.random()*9);
+						var rankater8=Math.ceil(Math.random()*7);
 						ran8=rankater8;
 						setTimeout(function() {
 							$('.item8').html(randaimagetirai[rankater8]);
 						}, 500);
 					}
 					if(elf==9){
-						var rankater9=Math.floor(Math.random()*9);
+						var rankater9=Math.ceil(Math.random()*7);
 						ran9=rankater9;
 						setTimeout(function() {
 							$('.item9').html(randaimagetirai[rankater9]);
 						}, 500);
 					}
 					if(elf==10){
-						var rankater10=Math.floor(Math.random()*9);
+						var rankater10=Math.ceil(Math.random()*7);
 						ran10=rankater10;
 						setTimeout(function() {
 							$('.item10').html(randaimagetirai[rankater10]);
 						}, 500);
 					}
 					if(elf==11){
-						var rankater11=Math.floor(Math.random()*9);
+						var rankater11=Math.ceil(Math.random()*7);
 						ran11=rankater11;
 						setTimeout(function() {
 							$('.item11').html(randaimagetirai[rankater11]);
 						}, 500);
 					}
 					if(elf==12){
-						var rankater12=Math.floor(Math.random()*9);
+						var rankater12=Math.ceil(Math.random()*7);
 						ran12=rankater12;
 						setTimeout(function() {
 							$('.item12').html(randaimagetirai[rankater12]);
 						}, 500);
 					}
 					if(elf==13){
-						var rankater13=Math.floor(Math.random()*9);
+						var rankater13=Math.ceil(Math.random()*7);
 						ran13=rankater13;
 						setTimeout(function() {
 							$('.item13').html(randaimagetirai[rankater13]);
 						}, 500);
 					}
 					if(elf==14){
-						var rankater14=Math.floor(Math.random()*9);
+						var rankater14=Math.ceil(Math.random()*7);
 						ran14=rankater14;
 						setTimeout(function() {
 							$('.item14').html(randaimagetirai[rankater14]);
@@ -1677,9 +1678,9 @@
 					cekcontohfreenew.push(4,9,14)
 				}
 			})
-			console.log(cekcontohfree);
+			// console.log(cekcontohfree);
 
-			console.log(postirai1+'-'+postirai2+'-'+postirai3+'-'+postirai4);
+			// console.log(postirai1+'-'+postirai2+'-'+postirai3+'-'+postirai4);
 
 	  // 		var datatiraifree=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
 			// var indexdatatiraifree=[];
@@ -1706,7 +1707,7 @@
 		}
 
 
-
+		setTimeout(function() {
 		arrscatter=[
 			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
 			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
@@ -1722,6 +1723,9 @@
 			indexscatter1.push(index);
 			}
 		})
+
+		console.log(indexscatter1);
+		}, 500);
 
 
 
@@ -1774,22 +1778,6 @@
 
 
 		tampunghasil=[];
-
-		
-  //       $('.valuekali div').addClass('spinkali');
-		// $('.valuekali div').css({
-		// 	'animation-play-state':'running',
-  //           'animation-iteration-count':'100'
-  //       });
-
-  		
-		
-
-		
-
-
-		
-
 
 		$('.scatterhide').css({
 			'transform':'translateY(0px)',
@@ -2064,38 +2052,74 @@
 
 					
 					if(jumlahspin>0){
-						if(cekdatatirai.length>=2){
-							tunggus();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(500,0);
-								}
-							}, 200);
+						if(jumlahfreespin>0){
+							if(cekdatatirai.length>=2){
+								tunggus();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(500,0);
+									}
+								}, 200);
+							}else{
+								stops();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(0,0);
+									}
+								}, 200);	
+							}
 						}else{
-							stops();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(0,0);
-								}
-							}, 200);	
+							if(cekdatatirai.length>=2){
+								tunggus();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(500,0);
+									}
+								}, 200);
+							}else{
+								stops();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(0,0);
+									}
+								}, 200);	
+							}
 						}
 					}else{
-						jumlahspin=0;
-						spinoto=false;
-						setTimeout(function() {
-							if(cekdatatirai.length>1){
-								if(tampunghasil.length==0){
-									starts();
-								}else{
-									tunggus();
-								}
+						if(jumlahfreespin>0){
+							if(cekdatatirai.length>=2){
+								tunggus();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(500,0);
+									}
+								}, 200);
 							}else{
-								if(tampunghasil.length==0){
-									starts();
-								}
+								stops();
+								setTimeout(function() {
+									if(tampunghasil.length==0){
+										spinotomatis(0,0);
+									}
+								}, 200);	
 							}
-							$('#startspin').html('SPIN')
-						}, 200);
+						}else{
+							jumlahspin=0;
+							spinoto=false;
+							setTimeout(function() {
+								if(cekdatatirai.length>1){
+									if(tampunghasil.length==0){
+										starts();
+									}else{
+										tunggus();
+									}
+								}else{
+									if(tampunghasil.length==0){
+										starts();
+									}
+								}
+								$('#startspin').html('SPIN')
+							}, 200);
+						}
 					}
 				}, speed5);
 			}
@@ -2211,10 +2235,10 @@
     	}
 
 		
-	
-
-
+		setTimeout(function() {
+    	freeawal=false;
 		if(jumlahscatter.length>2){
+			freeawal=true;
 			if(jumlahscatter.length==3){
 				oke=oke+10;
 				if(freespin==true){
@@ -2238,6 +2262,7 @@
 				}
 			}
 		}
+		}, 600);
 
 
 	stopini1 = setTimeout(function() {
@@ -2286,7 +2311,7 @@
 
 	if(indextirai.length>1&&freespin==false){
 		setTimeout(function() {
-		indextirai.map(function(el,ind){
+		indextirai.filter(function(el,ind){
 			$('.itemtirai'+el).show();
 			setTimeout(function() {
 				$('.tiraihide').fadeOut(100);
@@ -2315,7 +2340,7 @@
 
 	if(indextirai.length>0&&freespin==true){
 		setTimeout(function() {
-		cekcontohfreenew.map(function(el,ind){
+		cekcontohfreenew.filter(function(el,ind){
 			$('.itemtirai'+el).show();
 			setTimeout(function() {
 				$('.tiraihide').fadeOut(100);
@@ -2341,6 +2366,38 @@
 		})
 		}, speeder);
 	}
+
+	// if(freeawal==true){
+	// 	if(cekdatatirai.length>=2){
+	// 		tunggus();
+	// 		// setTimeout(function() {
+	// 			if(tampunghasil.length==0){
+	// 				setTimeout(function() {
+	// 				$('#startspin').click();
+	// 				}, speeder+speeder+speeder+speeder+speeder+speeder+speeder+speeder);
+	// 			}else{
+	// 				setTimeout(function() {
+	// 					$('#startspin').click();
+	// 				}, tampunghasil.length*speeder+speeder+speeder+speeder+speeder+speeder+speeder+speeder);
+	// 			}
+	// 		// }, 200);
+	// 	}else{
+	// 		tunggus();
+	// 		// setTimeout(function() {
+	// 			if(tampunghasil.length==0){
+	// 				setTimeout(function() {
+	// 				$('#startspin').click();
+	// 				}, speeder+speeder+speeder+speeder+speeder+speeder+speeder+speeder);
+	// 			}else{
+	// 				setTimeout(function() {
+	// 					$('#startspin').click();
+	// 				}, tampunghasil.length*speeder+speeder+speeder+speeder+speeder+speeder+speeder+speeder);
+	// 			}
+	// 		// }, 200);	
+	// 	}
+	// }
+
+	// console.log(freeawal)
 
 
 	//data0_1 ===================================================================
@@ -2835,8 +2892,9 @@
 	// console.log('=========================================')
 	// console.log(tampunghasil)
 
-
-	if(indexscatter1.length>2&&indextirai.length>1){
+	// setTimeout(function() {
+	if(indexscatter1.length>2){
+		console.log(indexscatter1)
 		if(tampunghasil.length==0){
 			setTimeout(function() {
 			freespin=true;
@@ -2860,37 +2918,38 @@
 				setTimeout(function() {
 					$('.normal').removeClass('bounce8');
 				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+speeder+speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone);
+			}, speedanimate*tampunghasil.length+speeder+speeder+speeder+speeder+speedrotateclone);
 		}
-	}else if(indexscatter1.length>2&&indextirai.length<2){
-		if(tampunghasil.length==0){
-			setTimeout(function() {
-			freespin=true;
-				$('.gelap').hide();
-				indexscatter1.filter(function(el,ind){
-					$('.item'+el).addClass('bounce8');
-				})
+	}else{
+		// if(tampunghasil.length==0){
+		// 	setTimeout(function() {
+		// 	freespin=true;
+		// 		$('.gelap').hide();
+		// 		indexscatter1.filter(function(el,ind){
+		// 			$('.item'+el).addClass('bounce8');
+		// 		})
 
-				setTimeout(function() {
-					$('.normal').removeClass('bounce8');
-				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+speeder+speeder);
-		}else{
-			setTimeout(function() {
-			freespin=true;
-				$('.gelap').hide();
-				indexscatter1.filter(function(el,ind){
-					$('.item'+el).addClass('bounce8');
-				})
+		// 		setTimeout(function() {
+		// 			$('.normal').removeClass('bounce8');
+		// 		}, speedrotateclone);
+		// 	}, speedanimate*tampunghasil.length+speeder+speeder);
+		// }else{
+		// 	setTimeout(function() {
+		// 	freespin=true;
+		// 		$('.gelap').hide();
+		// 		indexscatter1.filter(function(el,ind){
+		// 			$('.item'+el).addClass('bounce8');
+		// 		})
 
-				setTimeout(function() {
-					$('.normal').removeClass('bounce8');
-				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+speeder+speeder+speedrotateclone);
-		}
+		// 		setTimeout(function() {
+		// 			$('.normal').removeClass('bounce8');
+		// 		}, speedrotateclone);
+		// 	}, speedanimate*tampunghasil.length+speeder+speeder+speedrotateclone);
+		// }
 	}
+	// }, speeder);
 
-	console.log(speedanimate*tampunghasil.length);
+	// console.log(speedanimate*tampunghasil.length);
 
 	// if(indextirai.length>1){	
 	// 	speed5=speed5+speeder+speeder+speeder+speeder+speeder+speeder;
@@ -2898,8 +2957,11 @@
 	// 	speed5=speed5+speeder;
 	// }
 	}, speed5);
+
 	if(freespin==true){
-		if(indexdatatirai.length>0){
+		if(indexdatatirai.length>0&&indexscatter1.length>2){
+			speed5=speed5+speeder+speeder+speeder+speeder+speeder+speeder;
+		}else if(indexdatatirai.length>0&&indexscatter1.length<3){
 			speed5=speed5+speeder+speeder+speeder;
 		}else{
 			speed5=speed5;
@@ -2915,13 +2977,52 @@
 	// console.log(jumlahfreespin)
 
 	timetampung = setTimeout(function() {
-	tampunghasil.map(function(data,incre){
+	tampunghasil.filter(function(data,incre){
 		timeanimate=Number(tampunghasil.length);
-		if(jumlahspin>0){
+		console.log(freeawal)
+		if(freeawal==true){
+			console.log(freeawal)
+			// if(jumlahfreespin>0&&freeawal==true){
+			// 	if((incre+1)==timeanimate){
+			// 		spinotomatis(timeanimate,incre+1);
+			// 	}
+			// }
 			if((incre+1)==timeanimate){
-				spinotomatis(timeanimate,incre+1);
+				if(indextirai>0){
+					setTimeout(function() {
+						$('#startspin').click();
+					}, timeanimate*speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone+speedrotateclone);
+				}else{
+				setTimeout(function() {
+					$('#startspin').click();
+				}, timeanimate*speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone+speedrotateclone);
+				}
+			}
+		}else{
+			if(jumlahspin>0){
+				if(jumlahfreespin>0){
+					if((incre+1)==timeanimate){
+						spinotomatis(timeanimate,incre+1);
+					}
+				}else{
+					if((incre+1)==timeanimate){
+						spinotomatis(timeanimate,incre+1);
+					}
+				}
+			}else{
+				if(jumlahfreespin>0){
+					if((incre+1)==timeanimate){
+						spinotomatis(timeanimate,incre+1);
+					}
+				}else{
+					// if((incre+1)==timeanimate){
+					// 	spinotomatis(timeanimate,incre+1);
+					// 	console.log(jumlahfreespin)
+					// }
+				}
 			}
 		}
+
 		if(tampunghasil.length!=0){
 			tunggus();
 		}
@@ -4481,6 +4582,9 @@
 
 	var speedstop=100;
 	$('#stopspin').on('click',function(){
+		// if(freespin==true){
+		// 	spinotomatis()
+		// }
 		speedstop=100;
 		$('#btn_stop')[0].play();
          btn_stop.currentTime = 0;
@@ -5068,11 +5172,20 @@
 
         tampunghasil.map(function(data,incre){
 		timeanimate=Number(tampunghasil.length);
-		if(jumlahspin>0){
+		if(freespin==true){
 			if((incre+1)==timeanimate){
 				spinotomatis(timeanimate,incre+1);
+			}else{
+				spinotomatis(0,0);
+			}
+		}else{
+			if(jumlahspin>0){
+				if((incre+1)==timeanimate){
+					spinotomatis(timeanimate,incre+1);
+				}
 			}
 		}
+
 		if(tampunghasil.length!=0){
 			tunggus();
 		}
