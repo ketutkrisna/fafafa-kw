@@ -840,6 +840,26 @@
 		}
 	}
 
+
+	function shuffle(array) {
+	  let currentIndex = array.length,  randomIndex;
+
+	  // While there remain elements to shuffle.
+	  while (currentIndex != 0) {
+
+	    // Pick a remaining element.
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex--;
+
+	    // And swap it with the current element.
+	    [array[currentIndex], array[randomIndex]] = [
+	      array[randomIndex], array[currentIndex]];
+	  }
+
+	  return array;
+	}
+
+
 	$('.speeder').on('change',function(){
 		if($('.speeder').val()==0){
 			speed1=1000;
@@ -2126,9 +2146,7 @@
 
 			setTimeout(function() {
 				$('#reelstop')[0].play();
-				setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
             }, speed5);
 
 		}else{
@@ -2148,9 +2166,7 @@
 
 	        spinkolom1 = setTimeout(function() {
 				$('#reelstop')[0].play();
-				setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
 	           	$('.slot:nth-child(1) .value div').removeClass('spingo'); 
 	           	$('.item0').html(randaimagetirai[ran0]);
 	           	$('.item5').html(randaimage[ran5]);
@@ -2158,9 +2174,7 @@
 			}, speed1);
 			spinkolom2 = setTimeout(function() {
 				$('#reelstop')[0].play();
-	            setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
 	           	$('.slot:nth-child(2) .value div').removeClass('spingo'); 
 	           	$('.item1').html(randaimagetirai[ran1]);
 	           	$('.item6').html(randaimage[ran6]);
@@ -2168,9 +2182,7 @@
 			}, speed2);
 			spinkolom3 = setTimeout(function() {
 				$('#reelstop')[0].play();
-	            setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
 	           	$('.slot:nth-child(3) .value div').removeClass('spingo'); 
 	           	$('.item2').html(randaimagetirai[ran2]);
 				$('.item7').html(randaimage[ran7]);
@@ -2178,9 +2190,7 @@
 			}, speed3);
 			spinkolom4 = setTimeout(function() {
 				$('#reelstop')[0].play();
-	            setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
 	           	$('.slot:nth-child(4) .value div').removeClass('spingo'); 
 	           	$('.item3').html(randaimagetirai[ran3]);
 				$('.item8').html(randaimage[ran8]);
@@ -2188,9 +2198,7 @@
 			}, speed4);
 			spinkolom5 = setTimeout(function() {
 				$('#reelstop')[0].play();
-	            setTimeout(function() {
-	            	reelstop.currentTime = 0;
-	            }, 5);
+	            reelstop.currentTime = 0;
 	           	$('.slot:nth-child(5) .value div').removeClass('spingo'); 
 	           	$('.item4').html(randaimagetirai[ran4]);
 				$('.item9').html(randaimage[ran9]);
@@ -2995,9 +3003,22 @@
 	}
 
 	// console.log(jumlahfreespin)
+	
+
+// var ff=[
+// [0,0],
+// [1,1],
+// [2,2],
+// [3,3],
+// [4,4]
+// ]
+// console.log(shuffle(ff))
+
+
 
 	timetampung = setTimeout(function() {
-	tampunghasil.filter(function(data,incre){
+	var facak=shuffle(tampunghasil);
+	facak.filter(function(data,incre){
 		timeanimate=Number(tampunghasil.length);
 		// console.log(freeawal)
 		if(freeawal==true){
@@ -3058,6 +3079,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3090,6 +3120,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3126,6 +3165,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3160,6 +3208,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3192,6 +3249,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3229,6 +3295,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3261,6 +3336,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3297,6 +3381,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3331,6 +3424,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3363,6 +3465,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3400,6 +3511,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3432,6 +3552,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3468,6 +3597,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3502,6 +3640,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3534,6 +3681,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3571,6 +3727,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3605,6 +3770,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3637,6 +3811,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3674,6 +3857,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3706,6 +3898,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3743,6 +3944,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3775,6 +3985,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3811,6 +4030,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3845,6 +4073,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3877,6 +4114,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3914,6 +4160,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -3946,6 +4201,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -3982,6 +4246,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4016,6 +4289,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4048,6 +4330,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4085,6 +4376,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4117,6 +4417,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4153,6 +4462,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4187,6 +4505,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4219,6 +4546,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4256,6 +4592,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4288,6 +4633,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4324,6 +4678,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4358,6 +4721,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4390,6 +4762,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4427,6 +4808,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4459,6 +4849,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
@@ -4495,6 +4894,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4529,6 +4937,15 @@
 				}else if(incre==1){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
 				}else{
 					$('#gift2')[0].play();
 					gift2.currentTime=0;
@@ -4561,6 +4978,15 @@
 					$('#gift')[0].play();
 					gift.currentTime=0;
 				}else if(incre==1){
+					$('#gift1')[0].play();
+					gift1.currentTime=0;
+				}else if(incre==2){
+					$('#gift2')[0].play();
+					gift2.currentTime=0;
+				}else if(incre==3){
+					$('#gift')[0].play();
+					gift.currentTime=0;
+				}else if(incre==4){
 					$('#gift1')[0].play();
 					gift1.currentTime=0;
 				}else{
