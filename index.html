@@ -1707,7 +1707,7 @@
 		}
 
 
-		setTimeout(function() {
+		// setTimeout(function() {
 		arrscatter=[
 			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
 			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
@@ -1725,7 +1725,7 @@
 		})
 
 		console.log(indexscatter1);
-		}, 500);
+		// }, 500);
 
 
 
@@ -2367,6 +2367,26 @@
 		}, speeder);
 	}
 
+	// setTimeout(function() {
+		arrscatter=[
+			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
+			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
+			randa[ran10],randa[ran11],randa[ran12],randa[ran13],randa[ran14]
+			];
+		indexscatter1=[];
+		jumlahscatter = arrscatter.filter(function(element,index){
+			return element==50;
+		})
+
+		arrscatter.filter(function(element,index){
+			if(element==50){
+			indexscatter1.push(index);
+			}
+		})
+
+		console.log(indexscatter1);
+	// }, 500);
+
 	// if(freeawal==true){
 	// 	if(cekdatatirai.length>=2){
 	// 		tunggus();
@@ -2979,9 +2999,9 @@
 	timetampung = setTimeout(function() {
 	tampunghasil.filter(function(data,incre){
 		timeanimate=Number(tampunghasil.length);
-		console.log(freeawal)
+		// console.log(freeawal)
 		if(freeawal==true){
-			console.log(freeawal)
+			// console.log(freeawal)
 			// if(jumlahfreespin>0&&freeawal==true){
 			// 	if((incre+1)==timeanimate){
 			// 		spinotomatis(timeanimate,incre+1);
