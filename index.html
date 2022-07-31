@@ -943,7 +943,33 @@
 						stops()
 						// starts();
 					}else{
-						starts();
+						// console.log(freespin);
+						// console.log(jumlahfreespin);
+						if(freespin==true){
+							// stops()
+							tunggus()
+							if(jumlahfreespin==1){
+								freespin=false;
+								starts();
+								$('.gelap').hide();
+								$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
+									'color':'orange',
+									'background-color':'#04e0dd',
+									'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+								});	
+							}
+						}else{
+							starts();
+							if(jumlahfreespin==1){
+								freespin=false;
+								$('.gelap').hide();
+								$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
+									'color':'orange',
+									'background-color':'#04e0dd',
+									'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+								});	
+							}
+						}
 					}
 				}, speedrotateclone);
 			}, speeder);
@@ -1744,7 +1770,7 @@
 			}
 		})
 
-		console.log(indexscatter1);
+		// console.log(indexscatter1);
 		// }, 500);
 
 
@@ -2033,22 +2059,50 @@
 							}, 200);	
 						}
 					}else{
+						console.log(freespin)
 						jumlahspin=0;
 						spinoto=false;
-						setTimeout(function() {
-							if(cekdatatirai.length>1){
-								if(tampunghasil.length==0){
-									starts();
-								}else{
+						if(freespin==true){
+							setTimeout(function() {
+								if(cekdatatirai.length>=1){
 									tunggus();
+									// setTimeout(function() {
+									// 	if(tampunghasil.length==0){
+									// 		spinotomatis(500,0);
+									// 	}
+									// }, 200);
+								}else{
+									// stops();
+									// setTimeout(function() {
+									// 	if(tampunghasil.length==0){
+									// 		spinotomatis(0,0);
+									// 	}
+									// }, 200);	
 								}
+								$('#startspin').html('SPIN')
+							}, 200);
+						}else{
+							if(freeawal==true){
+								setTimeout(function() {
+									tunggus();
+								}, 200);
 							}else{
-								if(tampunghasil.length==0){
-									starts();
-								}
+								setTimeout(function() {
+									if(cekdatatirai.length>1){
+										if(tampunghasil.length==0){
+											starts();
+										}else{
+											tunggus();
+										}
+									}else{
+										if(tampunghasil.length==0){
+											starts();
+										}
+									}
+									$('#startspin').html('SPIN')
+								}, 200);
 							}
-							$('#startspin').html('SPIN')
-						}, 200);
+						}
 					}
 				}, speed5);
 			}else{
@@ -2072,73 +2126,65 @@
 
 					
 					if(jumlahspin>0){
-						if(jumlahfreespin>0){
-							if(cekdatatirai.length>=2){
-								tunggus();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(500,0);
-									}
-								}, 200);
-							}else{
-								stops();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(0,0);
-									}
-								}, 200);	
-							}
+						if(cekdatatirai.length>=2){
+							tunggus();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									spinotomatis(500,0);
+								}
+							}, 200);
 						}else{
-							if(cekdatatirai.length>=2){
-								tunggus();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(500,0);
-									}
-								}, 200);
-							}else{
-								stops();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(0,0);
-									}
-								}, 200);	
-							}
+							stops();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									spinotomatis(0,0);
+								}
+							}, 200);	
 						}
 					}else{
-						if(jumlahfreespin>0){
-							if(cekdatatirai.length>=2){
-								tunggus();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(500,0);
-									}
-								}, 200);
-							}else{
-								stops();
-								setTimeout(function() {
-									if(tampunghasil.length==0){
-										spinotomatis(0,0);
-									}
-								}, 200);	
-							}
-						}else{
-							jumlahspin=0;
-							spinoto=false;
+						console.log(freespin)
+						jumlahspin=0;
+						spinoto=false;
+						if(freespin==true){
 							setTimeout(function() {
-								if(cekdatatirai.length>1){
-									if(tampunghasil.length==0){
-										starts();
-									}else{
-										tunggus();
-									}
+								if(cekdatatirai.length>=1){
+									tunggus();
+									// setTimeout(function() {
+									// 	if(tampunghasil.length==0){
+									// 		spinotomatis(500,0);
+									// 	}
+									// }, 200);
 								}else{
-									if(tampunghasil.length==0){
-										starts();
-									}
+									// stops();
+									// setTimeout(function() {
+									// 	if(tampunghasil.length==0){
+									// 		spinotomatis(0,0);
+									// 	}
+									// }, 200);	
 								}
 								$('#startspin').html('SPIN')
 							}, 200);
+						}else{
+							if(freeawal==true){
+								// setTimeout(function() {
+								tunggus();
+								// }, 200);
+							}else{
+								setTimeout(function() {
+									if(cekdatatirai.length>1){
+										if(tampunghasil.length==0){
+											starts();
+										}else{
+											tunggus();
+										}
+									}else{
+										if(tampunghasil.length==0){
+											starts();
+										}
+									}
+									$('#startspin').html('SPIN')
+								}, 200);
+							}
 						}
 					}
 				}, speed5);
@@ -2224,20 +2270,26 @@
 				}else{
 					jumlahspin=0;
 					spinoto=false;
-					setTimeout(function() {
-						if(cekdatatirai.length>1){
-							if(tampunghasil.length==0){
-								starts();
+					if(freeawal==true){
+						// setTimeout(function() {
+						tunggus();
+						// }, 200);
+					}else{
+						setTimeout(function() {
+							if(cekdatatirai.length>1){
+								if(tampunghasil.length==0){
+									starts();
+								}else{
+									tunggus();
+								}
 							}else{
-								tunggus();
+								if(tampunghasil.length==0){
+									starts();
+								}
 							}
-						}else{
-							if(tampunghasil.length==0){
-								starts();
-							}
-						}
-						$('#startspin').html('SPIN')
-					}, 200);
+							$('#startspin').html('SPIN')
+						}, 200);
+					}
 				}
 			}, speed5);
     	}
@@ -2392,7 +2444,11 @@
 			}
 		})
 
-		console.log(indexscatter1);
+		// if(indexscatter1.length>2){
+		// 	tunggus();
+		// }
+
+		// console.log(indexscatter1);
 	// }, 500);
 
 	// if(freeawal==true){
@@ -2922,33 +2978,66 @@
 
 	// setTimeout(function() {
 	if(indexscatter1.length>2){
-		console.log(indexscatter1)
+		if(freeawal==true){
+		tunggus();
+		}
+		if(freespin==true){
+		tunggus();	
+		}
+		// console.log(indexscatter1)
 		if(tampunghasil.length==0){
+			// tunggus();
 			setTimeout(function() {
 			freespin=true;
+			// tunggus();
 				$('.gelap').hide();
 				indexscatter1.filter(function(el,ind){
 					$('.item'+el).addClass('bounce8');
+					// tunggus();
 				})
-
 				setTimeout(function() {
+					// tunggus();
 					$('.normal').removeClass('bounce8');
+					if(jumlahspin==0){
+						setTimeout(function() {
+							$('#startspin').click();
+						}, speeder+speeder+speeder+speeder);
+					}
 				}, speedrotateclone);
 			}, speedanimate*tampunghasil.length+speeder+speeder);
 		}else{
+			// tunggus();
 			setTimeout(function() {
 			freespin=true;
+			// tunggus();
 				$('.gelap').hide();
 				indexscatter1.filter(function(el,ind){
 					$('.item'+el).addClass('bounce8');
+					// tunggus();
 				})
 
 				setTimeout(function() {
+					// tunggus();
 					$('.normal').removeClass('bounce8');
 				}, speedrotateclone);
 			}, speedanimate*tampunghasil.length+speeder+speeder+speeder+speeder+speedrotateclone);
 		}
 	}else{
+		if(freeawal==true){
+		tunggus();
+		}
+		if(freespin==true){
+		tunggus();	
+		}
+		if(jumlahspin==0){
+			if(freespin==true){
+				if(tampunghasil.length==0){
+					setTimeout(function() {
+						$('#startspin').click();
+					}, speeder+speeder+speeder+speeder);
+				}
+			}
+		}
 		// if(tampunghasil.length==0){
 		// 	setTimeout(function() {
 		// 	freespin=true;
@@ -3051,7 +3140,9 @@
 					}
 				}
 			}else{
-				if(jumlahfreespin>0){
+				setTimeout(function() {
+				console.log(jumlahfreespin)
+				if(jumlahfreespin>1){
 					if((incre+1)==timeanimate){
 						spinotomatis(timeanimate,incre+1);
 					}
@@ -3061,6 +3152,7 @@
 					// 	console.log(jumlahfreespin)
 					// }
 				}
+				}, 200);
 			}
 		}
 
