@@ -98,6 +98,7 @@
 	      }
 	    .bounce8 {
 	        animation: bounce7 2s ease;
+	        animation-iteration-count: 1;
 	       	animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 	    }
 	      @keyframes bounce7 {
@@ -950,6 +951,7 @@
 							tunggus()
 							if(jumlahfreespin==1){
 								freespin=false;
+								jumlahfreespin=0;
 								starts();
 								$('.gelap').hide();
 								$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
@@ -962,6 +964,7 @@
 							starts();
 							if(jumlahfreespin==1){
 								freespin=false;
+								jumlahfreespin=0;
 								$('.gelap').hide();
 								$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
 									'color':'orange',
@@ -1785,12 +1788,15 @@
 				// $('.increcountfree').html('Free spin '+(jumlahfreespin-1)+'/'+oke);
 				if(jumlahfreespin-1==0){
 					$('#stopspin').html('STOP');
+					oke=0;
+					// jumlahfreespin=0;
 				}else{
 					$('#stopspin').html('STOP <span style="font-size:11px;color:lightblue;position:absolute;right:1px;top:-3px;">'+('Free '+(jumlahfreespin-1)+'/'+oke)+'</span>');
 				}
 			}else{
 				freespin=false;
 				oke=0;
+				jumlahfreespin=0;
 				$('.increcountfree').hide();
 			}
 		}
@@ -2059,25 +2065,43 @@
 							}, 200);	
 						}
 					}else{
-						console.log(freespin)
 						jumlahspin=0;
 						spinoto=false;
 						if(freespin==true){
 							setTimeout(function() {
 								if(cekdatatirai.length>=1){
 									tunggus();
-									// setTimeout(function() {
-									// 	if(tampunghasil.length==0){
-									// 		spinotomatis(500,0);
-									// 	}
-									// }, 200);
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												// freespin=false;
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
 								}else{
 									// stops();
-									// setTimeout(function() {
-									// 	if(tampunghasil.length==0){
-									// 		spinotomatis(0,0);
-									// 	}
-									// }, 200);	
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
 								}
 								$('#startspin').html('SPIN')
 							}, 200);
@@ -2142,25 +2166,42 @@
 							}, 200);	
 						}
 					}else{
-						console.log(freespin)
 						jumlahspin=0;
 						spinoto=false;
 						if(freespin==true){
 							setTimeout(function() {
 								if(cekdatatirai.length>=1){
 									tunggus();
-									// setTimeout(function() {
-									// 	if(tampunghasil.length==0){
-									// 		spinotomatis(500,0);
-									// 	}
-									// }, 200);
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
 								}else{
 									// stops();
-									// setTimeout(function() {
-									// 	if(tampunghasil.length==0){
-									// 		spinotomatis(0,0);
-									// 	}
-									// }, 200);	
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
 								}
 								$('#startspin').html('SPIN')
 							}, 200);
@@ -3032,9 +3073,13 @@
 		if(jumlahspin==0){
 			if(freespin==true){
 				if(tampunghasil.length==0){
-					setTimeout(function() {
-						$('#startspin').click();
-					}, speeder+speeder+speeder+speeder);
+					if(jumlahfreespin<2){
+
+					}else{
+						setTimeout(function() {
+							$('#startspin').click();
+						}, speeder+speeder+speeder+speeder);
+					}
 				}
 			}
 		}
@@ -3141,7 +3186,6 @@
 				}
 			}else{
 				setTimeout(function() {
-				console.log(jumlahfreespin)
 				if(jumlahfreespin>1){
 					if((incre+1)==timeanimate){
 						spinotomatis(timeanimate,incre+1);
