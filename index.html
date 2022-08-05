@@ -56,7 +56,7 @@
 		    /*border:2px solid #ddd;*/
 		    overflow:hidden;
 		    z-index:1;
-		    box-shadow:-2px -2px 4px rgba(0,0,0,.3);
+		    box-shadow:-1px -1px 4px rgba(0,0,0,.3);
 		    border-radius:7px;
 		    height: 195px;
 		}
@@ -249,15 +249,18 @@
 	      	text-align:center;
 	      	z-index: 12;
 	      }
-	      .onereward span{
+	      .onereward div{
 	      	/*border:1px solid #8aff00;*/
 	      	background: linear-gradient(90deg, rgba(138,255,0,1) 0%, rgba(249,255,2,1) 50%, rgba(138,255,0,1) 100%);
-	      	padding:0 3px 0px 3px;
+	      	padding:0;
 	      	color:black;
 	      	border-radius:5px;
 	      	box-shadow:0px 3px 4px rgba(0,0,0,.3);
 	      	font-size:14px;
 	      	font-weight:500;
+	      	margin:auto;
+	      	height:22.5px;
+	      	width:45px;
 	      }
 	      .onereward2{
 	      	position: absolute;
@@ -357,39 +360,48 @@
 
 			<div class="cl1 fillclip">
 				<div class="clip1"></div>
-				<div class="onereward1 onereward"><span class="onerewardcount">100.000.000</span></div>
+				<div class="onereward1 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl2 fillclip">
 				<div class="clip2"></div>
-				<div class="onereward2 onereward"><span class="onerewardcount">100.000</span></div>
+				<div class="onereward2 onereward"><div class="onerewardcount"></div></div>
 			</div>
       		<div class="cl3 fillclip">
 				<div class="clip3"></div>
-				<div class="onereward3 onereward"><span class="onerewardcount">100.000</span></div>
+				<div class="onereward3 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl4 fillclip">
 				<div class="clip4"></div>
-				<div class="onereward4 onereward"><span class="onerewardcount">100.000</span></div>
+				<div class="onereward4 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl5 fillclip">
 				<div class="clip5"></div>
-				<div class="onereward5 onereward"><span class="onerewardcount">300.000</span></div>
+				<div class="onereward5 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl6 fillclip">
 				<div class="clip6"></div>
-				<div class="onereward6 onereward"><span class="onerewardcount">100.000</span></div>
+				<div class="onereward6 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl7 fillclip">
 				<div class="clip7"></div>
-				<div class="onereward7 onereward"><span class="onerewardcount">100.000</span></div>
+				<div class="onereward7 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl8 fillclip">
 				<div class="clip8"></div>
-				<div class="onereward8 onereward"><span class="onerewardcount">200.000</span></div>
+				<div class="onereward8 onereward"><div class="onerewardcount"></div></div>
 			</div>
 			<div class="cl9 fillclip">
 				<div class="clip9"></div>
-				<div class="onereward9 onereward"><span class="onerewardcount">500.000</span></div>
+				<div class="onereward9 onereward"><div class="onerewardcount"></div></div>
+			</div>
+
+			<div class="scatterpopup" style="height:195px;width:333px;background-color:rgba(0,0,0,.6);z-index:15;position:absolute;margin:auto;left:0;right:0;bottom:0;top:-10px;border-radius:7px;display:none;">
+				<div style="display:flex;justify-content:center;align-items:center;height:100%">
+					<div class="text-center">
+						<div class="popupscatter"><img src="assets/img/item/scatter.png" width="70" height="70"></div>
+						<h2 class="text-white counterscatter" style="text-shadow:2px 2px 4px rgba(0,0,0,.9)">10 Free spin</h2>
+					</div>
+				</div>
 			</div>
 
             <div class="value">
@@ -1089,7 +1101,9 @@
 				dataimgrotate.addClass('bounce7');
 				setTimeout(function() {
 					if(spinoto==true){
-						stops()
+						if(freeawal!=true){
+							stops()
+						}
 						// starts();
 					}else{
 						// console.log(freespin);
@@ -1168,6 +1182,7 @@
     		bonusall=0;
 			$('.increcount').html('');
     	}
+
 		$('.tiraihide').hide();
 		$('.tiraihide').css('transform','translateY(0px)');
 		$('.bonusalltheway').text(bonusalltheway[Math.floor(Math.random()*4)]);
@@ -1258,11 +1273,11 @@
 
 
 
-		acakjikaadatirai1=Math.floor(Math.random()*9);
-		acakjikaadatirai2=Math.floor(Math.random()*9);
-		acakjikaadatirai3=Math.floor(Math.random()*9);
-		acakjikaadatirai4=Math.floor(Math.random()*9);
-		acakjikaadatirai5=Math.floor(Math.random()*9);
+		acakjikaadatirai1=Math.ceil(Math.random()*6);
+		acakjikaadatirai2=Math.ceil(Math.random()*6);
+		acakjikaadatirai3=Math.ceil(Math.random()*6);
+		acakjikaadatirai4=Math.ceil(Math.random()*6);
+		acakjikaadatirai5=Math.ceil(Math.random()*6);
 		indexscatter=[];
 		var arrcobaran=[0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2,2,3,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1]
 		var cobaran=Math.floor(Math.random()*50);
@@ -1329,98 +1344,98 @@
 				if(inf>okehard){
 					// console.log(elf)
 					if(elf==1){
-						var rankater1=Math.ceil(Math.random()*7);
+						var rankater1=Math.ceil(Math.random()*6);
 						ran1=rankater1;
 						setTimeout(function() {
 							$('.item1').html(randaimagetirai[rankater1]);
 						}, 500);
 					}
 					if(elf==2){
-						var rankater2=Math.ceil(Math.random()*7);
+						var rankater2=Math.ceil(Math.random()*6);
 						ran2=rankater2;
 						setTimeout(function() {
 							$('.item2').html(randaimagetirai[rankater2]);
 						}, 500);
 					}
 					if(elf==3){
-						var rankater3=Math.ceil(Math.random()*7);
+						var rankater3=Math.ceil(Math.random()*6);
 						ran3=rankater3;
 						setTimeout(function() {
 							$('.item3').html(randaimagetirai[rankater3]);
 						}, 500);
 					}
 					if(elf==4){
-						var rankater4=Math.ceil(Math.random()*7);
+						var rankater4=Math.ceil(Math.random()*6);
 						ran4=rankater4;
 						setTimeout(function() {
 							$('.item4').html(randaimagetirai[rankater4]);
 						}, 500);
 					}
 					if(elf==5){
-						var rankater5=Math.ceil(Math.random()*7);
+						var rankater5=Math.ceil(Math.random()*6);
 						ran5=rankater5;
 						setTimeout(function() {
 							$('.item5').html(randaimagetirai[rankater5]);
 						}, 500);
 					}
 					if(elf==6){
-						var rankater6=Math.ceil(Math.random()*7);
+						var rankater6=Math.ceil(Math.random()*6);
 						ran6=rankater6;
 						setTimeout(function() {
 							$('.item6').html(randaimagetirai[rankater6]);
 						}, 500);
 					}
 					if(elf==7){
-						var rankater7=Math.ceil(Math.random()*7);
+						var rankater7=Math.ceil(Math.random()*6);
 						ran7=rankater7;
 						setTimeout(function() {
 							$('.item7').html(randaimagetirai[rankater7]);
 						}, 500);
 					}
 					if(elf==8){
-						var rankater8=Math.ceil(Math.random()*7);
+						var rankater8=Math.ceil(Math.random()*6);
 						ran8=rankater8;
 						setTimeout(function() {
 							$('.item8').html(randaimagetirai[rankater8]);
 						}, 500);
 					}
 					if(elf==9){
-						var rankater9=Math.ceil(Math.random()*7);
+						var rankater9=Math.ceil(Math.random()*6);
 						ran9=rankater9;
 						setTimeout(function() {
 							$('.item9').html(randaimagetirai[rankater9]);
 						}, 500);
 					}
 					if(elf==10){
-						var rankater10=Math.ceil(Math.random()*7);
+						var rankater10=Math.ceil(Math.random()*6);
 						ran10=rankater10;
 						setTimeout(function() {
 							$('.item10').html(randaimagetirai[rankater10]);
 						}, 500);
 					}
 					if(elf==11){
-						var rankater11=Math.ceil(Math.random()*7);
+						var rankater11=Math.ceil(Math.random()*6);
 						ran11=rankater11;
 						setTimeout(function() {
 							$('.item11').html(randaimagetirai[rankater11]);
 						}, 500);
 					}
 					if(elf==12){
-						var rankater12=Math.ceil(Math.random()*7);
+						var rankater12=Math.ceil(Math.random()*6);
 						ran12=rankater12;
 						setTimeout(function() {
 							$('.item12').html(randaimagetirai[rankater12]);
 						}, 500);
 					}
 					if(elf==13){
-						var rankater13=Math.ceil(Math.random()*7);
+						var rankater13=Math.ceil(Math.random()*6);
 						ran13=rankater13;
 						setTimeout(function() {
 							$('.item13').html(randaimagetirai[rankater13]);
 						}, 500);
 					}
 					if(elf==14){
-						var rankater14=Math.ceil(Math.random()*7);
+						var rankater14=Math.ceil(Math.random()*6);
 						ran14=rankater14;
 						setTimeout(function() {
 							$('.item14').html(randaimagetirai[rankater14]);
@@ -1461,98 +1476,98 @@
 				if(inf>=okehardwild){
 					// console.log(elf)
 					if(elf==1){
-						var ranwild1=Math.ceil(Math.random()*8);
+						var ranwild1=Math.ceil(Math.random()*6);
 						ran1=ranwild1;
 						setTimeout(function() {
 							$('.item1').html(randaimagetirai[ranwild1]);
 						}, 500);
 					}
 					if(elf==2){
-						var ranwild2=Math.ceil(Math.random()*8);
+						var ranwild2=Math.ceil(Math.random()*6);
 						ran2=ranwild2;
 						setTimeout(function() {
 							$('.item2').html(randaimagetirai[ranwild2]);
 						}, 500);
 					}
 					if(elf==3){
-						var ranwild3=Math.ceil(Math.random()*8);
+						var ranwild3=Math.ceil(Math.random()*6);
 						ran3=ranwild3;
 						setTimeout(function() {
 							$('.item3').html(randaimagetirai[ranwild3]);
 						}, 500);
 					}
 					if(elf==4){
-						var ranwild4=Math.ceil(Math.random()*8);
+						var ranwild4=Math.ceil(Math.random()*6);
 						ran4=ranwild4;
 						setTimeout(function() {
 							$('.item4').html(randaimagetirai[ranwild4]);
 						}, 500);
 					}
 					if(elf==5){
-						var ranwild5=Math.ceil(Math.random()*8);
+						var ranwild5=Math.ceil(Math.random()*6);
 						ran5=ranwild5;
 						setTimeout(function() {
 							$('.item5').html(randaimagetirai[ranwild5]);
 						}, 500);
 					}
 					if(elf==6){
-						var ranwild6=Math.ceil(Math.random()*8);
+						var ranwild6=Math.ceil(Math.random()*6);
 						ran6=ranwild6;
 						setTimeout(function() {
 							$('.item6').html(randaimagetirai[ranwild6]);
 						}, 500);
 					}
 					if(elf==7){
-						var ranwild7=Math.ceil(Math.random()*8);
+						var ranwild7=Math.ceil(Math.random()*6);
 						ran7=ranwild7;
 						setTimeout(function() {
 							$('.item7').html(randaimagetirai[ranwild7]);
 						}, 500);
 					}
 					if(elf==8){
-						var ranwild8=Math.ceil(Math.random()*8);
+						var ranwild8=Math.ceil(Math.random()*6);
 						ran8=ranwild8;
 						setTimeout(function() {
 							$('.item8').html(randaimagetirai[ranwild8]);
 						}, 500);
 					}
 					if(elf==9){
-						var ranwild9=Math.ceil(Math.random()*8);
+						var ranwild9=Math.ceil(Math.random()*6);
 						ran9=ranwild9;
 						setTimeout(function() {
 							$('.item9').html(randaimagetirai[ranwild9]);
 						}, 500);
 					}
 					if(elf==10){
-						var ranwild10=Math.ceil(Math.random()*8);
+						var ranwild10=Math.ceil(Math.random()*6);
 						ran10=ranwild10;
 						setTimeout(function() {
 							$('.item10').html(randaimagetirai[ranwild10]);
 						}, 500);
 					}
 					if(elf==11){
-						var ranwild11=Math.ceil(Math.random()*8);
+						var ranwild11=Math.ceil(Math.random()*6);
 						ran11=ranwild11;
 						setTimeout(function() {
 							$('.item11').html(randaimagetirai[ranwild11]);
 						}, 500);
 					}
 					if(elf==12){
-						var ranwild12=Math.ceil(Math.random()*8);
+						var ranwild12=Math.ceil(Math.random()*6);
 						ran12=ranwild12;
 						setTimeout(function() {
 							$('.item12').html(randaimagetirai[ranwild12]);
 						}, 500);
 					}
 					if(elf==13){
-						var ranwild13=Math.ceil(Math.random()*8);
+						var ranwild13=Math.ceil(Math.random()*6);
 						ran13=ranwild13;
 						setTimeout(function() {
 							$('.item13').html(randaimagetirai[ranwild13]);
 						}, 500);
 					}
 					if(elf==14){
-						var ranwild14=Math.ceil(Math.random()*8);
+						var ranwild14=Math.ceil(Math.random()*6);
 						ran14=ranwild14;
 						setTimeout(function() {
 							$('.item14').html(randaimagetirai[ranwild14]);
@@ -1604,9 +1619,9 @@
 
 		if(freespin==true&&jumlahfreespin>1){
 			var jumlahtiraifreeout=[1,1,1,1,1,1,1,1,1,1,
-									2,2,2,2,2,1,1,1,1,1,
-									1,1,1,1,1,2,2,2,2,2,
-									3,3,4,3,4,1,1,1,1,1,
+									2,1,1,1,2,1,1,1,1,1,
+									1,1,1,1,1,2,1,1,1,2,
+									3,1,1,3,4,1,1,1,1,1,
 									1,1,1,1,1,1,1,1,1,1,
 									1,1,1,1,1,1,1,1,1,1]
 			var acaktiraifree=Math.floor(Math.random()*60);
@@ -1909,7 +1924,7 @@
 		}
 
 
-		// setTimeout(function() {
+		setTimeout(function() {
 		arrscatter=[
 			randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4],
 			randa[ran5],randa[ran6],randa[ran7],randa[ran8],randa[ran9],
@@ -1927,7 +1942,7 @@
 		})
 
 		// console.log(indexscatter1);
-		// }, 500);
+		}, 1000);
 
 
 
@@ -2492,12 +2507,13 @@
 			}, speed5);
     	}
 
-		
+		var okejum=0;
 		setTimeout(function() {
     	freeawal=false;
 		if(jumlahscatter.length>2){
 			freeawal=true;
 			if(jumlahscatter.length==3){
+				okejum=10;
 				oke=oke+10;
 				if(freespin==true){
 					jumlahfreespin=jumlahfreespin+10;
@@ -2505,6 +2521,7 @@
 					jumlahfreespin=jumlahfreespin+11;
 				}
 			}else if(jumlahscatter.length==4){
+				okejum=20;
 				oke=oke+20;
 				if(freespin==true){
 					jumlahfreespin=jumlahfreespin+20;
@@ -2512,6 +2529,7 @@
 					jumlahfreespin=jumlahfreespin+21;
 				}
 			}else if(jumlahscatter.length==5){
+				okejum=50;
 				oke=oke+50;
 				if(freespin==true){
 					jumlahfreespin=jumlahfreespin+50;
@@ -2520,7 +2538,7 @@
 				}
 			}
 		}
-		}, 600);
+		}, 1000);
 
 
 	stopini1 = setTimeout(function() {
@@ -3176,49 +3194,118 @@
 
 	// setTimeout(function() {
 	if(indexscatter1.length>2){
+		$('.value').css('overflow','hidden');
+		$('.normal').css('overflow','hidden');
 		if(freeawal==true){
 		tunggus();
 		}
 		if(freespin==true){
 		tunggus();	
 		}
-		// console.log(indexscatter1)
+		console.log(freeawal)
+		console.log(freespin)
 		if(tampunghasil.length==0){
+			$('.value').css('overflow','hidden');
+			$('.normal').css('overflow','hidden');
 			// tunggus();
 			setTimeout(function() {
-			freespin=true;
-			// tunggus();
+				freespin=true;
+				// tunggus();
 				$('.gelap').hide();
 				indexscatter1.filter(function(el,ind){
+					$('.value').css('overflow','hidden!important');
+					$('.item'+el).css('overflow','hidden!important');
 					$('.item'+el).addClass('bounce8');
+					$('.value').css('overflow','hidden!important');
+					$('.item'+el).css('overflow','hidden!important');
 					// tunggus();
 				})
 				setTimeout(function() {
+					console.log((jumlahfreespin-1)+'free'+oke+'oke')
+					$('.scatterpopup').show();
+					if(freeawal==true){
+						if(jumlahfreespin-1==oke){
+							$('.popupscatter').show();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}else{
+							$('.popupscatter').hide();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}
+					}else{
+						if(jumlahfreespin-1==oke){
+							$('.popupscatter').show();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}else{
+							$('.popupscatter').hide();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}
+					}
+					setTimeout(function() {
+						// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+				  //   	$('.popupscatter').addClass('bounce7')
+				    	setTimeout(function() {
+				    		// $('.popupscatter').css('animation','bounce4');
+				    		$('.scatterpopup').hide();
+				    	}, speedrotateclone);
+			    	}, speeder*2);
 					// tunggus();
 					$('.normal').removeClass('bounce8');
 					if(jumlahspin==0){
 						setTimeout(function() {
 							$('#startspin').click();
-						}, speeder+speeder+speeder+speeder);
+						}, speeder*7);
 					}
 				}, speedrotateclone);
 			}, speedanimate*tampunghasil.length+speeder+speeder);
 		}else{
+			$('.value').css('overflow','hidden');
+			$('.normal').css('overflow','hidden');
 			// tunggus();
 			setTimeout(function() {
-			freespin=true;
-			// tunggus();
+				freespin=true;
 				$('.gelap').hide();
 				indexscatter1.filter(function(el,ind){
+					$('.value').css('overflow','hidden!important');
+					$('.item'+el).css('overflow','hidden!important');
 					$('.item'+el).addClass('bounce8');
+					$('.value').css('overflow','hidden!important');
+					$('.item'+el).css('overflow','hidden!important');
 					// tunggus();
 				})
-
+				
+				setTimeout(function() {
+					// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+			  //   	$('.popupscatter').addClass('bounce7')
+			    	setTimeout(function() {
+			    		// $('.popupscatter').css('animation','bounce4');
+			    		$('.scatterpopup').hide();
+			    	}, speedrotateclone);
+		    	}, speeder*5);
+			// tunggus();
 				setTimeout(function() {
 					// tunggus();
+					console.log((jumlahfreespin-1)+'free'+oke+'oke')
+					$('.scatterpopup').show();
+					if(freeawal==true){
+						if(jumlahfreespin-1==oke){
+							$('.popupscatter').show();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}else{
+							$('.popupscatter').hide();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}
+					}else{
+						if(jumlahfreespin-1==oke){
+							$('.popupscatter').show();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}else{
+							$('.popupscatter').hide();
+							$('.counterscatter').text((okejum)+' Free spin');
+						}
+					}
 					$('.normal').removeClass('bounce8');
 				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+speeder+speeder+speeder+speeder+speedrotateclone);
+			}, speedanimate*tampunghasil.length+(speeder*2)+speedrotateclone);
 		}
 	}else{
 		if(freeawal==true){
@@ -3235,7 +3322,7 @@
 					}else{
 						setTimeout(function() {
 							$('#startspin').click();
-						}, speeder+speeder+speeder+speeder);
+						}, speeder*4);
 					}
 				}
 			}
@@ -3278,6 +3365,9 @@
 	}, speed5);
 
 	if(freespin==true){
+		// if(freeawal==true){
+		// 	speed5=speed5+(speeder*8);
+		// }
 		if(indexdatatirai.length>0&&indexscatter1.length>2){
 			speed5=speed5+speeder+speeder+speeder+speeder+speeder+speeder;
 		}else if(indexdatatirai.length>0&&indexscatter1.length<3){
@@ -3319,14 +3409,14 @@
 			// 	}
 			// }
 			if((incre+1)==timeanimate){
-				if(indextirai>0){
+				if(indextirai>1){
 					setTimeout(function() {
 						if(jumlahfreespin-1==oke){
 							bonusall=0;
 							$('.increcount').html('');
 						}
 						$('#startspin').click();
-					}, timeanimate*speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone+speedrotateclone);
+					}, timeanimate*speeder+(speeder*9)+speedrotateclone+speedrotateclone);
 				}else{
 				setTimeout(function() {
 					if(jumlahfreespin-1==oke){
@@ -3334,7 +3424,7 @@
 						$('.increcount').html('');
 					}
 					$('#startspin').click();
-				}, timeanimate*speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone+speedrotateclone);
+				}, timeanimate*speeder+(speeder*9)+speedrotateclone+speedrotateclone);
 				}
 			}
 		}else{
@@ -3366,9 +3456,6 @@
 
 		if(tampunghasil.length!=0){
 			tunggus();
-		}
-		if((incre+1)==timeanimate){
-			console.log(tampunghasil);
 		}
 		setTimeout(function() {
 			increcount++;
