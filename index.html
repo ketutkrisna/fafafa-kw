@@ -702,7 +702,11 @@
 					'<img src="assets/img/item/kakekbiru.png" width="100%" height="100%">',
 					'<img src="assets/img/item/kakekmerah.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
-					'<img src="assets/img/item/scatter.png" width="100%" height="100%">'];
+					'<img src="assets/img/item/scatter.png" width="100%" height="100%">',
+					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
+					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					'<img src="assets/img/item/liontin.png" width="100%" height="100%">'];
 	var randaimagetirai=['<img src="assets/img/item/wild.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
 					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
@@ -714,10 +718,13 @@
 					'<img src="assets/img/item/kakekmerah.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
 					'<img src="assets/img/item/tirai.png" width="100%" height="100%">',
-					'<img src="assets/img/item/scatter.png" width="100%" height="100%">'];
+					'<img src="assets/img/item/scatter.png" width="100%" height="100%">',
+					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
+					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					'<img src="assets/img/item/liontin.png" width="100%" height="100%">'];
 	var bonusalltheway=['Semoga beruntung','Rezeki melimpah','Jangan lupa sedekah','Bonus all the way'];
-	var randa=[0,1,2,3,4,5,6,7,8,1,50];
-	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,50];
+	var randa=[0,1,2,3,4,5,6,7,8,1,50,1,2,2,3];
+	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,50,1,2,3];
 	var ran0,ran1,ran2,ran3,ran4,ran5,ran6,ran7,ran8,ran9,ran10,ran11,ran12,ran13,ran14;
 	var data0_1Lbounce,data0_1Rbounce;
 	var baruarr1;
@@ -1100,6 +1107,7 @@
 			setTimeout(function() {
 				dataimgrotate.addClass('bounce7');
 				setTimeout(function() {
+					// $('.normal').css('animation','');
 					if(spinoto==true){
 						if(freeawal!=true){
 							stops()
@@ -1200,21 +1208,22 @@
 		$('.gelap').hide();
 		
 		
-		ran0=Math.floor(Math.random()*12);
-		ran1=Math.floor(Math.random()*12);
-		ran2=Math.floor(Math.random()*12);
-		ran3=Math.floor(Math.random()*12);
-		ran4=Math.floor(Math.random()*12);
-		ran5=Math.floor(Math.random()*11);
-		ran6=Math.floor(Math.random()*11);
-		ran7=Math.floor(Math.random()*11);
-		ran8=Math.floor(Math.random()*11);
-		ran9=Math.floor(Math.random()*11);
-		ran10=Math.floor(Math.random()*11);
-		ran11=Math.floor(Math.random()*11);
-		ran12=Math.floor(Math.random()*11);
-		ran13=Math.floor(Math.random()*11);
-		ran14=Math.floor(Math.random()*11);
+		ran0=Math.floor(Math.random()*15);
+		ran1=Math.floor(Math.random()*15);
+		ran2=Math.floor(Math.random()*15);
+		ran3=Math.floor(Math.random()*15);
+		ran4=Math.floor(Math.random()*15);
+
+		ran5=Math.floor(Math.random()*15);
+		ran6=Math.floor(Math.random()*15);
+		ran7=Math.floor(Math.random()*15);
+		ran8=Math.floor(Math.random()*15);
+		ran9=Math.floor(Math.random()*15);
+		ran10=Math.floor(Math.random()*15);
+		ran11=Math.floor(Math.random()*15);
+		ran12=Math.floor(Math.random()*15);
+		ran13=Math.floor(Math.random()*15);
+		ran14=Math.floor(Math.random()*15);
 
 
 		// data0_1Lbounce=[randa[ran0],randa[ran1],randa[ran2],randa[ran3],randa[ran4]];
@@ -1273,13 +1282,13 @@
 
 
 
-		acakjikaadatirai1=Math.ceil(Math.random()*6);
-		acakjikaadatirai2=Math.ceil(Math.random()*6);
-		acakjikaadatirai3=Math.ceil(Math.random()*6);
-		acakjikaadatirai4=Math.ceil(Math.random()*6);
-		acakjikaadatirai5=Math.ceil(Math.random()*6);
+		acakjikaadatirai1=Math.ceil(Math.random()*4);
+		acakjikaadatirai2=Math.ceil(Math.random()*4);
+		acakjikaadatirai3=Math.ceil(Math.random()*4);
+		acakjikaadatirai4=Math.ceil(Math.random()*4);
+		acakjikaadatirai5=Math.ceil(Math.random()*4);
 		indexscatter=[];
-		var arrcobaran=[0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2,2,3,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1]
+		var arrcobaran=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,3,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1]
 		var cobaran=Math.floor(Math.random()*50);
 		var okehard;
 		if(persulit==false){
@@ -1344,98 +1353,98 @@
 				if(inf>okehard){
 					// console.log(elf)
 					if(elf==1){
-						var rankater1=Math.ceil(Math.random()*6);
+						var rankater1=Math.ceil(Math.random()*4);
 						ran1=rankater1;
 						setTimeout(function() {
 							$('.item1').html(randaimagetirai[rankater1]);
 						}, 500);
 					}
 					if(elf==2){
-						var rankater2=Math.ceil(Math.random()*6);
+						var rankater2=Math.ceil(Math.random()*4);
 						ran2=rankater2;
 						setTimeout(function() {
 							$('.item2').html(randaimagetirai[rankater2]);
 						}, 500);
 					}
 					if(elf==3){
-						var rankater3=Math.ceil(Math.random()*6);
+						var rankater3=Math.ceil(Math.random()*4);
 						ran3=rankater3;
 						setTimeout(function() {
 							$('.item3').html(randaimagetirai[rankater3]);
 						}, 500);
 					}
 					if(elf==4){
-						var rankater4=Math.ceil(Math.random()*6);
+						var rankater4=Math.ceil(Math.random()*4);
 						ran4=rankater4;
 						setTimeout(function() {
 							$('.item4').html(randaimagetirai[rankater4]);
 						}, 500);
 					}
 					if(elf==5){
-						var rankater5=Math.ceil(Math.random()*6);
+						var rankater5=Math.ceil(Math.random()*4);
 						ran5=rankater5;
 						setTimeout(function() {
 							$('.item5').html(randaimagetirai[rankater5]);
 						}, 500);
 					}
 					if(elf==6){
-						var rankater6=Math.ceil(Math.random()*6);
+						var rankater6=Math.ceil(Math.random()*4);
 						ran6=rankater6;
 						setTimeout(function() {
 							$('.item6').html(randaimagetirai[rankater6]);
 						}, 500);
 					}
 					if(elf==7){
-						var rankater7=Math.ceil(Math.random()*6);
+						var rankater7=Math.ceil(Math.random()*4);
 						ran7=rankater7;
 						setTimeout(function() {
 							$('.item7').html(randaimagetirai[rankater7]);
 						}, 500);
 					}
 					if(elf==8){
-						var rankater8=Math.ceil(Math.random()*6);
+						var rankater8=Math.ceil(Math.random()*4);
 						ran8=rankater8;
 						setTimeout(function() {
 							$('.item8').html(randaimagetirai[rankater8]);
 						}, 500);
 					}
 					if(elf==9){
-						var rankater9=Math.ceil(Math.random()*6);
+						var rankater9=Math.ceil(Math.random()*4);
 						ran9=rankater9;
 						setTimeout(function() {
 							$('.item9').html(randaimagetirai[rankater9]);
 						}, 500);
 					}
 					if(elf==10){
-						var rankater10=Math.ceil(Math.random()*6);
+						var rankater10=Math.ceil(Math.random()*4);
 						ran10=rankater10;
 						setTimeout(function() {
 							$('.item10').html(randaimagetirai[rankater10]);
 						}, 500);
 					}
 					if(elf==11){
-						var rankater11=Math.ceil(Math.random()*6);
+						var rankater11=Math.ceil(Math.random()*4);
 						ran11=rankater11;
 						setTimeout(function() {
 							$('.item11').html(randaimagetirai[rankater11]);
 						}, 500);
 					}
 					if(elf==12){
-						var rankater12=Math.ceil(Math.random()*6);
+						var rankater12=Math.ceil(Math.random()*4);
 						ran12=rankater12;
 						setTimeout(function() {
 							$('.item12').html(randaimagetirai[rankater12]);
 						}, 500);
 					}
 					if(elf==13){
-						var rankater13=Math.ceil(Math.random()*6);
+						var rankater13=Math.ceil(Math.random()*4);
 						ran13=rankater13;
 						setTimeout(function() {
 							$('.item13').html(randaimagetirai[rankater13]);
 						}, 500);
 					}
 					if(elf==14){
-						var rankater14=Math.ceil(Math.random()*6);
+						var rankater14=Math.ceil(Math.random()*4);
 						ran14=rankater14;
 						setTimeout(function() {
 							$('.item14').html(randaimagetirai[rankater14]);
@@ -1476,98 +1485,98 @@
 				if(inf>=okehardwild){
 					// console.log(elf)
 					if(elf==1){
-						var ranwild1=Math.ceil(Math.random()*6);
+						var ranwild1=Math.ceil(Math.random()*4);
 						ran1=ranwild1;
 						setTimeout(function() {
 							$('.item1').html(randaimagetirai[ranwild1]);
 						}, 500);
 					}
 					if(elf==2){
-						var ranwild2=Math.ceil(Math.random()*6);
+						var ranwild2=Math.ceil(Math.random()*4);
 						ran2=ranwild2;
 						setTimeout(function() {
 							$('.item2').html(randaimagetirai[ranwild2]);
 						}, 500);
 					}
 					if(elf==3){
-						var ranwild3=Math.ceil(Math.random()*6);
+						var ranwild3=Math.ceil(Math.random()*4);
 						ran3=ranwild3;
 						setTimeout(function() {
 							$('.item3').html(randaimagetirai[ranwild3]);
 						}, 500);
 					}
 					if(elf==4){
-						var ranwild4=Math.ceil(Math.random()*6);
+						var ranwild4=Math.ceil(Math.random()*4);
 						ran4=ranwild4;
 						setTimeout(function() {
 							$('.item4').html(randaimagetirai[ranwild4]);
 						}, 500);
 					}
 					if(elf==5){
-						var ranwild5=Math.ceil(Math.random()*6);
+						var ranwild5=Math.ceil(Math.random()*4);
 						ran5=ranwild5;
 						setTimeout(function() {
 							$('.item5').html(randaimagetirai[ranwild5]);
 						}, 500);
 					}
 					if(elf==6){
-						var ranwild6=Math.ceil(Math.random()*6);
+						var ranwild6=Math.ceil(Math.random()*4);
 						ran6=ranwild6;
 						setTimeout(function() {
 							$('.item6').html(randaimagetirai[ranwild6]);
 						}, 500);
 					}
 					if(elf==7){
-						var ranwild7=Math.ceil(Math.random()*6);
+						var ranwild7=Math.ceil(Math.random()*4);
 						ran7=ranwild7;
 						setTimeout(function() {
 							$('.item7').html(randaimagetirai[ranwild7]);
 						}, 500);
 					}
 					if(elf==8){
-						var ranwild8=Math.ceil(Math.random()*6);
+						var ranwild8=Math.ceil(Math.random()*4);
 						ran8=ranwild8;
 						setTimeout(function() {
 							$('.item8').html(randaimagetirai[ranwild8]);
 						}, 500);
 					}
 					if(elf==9){
-						var ranwild9=Math.ceil(Math.random()*6);
+						var ranwild9=Math.ceil(Math.random()*4);
 						ran9=ranwild9;
 						setTimeout(function() {
 							$('.item9').html(randaimagetirai[ranwild9]);
 						}, 500);
 					}
 					if(elf==10){
-						var ranwild10=Math.ceil(Math.random()*6);
+						var ranwild10=Math.ceil(Math.random()*4);
 						ran10=ranwild10;
 						setTimeout(function() {
 							$('.item10').html(randaimagetirai[ranwild10]);
 						}, 500);
 					}
 					if(elf==11){
-						var ranwild11=Math.ceil(Math.random()*6);
+						var ranwild11=Math.ceil(Math.random()*4);
 						ran11=ranwild11;
 						setTimeout(function() {
 							$('.item11').html(randaimagetirai[ranwild11]);
 						}, 500);
 					}
 					if(elf==12){
-						var ranwild12=Math.ceil(Math.random()*6);
+						var ranwild12=Math.ceil(Math.random()*4);
 						ran12=ranwild12;
 						setTimeout(function() {
 							$('.item12').html(randaimagetirai[ranwild12]);
 						}, 500);
 					}
 					if(elf==13){
-						var ranwild13=Math.ceil(Math.random()*6);
+						var ranwild13=Math.ceil(Math.random()*4);
 						ran13=ranwild13;
 						setTimeout(function() {
 							$('.item13').html(randaimagetirai[ranwild13]);
 						}, 500);
 					}
 					if(elf==14){
-						var ranwild14=Math.ceil(Math.random()*6);
+						var ranwild14=Math.ceil(Math.random()*4);
 						ran14=ranwild14;
 						setTimeout(function() {
 							$('.item14').html(randaimagetirai[ranwild14]);
@@ -2508,37 +2517,37 @@
     	}
 
 		var okejum=0;
-		setTimeout(function() {
+		// setTimeout(function() {
     	freeawal=false;
-		if(jumlahscatter.length>2){
-			freeawal=true;
-			if(jumlahscatter.length==3){
-				okejum=10;
-				oke=oke+10;
-				if(freespin==true){
-					jumlahfreespin=jumlahfreespin+10;
-				}else{
-					jumlahfreespin=jumlahfreespin+11;
-				}
-			}else if(jumlahscatter.length==4){
-				okejum=20;
-				oke=oke+20;
-				if(freespin==true){
-					jumlahfreespin=jumlahfreespin+20;
-				}else{
-					jumlahfreespin=jumlahfreespin+21;
-				}
-			}else if(jumlahscatter.length==5){
-				okejum=50;
-				oke=oke+50;
-				if(freespin==true){
-					jumlahfreespin=jumlahfreespin+50;
-				}else{
-					jumlahfreespin=jumlahfreespin+51;
-				}
-			}
-		}
-		}, speed5);
+		// if(jumlahscatter.length>2){
+		// 	freeawal=true;
+		// 	if(jumlahscatter.length==3){
+		// 		okejum=10;
+		// 		oke=oke+10;
+		// 		if(freespin==true){
+		// 			jumlahfreespin=jumlahfreespin+10;
+		// 		}else{
+		// 			jumlahfreespin=jumlahfreespin+11;
+		// 		}
+		// 	}else if(jumlahscatter.length==4){
+		// 		okejum=20;
+		// 		oke=oke+20;
+		// 		if(freespin==true){
+		// 			jumlahfreespin=jumlahfreespin+20;
+		// 		}else{
+		// 			jumlahfreespin=jumlahfreespin+21;
+		// 		}
+		// 	}else if(jumlahscatter.length==5){
+		// 		okejum=50;
+		// 		oke=oke+50;
+		// 		if(freespin==true){
+		// 			jumlahfreespin=jumlahfreespin+50;
+		// 		}else{
+		// 			jumlahfreespin=jumlahfreespin+51;
+		// 		}
+		// 	}
+		// }
+		// }, speed5);
 
 
 	stopini1 = setTimeout(function() {
@@ -2659,6 +2668,35 @@
 			indexscatter1.push(index);
 			}
 		})
+
+		if(jumlahscatter.length>2){
+			freeawal=true;
+			if(jumlahscatter.length==3){
+				okejum=10;
+				oke=oke+10;
+				if(freespin==true){
+					jumlahfreespin=jumlahfreespin+10;
+				}else{
+					jumlahfreespin=jumlahfreespin+11;
+				}
+			}else if(jumlahscatter.length==4){
+				okejum=20;
+				oke=oke+20;
+				if(freespin==true){
+					jumlahfreespin=jumlahfreespin+20;
+				}else{
+					jumlahfreespin=jumlahfreespin+21;
+				}
+			}else if(jumlahscatter.length==5){
+				okejum=50;
+				oke=oke+50;
+				if(freespin==true){
+					jumlahfreespin=jumlahfreespin+50;
+				}else{
+					jumlahfreespin=jumlahfreespin+51;
+				}
+			}
+		}
 
 		// if(indexscatter1.length>2){
 		// 	tunggus();
@@ -3215,7 +3253,8 @@
 				indexscatter1.filter(function(el,ind){
 					$('.value').css('overflow','hidden!important');
 					$('.item'+el).css('overflow','hidden!important');
-					$('.item'+el).addClass('bounce8');
+					$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+					$('.item'+el+' img').addClass('bounce7');
 					$('.value').css('overflow','hidden!important');
 					$('.item'+el).css('overflow','hidden!important');
 					// tunggus();
@@ -3245,11 +3284,13 @@
 				  //   	$('.popupscatter').addClass('bounce7')
 				    	setTimeout(function() {
 				    		// $('.popupscatter').css('animation','bounce4');
+				    		// $('.normal img').css('animation','bounce4');
+				    		// $('.normal').removeClass('bounce7');
 				    		$('.scatterpopup').hide();
 				    	}, speedrotateclone);
 			    	}, speeder*2);
 					// tunggus();
-					$('.normal').removeClass('bounce8');
+					// $('.normal').removeClass('bounce7');
 					if(jumlahspin==0){
 						setTimeout(function() {
 							$('#startspin').click();
@@ -3267,7 +3308,8 @@
 				indexscatter1.filter(function(el,ind){
 					$('.value').css('overflow','hidden!important');
 					$('.item'+el).css('overflow','hidden!important');
-					$('.item'+el).addClass('bounce8');
+					$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+					$('.item'+el+' img').addClass('bounce7');
 					$('.value').css('overflow','hidden!important');
 					$('.item'+el).css('overflow','hidden!important');
 					// tunggus();
@@ -3278,6 +3320,8 @@
 			  //   	$('.popupscatter').addClass('bounce7')
 			    	setTimeout(function() {
 			    		// $('.popupscatter').css('animation','bounce4');
+			    		// $('.normal img').css('animation','bounce4');
+			    		// $('.normal img').removeClass('bounce7');
 			    		$('.scatterpopup').hide();
 			    	}, speedrotateclone);
 		    	}, speeder*5);
@@ -3303,7 +3347,7 @@
 							$('.counterscatter').text((okejum)+' Free spin');
 						}
 					}
-					$('.normal').removeClass('bounce8');
+					// $('.normal').removeClass('bounce7');
 				}, speedrotateclone);
 			}, speedanimate*tampunghasil.length+(speeder*2)+speedrotateclone);
 		}
