@@ -404,6 +404,15 @@
 				</div>
 			</div>
 
+			<div class="winpopup" style="height:195px;width:333px;background-color:rgba(0,0,0,.6);z-index:16;position:absolute;margin:auto;left:0;right:0;bottom:0;top:-10px;border-radius:7px;display:none;">
+				<div style="display:flex;justify-content:center;align-items:center;height:100%">
+					<div class="text-center">
+						<!-- <div class="popupwin"><img src="assets/img/item/scatter.png" width="70" height="70"></div> -->
+						<h2 class="text-white popupwin" style="text-shadow:2px 2px 4px rgba(0,0,0,.9)">big win</h2>
+					</div>
+				</div>
+			</div>
+
             <div class="value">
               <div class="item0 normal"><img src="assets/img/item/kakekmerah.png" width="100%" height="100%"></div>
               <div class="item5 normal"><img src="assets/img/item/bocilping.png" width="100%" height="100%"></div>
@@ -702,11 +711,12 @@
 					'<img src="assets/img/item/kakekbiru.png" width="100%" height="100%">',
 					'<img src="assets/img/item/kakekmerah.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
-					'<img src="assets/img/item/scatter.png" width="100%" height="100%">',
-					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
-					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
-					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
-					'<img src="assets/img/item/liontin.png" width="100%" height="100%">'];
+					'<img src="assets/img/item/scatter.png" width="100%" height="100%">'
+					// '<img src="assets/img/item/koin.png" width="100%" height="100%">',
+					// '<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					// '<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					// '<img src="assets/img/item/liontin.png" width="100%" height="100%">'
+					];
 	var randaimagetirai=['<img src="assets/img/item/wild.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
 					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
@@ -718,13 +728,14 @@
 					'<img src="assets/img/item/kakekmerah.png" width="100%" height="100%">',
 					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
 					'<img src="assets/img/item/tirai.png" width="100%" height="100%">',
-					'<img src="assets/img/item/scatter.png" width="100%" height="100%">',
-					'<img src="assets/img/item/koin.png" width="100%" height="100%">',
-					'<img src="assets/img/item/petasan.png" width="100%" height="100%">',
-					'<img src="assets/img/item/liontin.png" width="100%" height="100%">'];
+					'<img src="assets/img/item/scatter.png" width="100%" height="100%">'
+					// '<img src="assets/img/item/koin.png" width="100%" height="100%">',
+					// '<img src="assets/img/item/petasan.png" width="100%" height="100%">',
+					// '<img src="assets/img/item/liontin.png" width="100%" height="100%">'
+					];
 	var bonusalltheway=['Semoga beruntung','Rezeki melimpah','Jangan lupa sedekah','Bonus all the way'];
-	var randa=[0,1,2,3,4,5,6,7,8,1,50,1,2,2,3];
-	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,50,1,2,3];
+	var randa=[0,1,2,3,4,5,6,7,8,1,50];
+	var randatirai=[0,1,2,3,4,5,6,7,8,1,100,50];
 	var ran0,ran1,ran2,ran3,ran4,ran5,ran6,ran7,ran8,ran9,ran10,ran11,ran12,ran13,ran14;
 	var data0_1Lbounce,data0_1Rbounce;
 	var baruarr1;
@@ -809,6 +820,15 @@
     var bonusall=0;
     var bonusallpercount=0;
 
+    var cekbonusperitem=0;
+    var cekbonusall=0;
+    var cekbonusallpercount=0;
+
+    var bigwin=false;
+    var megawin=false;
+    var superwin=false;
+    var tipewin;
+
 	function starts(){
 		$('#tunggus').hide();
 		$('#starts').show();
@@ -853,6 +873,46 @@
 		ribuan = ribuan.join('.').split('').reverse().join('');
 		return ribuan;
 	}
+
+	// function spinotomatis(timespin,incre){
+	// 	if(timespin==0){
+	// 		if(indexscatter1.length>2){
+	// 			setTimeout(function(){
+	// 				setTimeout(function() {
+	// 					$('#startspin').click();
+	// 				}, speedrotateclone);
+	// 			},speedanimate*timespin+speeder+speeder+speeder+speedrotateclone);
+	// 		}else{
+	// 			setTimeout(function(){
+	// 				$('#startspin').click();
+	// 			},speedanimate*timespin+speeder);
+	// 		}
+	// 	}else if(timespin==500){
+	// 		if(indexscatter1.length>2){
+	// 			setTimeout(function(){
+	// 				setTimeout(function() {
+	// 					$('#startspin').click();
+	// 				}, speedrotateclone);
+	// 			},speedanimate*1+speeder+speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone);
+	// 		}else{
+	// 			setTimeout(function(){
+	// 				$('#startspin').click();
+	// 			},speedanimate*1+speeder+speeder+speeder+speeder+speeder);
+	// 		}
+	// 	}else{
+	// 		if(indexscatter1.length>2){
+	// 			setTimeout(function(){
+	// 				setTimeout(function() {
+	// 					$('#startspin').click();
+	// 				}, speedrotateclone);
+	// 			},speedanimate*timespin+speeder+speeder+speeder+speeder+speeder+speeder+speeder+speeder+speedrotateclone);
+	// 		}else{
+	// 			setTimeout(function(){
+	// 				$('#startspin').click();
+	// 			},speedanimate*timespin+speeder+speeder+speeder+speeder+speeder+speeder);
+	// 		}
+	// 	}
+	// }
 
 	function spinotomatis(timespin,incre){
 		if(timespin==0){
@@ -1020,11 +1080,205 @@
 				bonusallpercount=bonusallpercount+bonusperitem;
 			}
 			$('.onerewardcount').text(nFormatter(bonusperitem, 1));
+		}else if(linerule==0){
+			bonusperitem=Math.ceil(Number(betrun)*0);
+			bonusall=bonusall+bonusperitem;
+			bonusallpercount=bonusallpercount+bonusperitem;
 		}
 			// if(increment==linecount){
 				$('.increcount').html('Total : '+rubah(Math.ceil(bonusall)));
 				$('.bonusalltheway').text(rubah(Math.ceil(bonusallpercount)));
 			// }
+			// console.log(jumlahfreespin+'-'+freespin)
+			if(freespin==true&&jumlahfreespin<2){	
+				if(increment==linecount){
+					if(bonusall>=betrun*10&&bonusall<betrun*30){
+						// console.log('big win')
+						bigwin=true;
+					}else if(bonusall>=betrun*30&&bonusall<betrun*50){
+						// console.log('mega win')
+						megawin=true;
+					}else if(bonusall>=betrun*50){
+						// console.log('super win')
+						superwin=true;
+					}
+				}
+			}else{
+				if(freespin==true){
+
+				}else{
+					if(increment==linecount){
+						if(bonusallpercount>=betrun*10&&bonusallpercount<betrun*30){
+							// console.log('big win')
+							bigwin=true;
+						}else if(bonusallpercount>=betrun*30&&bonusallpercount<betrun*50){
+							// console.log('mega win')
+							megawin=true;
+						}else if(bonusallpercount>=betrun*50){
+							// console.log('super win')
+							superwin=true;
+						}
+					}
+				}
+			}
+	}
+
+	function cekbonusoneandall(item,linerule,increment,linecount){
+		if(linerule==5){
+			if(item==1){
+				cekbonusperitem=Math.ceil(Number(betrun)*2.222222222);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==2){
+				cekbonusperitem=Math.ceil(Number(betrun)*4.444444444);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==3){
+				cekbonusperitem=Math.ceil(Number(betrun)*6.66666666);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==4){
+				cekbonusperitem=Math.ceil(Number(betrun)*11.1111111);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==5){
+				cekbonusperitem=Math.ceil(Number(betrun)*17.77777777);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==6){
+				cekbonusperitem=Math.ceil(Number(betrun)*18.88888888);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==7){
+				cekbonusperitem=Math.ceil(Number(betrun)*44.44444444);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==8){
+				cekbonusperitem=Math.ceil(Number(betrun)*111.111111);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}
+			// $('.onerewardcount').text(nFormatter(cekbonusperitem, 3));
+		}else if(linerule==4){
+			if(item==1){
+				cekbonusperitem=Math.ceil(Number(betrun)*0.5555555555);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==2){
+				cekbonusperitem=Math.ceil(Number(betrun)*1.11111111);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==3){
+				cekbonusperitem=Math.ceil(Number(betrun)*1.666666666);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==4){
+				cekbonusperitem=Math.ceil(Number(betrun)*2.222222222);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==5){
+				cekbonusperitem=Math.ceil(Number(betrun)*3.333333333);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==6){
+				cekbonusperitem=Math.ceil(Number(betrun)*4.444444444);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==7){
+				cekbonusperitem=Math.ceil(Number(betrun)*8.88888888);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==8){
+				cekbonusperitem=Math.ceil(Number(betrun)*22.2222222);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}
+			// $('.onerewardcount').text(nFormatter(cekbonusperitem, 3));
+		}else if(linerule==3){
+			if(item==1){
+				cekbonusperitem=Math.ceil(Number(betrun)*0.222222222);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==2){
+				cekbonusperitem=Math.ceil(Number(betrun)*0.3333333333);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==3){
+				cekbonusperitem=Math.ceil(Number(betrun)*0.5555555555);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==4){
+				cekbonusperitem=Math.ceil(Number(betrun)*0.777777777);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==5){
+				cekbonusperitem=Math.ceil(Number(betrun)*1.11111111);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==6){
+				cekbonusperitem=Math.ceil(Number(betrun)*1.666666666);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==7){
+				cekbonusperitem=Math.ceil(Number(betrun)*2.222222222);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}else if(item==8){
+				cekbonusperitem=Math.ceil(Number(betrun)*5.555555555);
+				cekbonusall=cekbonusall+cekbonusperitem;
+				cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+			}
+			// $('.onerewardcount').text(nFormatter(cekbonusperitem, 1));
+		}else if(linerule==0){
+			cekbonusperitem=Math.ceil(Number(betrun)*0);
+			cekbonusall=cekbonusall+cekbonusperitem;
+			cekbonusallpercount=cekbonusallpercount+cekbonusperitem;
+		}
+			// if(increment==linecount){
+				// $('.increcount').html('Total : '+rubah(Math.ceil(cekbonusall)));
+				// $('.cekbonusalltheway').text(rubah(Math.ceil(cekbonusallpercount)));
+			// }
+			// console.log(jumlahfreespin+'-'+freespin)
+			if(freespin==true&&jumlahfreespin<2){	
+				if(increment==linecount){
+					if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+						// console.log('big win')
+						tipewin='BIG WIN';
+						bigwin=true;
+					}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+						// console.log('mega win')
+						tipewin='MEGA WIN';
+						megawin=true;
+					}else if(cekbonusall>=betrun*50){
+						// console.log('super win')
+						tipewin='SUPER WIN';
+						superwin=true;
+					}
+				}
+			}else{
+				if(freespin==true){
+
+				}else{
+					if(increment==linecount){
+						if(cekbonusallpercount>=betrun*10&&cekbonusallpercount<betrun*30){
+							console.log('big win')
+							console.log(cekbonusallpercount)
+							tipewin='BIG WIN';
+							bigwin=true;
+						}else if(cekbonusallpercount>=betrun*30&&cekbonusallpercount<betrun*50){
+							console.log('mega win')
+							console.log(cekbonusallpercount)
+							tipewin='MEGA WIN';
+							megawin=true;
+						}else if(cekbonusallpercount>=betrun*50){
+							console.log('super win')
+							console.log(cekbonusallpercount)
+							tipewin='SUPER WIN';
+							superwin=true;
+						}
+					}
+				}
+			}
 	}
 
 
@@ -1083,6 +1337,7 @@
 		dataimgrotate.css({
 			'filter':'blur(0px)'
 		})
+		console.log(tampunghasil.length)
 		setTimeout(function() {
 			if(freespin==true){
 				$('.item0,.item1,.item2,.item3,.item4,.item5,.item6,.item7,.item8,.item9,.item10,.item11,.item12,.item13,.item14').css({
@@ -1110,7 +1365,15 @@
 					// $('.normal').css('animation','');
 					if(spinoto==true){
 						if(freeawal!=true){
-							stops()
+							if(timeanimate==tampunghasil.length){
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										stops()
+									}, speeder*30);
+								}else{
+									stops()
+								}
+							}
 						}
 						// starts();
 					}else{
@@ -1131,7 +1394,15 @@
 								});	
 							}
 						}else{
-							starts();
+							if(timeanimate==tampunghasil.length){
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										starts();
+									}, speeder*30);
+								}else{
+									starts();
+								}
+							}
 							if(jumlahfreespin==1){
 								freespin=false;
 								jumlahfreespin=0;
@@ -1186,10 +1457,22 @@
 		speed5=speedtirai;
 		bonusperitem=0;
 		bonusallpercount=0;
+		cekbonusperitem=0;
+		cekbonusallpercount=0;
+		bigwin=false;
+		megawin=false;
+		superwin=false;
 		if(freespin!=true){
     		bonusall=0;
+    		cekbonusall=0;
 			$('.increcount').html('');
+    	}else{
+    		if(jumlahfreespin-1==0){
+    			bonusall=0;
+    			cekbonusall=0;
+    		}
     	}
+    	// console.log(freespin+'notif');
 
 		$('.tiraihide').hide();
 		$('.tiraihide').css('transform','translateY(0px)');
@@ -1197,33 +1480,39 @@
 		if(jumlahspin>0){
 			$('#stopspin').html('STOP <sup><span style="font-size:11px;color:lightblue;position:absolute;right:-13px;top:0;">'+(Number(jumlahspin))+'</span></sup>');
 		}else{
-			$('#stopspin').html('STOP');
+			if(jumlahfreespin>0){
+				$('#tungguspin').html('STOP');
+			}else{
+				$('#stopspin').html('STOP');
+				$('#tungguspin').html('SPIN');
+			}
 		}
 
 		tunggus();
 		setTimeout(function() {
 			stops();
+			$('#tungguspin').html('STOP');
 		}, 200);
 		increcount=0;
 		$('.gelap').hide();
 		
 		
-		ran0=Math.floor(Math.random()*15);
-		ran1=Math.floor(Math.random()*15);
-		ran2=Math.floor(Math.random()*15);
-		ran3=Math.floor(Math.random()*15);
-		ran4=Math.floor(Math.random()*15);
+		ran0=Math.floor(Math.random()*12);
+		ran1=Math.floor(Math.random()*12);
+		ran2=Math.floor(Math.random()*12);
+		ran3=Math.floor(Math.random()*12);
+		ran4=Math.floor(Math.random()*12);
 
-		ran5=Math.floor(Math.random()*15);
-		ran6=Math.floor(Math.random()*15);
-		ran7=Math.floor(Math.random()*15);
-		ran8=Math.floor(Math.random()*15);
-		ran9=Math.floor(Math.random()*15);
-		ran10=Math.floor(Math.random()*15);
-		ran11=Math.floor(Math.random()*15);
-		ran12=Math.floor(Math.random()*15);
-		ran13=Math.floor(Math.random()*15);
-		ran14=Math.floor(Math.random()*15);
+		ran5=Math.floor(Math.random()*11);
+		ran6=Math.floor(Math.random()*11);
+		ran7=Math.floor(Math.random()*11);
+		ran8=Math.floor(Math.random()*11);
+		ran9=Math.floor(Math.random()*11);
+		ran10=Math.floor(Math.random()*11);
+		ran11=Math.floor(Math.random()*11);
+		ran12=Math.floor(Math.random()*11);
+		ran13=Math.floor(Math.random()*11);
+		ran14=Math.floor(Math.random()*11);
 
 
 		// data0_1Lbounce=[randa[ran0],randa[ran1],randa[ran2],randa[ran3],randa[ran4]];
@@ -1635,13 +1924,14 @@
 									1,1,1,1,1,1,1,1,1,1]
 			var acaktiraifree=Math.floor(Math.random()*60);
 			// console.log(jumlahtiraifreeout[acaktiraifree])
-			
-
+			var postirai1,postirai2,postirai3,postirai4;
+			var matchtirai=[];
 			if(jumlahtiraifreeout[acaktiraifree]==4){
-				var postirai1=Math.floor(Math.random()*5);
-				var postirai2=Math.floor(Math.random()*5);
-				var postirai3=Math.floor(Math.random()*5);
-				var postirai4=Math.floor(Math.random()*5);
+				postirai1=Math.floor(Math.random()*5);
+				postirai2=Math.floor(Math.random()*5);
+				postirai3=Math.floor(Math.random()*5);
+				postirai4=Math.floor(Math.random()*5);
+				matchtirai.push(postirai1,postirai2,postirai3,postirai4);
 				if(postirai1==0){
 					ran0=10;
 					ran5=0;
@@ -1727,9 +2017,10 @@
 					ran14=0;
 				}
 			}else if(jumlahtiraifreeout[acaktiraifree]==3){
-				var postirai1=Math.floor(Math.random()*5);
-				var postirai2=Math.floor(Math.random()*5);
-				var postirai3=Math.floor(Math.random()*5);
+				postirai1=Math.floor(Math.random()*5);
+				postirai2=Math.floor(Math.random()*5);
+				postirai3=Math.floor(Math.random()*5);
+				matchtirai.push(postirai1,postirai2,postirai3);
 				if(postirai1==0){
 					ran0=10;
 					ran5=0;
@@ -1794,8 +2085,9 @@
 					ran14=0;
 				}
 			}else if(jumlahtiraifreeout[acaktiraifree]==2){
-				var postirai1=Math.floor(Math.random()*5);
-				var postirai2=Math.floor(Math.random()*5);
+				postirai1=Math.floor(Math.random()*5);
+				postirai2=Math.floor(Math.random()*5);
+				matchtirai.push(postirai1,postirai2);
 				if(postirai1==0){
 					ran0=10;
 					ran5=0;
@@ -1839,7 +2131,8 @@
 					ran14=0;
 				}
 			}else if(jumlahtiraifreeout[acaktiraifree]==1){
-				var postirai1=Math.floor(Math.random()*5);
+				postirai1=Math.floor(Math.random()*5);
+				matchtirai.push(postirai1);
 				if(postirai1==0){
 					ran0=10;
 					ran5=0;
@@ -1904,8 +2197,12 @@
 					cekcontohfreenew.push(4,9,14)
 				}
 			})
-			// console.log(cekcontohfree);
 
+			var cekmatchtirai=matchtirai.filter(function(el,ind){
+				return el==0||el==1||el==2||el==3||el==4;
+			})
+			console.log(cekcontohfree+'===>tirai keluar');
+			console.log(matchtirai+'===>tirai awal');
 			// console.log(postirai1+'-'+postirai2+'-'+postirai3+'-'+postirai4);
 
 	  // 		var datatiraifree=[randatirai[ran0],randatirai[ran1],randatirai[ran2],randatirai[ran3],randatirai[ran4]];
@@ -2229,86 +2526,141 @@
 					$('.item14').html(randaimagetirai[10]);
 				}, speed2);
 				setTimeout(function() {
-					if(jumlahspin>0){
-						if(cekdatatirai.length>=2){
-							tunggus();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(500,0);
-								}
-							}, 200);
-						}else{
-							stops();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(0,0);
-								}
-							}, 200);	
-						}
-					}else{
-						jumlahspin=0;
-						spinoto=false;
-						if(freespin==true){
-							setTimeout(function() {
-								if(cekdatatirai.length>=1){
-									tunggus();
-									setTimeout(function() {
-										if(tampunghasil.length==0){
-											if(jumlahfreespin<2){
-												starts();
-												// freespin=false;
-												jumlahfreespin=0;
-												$('.gelap').hide();
-												$('.value').css({
-													'color':'orange',
-													'background-color':'#04e0dd',
-													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
-												});
-											}
-										}
-									}, 200);
-								}else{
-									// stops();
-									setTimeout(function() {
-										if(tampunghasil.length==0){
-											if(jumlahfreespin<2){
-												starts();
-												jumlahfreespin=0;
-												$('.gelap').hide();
-												$('.value').css({
-													'color':'orange',
-													'background-color':'#04e0dd',
-													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
-												});
-											}
-										}
-									}, 200);
-								}
-								$('#startspin').html('SPIN')
-							}, 200);
-						}else{
-							if(freeawal==true){
-								setTimeout(function() {
-									tunggus();
-								}, 200);
-							}else{
-								setTimeout(function() {
-									if(cekdatatirai.length>1){
-										if(tampunghasil.length==0){
-											starts();
-										}else{
-											tunggus();
-										}
-									}else{
-										if(tampunghasil.length==0){
-											starts();
-										}
-									}
-									$('#startspin').html('SPIN')
-								}, 200);
-							}
-						}
-					}
+					tunggus();
+				// 	if(jumlahspin>0){
+				// 		if(cekdatatirai.length>=2){
+				// 			tunggus();
+				// 			setTimeout(function() {
+				// 				if(tampunghasil.length==0){
+				// 					if(jumlahfreespin-1==0){
+				// 						if(cekbonusall>=betrun*10){
+				// 							setTimeout(function() {
+				// 								tunggus();
+				// 								$('.winpopup').show();
+				// 								$('.popupwin').text(tipewin)
+				// 								setTimeout(function() {
+				// 									$('.winpopup').hide();
+				// 									if(jumlahspin>0){
+
+				// 									}else{
+				// 										starts();	
+				// 									}
+				// 								}, speeder*20);
+				// 							}, (speeder*2));
+				// 							setTimeout(function() {
+				// 								spinotomatis(500,0);
+				// 							}, speeder*24);
+				// 						}else{
+				// 							setTimeout(function() {
+				// 								spinotomatis(500,0);
+				// 							}, (speeder*6));
+				// 						}
+				// 					}else{
+				// 						setTimeout(function() {
+				// 							spinotomatis(500,0);
+				// 						}, (speeder*6));
+				// 					}
+				// 				}
+				// 			}, 200);
+				// 		}else{
+				// 			stops();
+				// 			setTimeout(function() {
+				// 				if(tampunghasil.length==0){
+				// 					if(jumlahfreespin-1==0){
+				// 						if(cekbonusall>=betrun*10){
+				// 							setTimeout(function() {
+				// 								tunggus();
+				// 								$('.winpopup').show();
+				// 								$('.popupwin').text(tipewin)
+				// 								setTimeout(function() {
+				// 									$('.winpopup').hide();
+				// 									if(jumlahspin>0){
+
+				// 									}else{
+				// 										starts();	
+				// 									}
+				// 								}, speeder*20);
+				// 							}, (speeder*2));
+				// 							setTimeout(function() {
+				// 								spinotomatis(0,0);
+				// 							}, speeder*24);
+				// 						}else{
+				// 							setTimeout(function() {
+				// 								spinotomatis(0,0);
+				// 							}, (speeder*2));
+				// 						}
+				// 					}else{
+				// 						setTimeout(function() {
+				// 							spinotomatis(0,0);
+				// 						}, (speeder*2));
+				// 					}
+				// 				}
+				// 			}, 200);	
+				// 		}
+				// 	}else{
+				// 		jumlahspin=0;
+				// 		spinoto=false;
+				// 		if(freespin==true){
+				// 			setTimeout(function() {
+				// 				if(cekdatatirai.length>=1){
+				// 					tunggus();
+				// 					setTimeout(function() {
+				// 						if(tampunghasil.length==0){
+				// 							if(jumlahfreespin<2){
+				// 								starts();
+				// 								// freespin=false;
+				// 								jumlahfreespin=0;
+				// 								$('.gelap').hide();
+				// 								$('.value').css({
+				// 									'color':'orange',
+				// 									'background-color':'#04e0dd',
+				// 									'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+				// 								});
+				// 							}
+				// 						}
+				// 					}, 200);
+				// 				}else{
+				// 					// stops();
+				// 					setTimeout(function() {
+				// 						if(tampunghasil.length==0){
+				// 							if(jumlahfreespin<2){
+				// 								starts();
+				// 								jumlahfreespin=0;
+				// 								$('.gelap').hide();
+				// 								$('.value').css({
+				// 									'color':'orange',
+				// 									'background-color':'#04e0dd',
+				// 									'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+				// 								});
+				// 							}
+				// 						}
+				// 					}, 200);
+				// 				}
+				// 				$('#startspin').html('SPIN')
+				// 			}, 200);
+				// 		}else{
+				// 			if(freeawal==true){
+				// 				setTimeout(function() {
+				// 					tunggus();
+				// 				}, 200);
+				// 			}else{
+				// 				setTimeout(function() {
+				// 					if(cekdatatirai.length>1){
+				// 						if(tampunghasil.length==0){
+				// 							starts();
+				// 						}else{
+				// 							tunggus();
+				// 						}
+				// 					}else{
+				// 						if(tampunghasil.length==0){
+				// 							starts();
+				// 						}
+				// 					}
+				// 					$('#startspin').html('SPIN')
+				// 				}, 200);
+				// 			}
+				// 		}
+				// 	}
 				}, speed5);
 			}else{
 				$('.slot:nth-child(5) .value div').css({
@@ -2329,86 +2681,140 @@
 					$('.item9').html(randaimage[ran9]);
 					$('.item14').html(randaimage[ran14]);
 
-					
-					if(jumlahspin>0){
-						if(cekdatatirai.length>=2){
-							tunggus();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(500,0);
-								}
-							}, 200);
-						}else{
-							stops();
-							setTimeout(function() {
-								if(tampunghasil.length==0){
-									spinotomatis(0,0);
-								}
-							}, 200);	
-						}
-					}else{
-						jumlahspin=0;
-						spinoto=false;
-						if(freespin==true){
-							setTimeout(function() {
-								if(cekdatatirai.length>=1){
-									tunggus();
-									setTimeout(function() {
-										if(tampunghasil.length==0){
-											if(jumlahfreespin<2){
-												starts();
-												jumlahfreespin=0;
-												$('.gelap').hide();
-												$('.value').css({
-													'color':'orange',
-													'background-color':'#04e0dd',
-													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
-												});
-											}
-										}
-									}, 200);
-								}else{
-									// stops();
-									setTimeout(function() {
-										if(tampunghasil.length==0){
-											if(jumlahfreespin<2){
-												starts();
-												jumlahfreespin=0;
-												$('.gelap').hide();
-												$('.value').css({
-													'color':'orange',
-													'background-color':'#04e0dd',
-													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
-												});
-											}
-										}
-									}, 200);
-								}
-								$('#startspin').html('SPIN')
-							}, 200);
-						}else{
-							if(freeawal==true){
-								// setTimeout(function() {
-								tunggus();
-								// }, 200);
-							}else{
-								setTimeout(function() {
-									if(cekdatatirai.length>1){
-										if(tampunghasil.length==0){
-											starts();
-										}else{
-											tunggus();
-										}
-									}else{
-										if(tampunghasil.length==0){
-											starts();
-										}
-									}
-									$('#startspin').html('SPIN')
-								}, 200);
-							}
-						}
-					}
+					tunggus();
+					// if(jumlahspin>0){
+					// 	if(cekdatatirai.length>=2){
+					// 		tunggus();
+					// 		setTimeout(function() {
+					// 			if(tampunghasil.length==0){
+					// 				if(jumlahfreespin-1==0){
+					// 					if(cekbonusall>=betrun*10){
+					// 						setTimeout(function() {
+					// 							tunggus();
+					// 							$('.winpopup').show();
+					// 							$('.popupwin').text(tipewin)
+					// 							setTimeout(function() {
+					// 								$('.winpopup').hide();
+					// 								if(jumlahspin>0){
+
+					// 								}else{
+					// 									starts();	
+					// 								}
+					// 							}, speeder*20);
+					// 						}, (speeder*2));
+					// 						setTimeout(function() {
+					// 							spinotomatis(500,0);
+					// 						}, speeder*24);
+					// 					}else{
+					// 						setTimeout(function() {
+					// 							spinotomatis(500,0);
+					// 						}, (speeder*6));
+					// 					}
+					// 				}else{
+					// 					setTimeout(function() {
+					// 						spinotomatis(500,0);
+					// 					}, (speeder*6));
+					// 				}
+					// 			}
+					// 		}, 200);
+					// 	}else{
+					// 		stops();
+					// 		setTimeout(function() {
+					// 			if(tampunghasil.length==0){
+					// 				if(jumlahfreespin-1==0){
+					// 					if(cekbonusall>=betrun*10){
+					// 						setTimeout(function() {
+					// 							tunggus();
+					// 							$('.winpopup').show();
+					// 							$('.popupwin').text(tipewin)
+					// 							setTimeout(function() {
+					// 								$('.winpopup').hide();
+					// 								if(jumlahspin>0){
+
+					// 								}else{
+					// 									starts();	
+					// 								}
+					// 							}, speeder*20);
+					// 						}, (speeder*2));
+					// 						setTimeout(function() {
+					// 							spinotomatis(0,0);
+					// 						}, speeder*24);
+					// 					}else{
+					// 						setTimeout(function() {
+					// 							spinotomatis(0,0);
+					// 						}, (speeder*2));
+					// 					}
+					// 				}else{
+					// 					setTimeout(function() {
+					// 						spinotomatis(0,0);
+					// 					}, (speeder*2));
+					// 				}
+					// 			}
+					// 		}, 200);	
+					// 	}
+					// }else{
+					// 	jumlahspin=0;
+					// 	spinoto=false;
+					// 	if(freespin==true){
+					// 		setTimeout(function() {
+					// 			if(cekdatatirai.length>=1){
+					// 				tunggus();
+					// 				setTimeout(function() {
+					// 					if(tampunghasil.length==0){
+					// 						if(jumlahfreespin<2){
+					// 							starts();
+					// 							jumlahfreespin=0;
+					// 							$('.gelap').hide();
+					// 							$('.value').css({
+					// 								'color':'orange',
+					// 								'background-color':'#04e0dd',
+					// 								'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+					// 							});
+					// 						}
+					// 					}
+					// 				}, 200);
+					// 			}else{
+					// 				// stops();
+					// 				setTimeout(function() {
+					// 					if(tampunghasil.length==0){
+					// 						if(jumlahfreespin<2){
+					// 							starts();
+					// 							jumlahfreespin=0;
+					// 							$('.gelap').hide();
+					// 							$('.value').css({
+					// 								'color':'orange',
+					// 								'background-color':'#04e0dd',
+					// 								'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+					// 							});
+					// 						}
+					// 					}
+					// 				}, 200);
+					// 			}
+					// 			$('#startspin').html('SPIN')
+					// 		}, 200);
+					// 	}else{
+					// 		if(freeawal==true){
+					// 			// setTimeout(function() {
+					// 			tunggus();
+					// 			// }, 200);
+					// 		}else{
+					// 			setTimeout(function() {
+					// 				if(cekdatatirai.length>1){
+					// 					if(tampunghasil.length==0){
+					// 						starts();
+					// 					}else{
+					// 						tunggus();
+					// 					}
+					// 				}else{
+					// 					if(tampunghasil.length==0){
+					// 						starts();
+					// 					}
+					// 				}
+					// 				$('#startspin').html('SPIN')
+					// 			}, 200);
+					// 		}
+					// 	}
+					// }
 				}, speed5);
 			}
 
@@ -2418,7 +2824,6 @@
             }, speed5);
 
 		}else{
-
 			$('.value div').css({
 	            'animation-name': 'spin .3s linear'
 	        });
@@ -2472,47 +2877,101 @@
 				$('.item9').html(randaimage[ran9]);
 				$('.item14').html(randaimage[ran14]);
 
-				
-				if(jumlahspin>0){
-					if(cekdatatirai.length>=2){
-						tunggus();
-						setTimeout(function() {
-							if(tampunghasil.length==0){
-								spinotomatis(500,0);
-							}
-						}, 200);
-					}else{
-						stops();
-						setTimeout(function() {
-							if(tampunghasil.length==0){
-								spinotomatis(0,0);
-							}
-						}, 200);	
-					}
-				}else{
-					jumlahspin=0;
-					spinoto=false;
-					if(freeawal==true){
-						// setTimeout(function() {
-						tunggus();
-						// }, 200);
-					}else{
-						setTimeout(function() {
-							if(cekdatatirai.length>1){
-								if(tampunghasil.length==0){
-									starts();
-								}else{
-									tunggus();
-								}
-							}else{
-								if(tampunghasil.length==0){
-									starts();
-								}
-							}
-							$('#startspin').html('SPIN')
-						}, 200);
-					}
-				}
+				tunggus();
+				// if(jumlahspin>0){
+				// 	if(cekdatatirai.length>=2){
+				// 		tunggus();
+				// 		setTimeout(function() {
+				// 			if(tampunghasil.length==0){
+				// 				if(jumlahfreespin-1==0){
+				// 					if(cekbonusall>=betrun*10){
+				// 						setTimeout(function() {
+				// 							tunggus();
+				// 							$('.winpopup').show();
+				// 							$('.popupwin').text(tipewin)
+				// 							setTimeout(function() {
+				// 								$('.winpopup').hide();
+				// 								if(jumlahspin>0){
+
+				// 								}else{
+				// 									starts();	
+				// 								}
+				// 							}, speeder*20);
+				// 						}, (speeder*2));
+				// 						setTimeout(function() {
+				// 							spinotomatis(500,0);
+				// 						}, speeder*24);
+				// 					}else{
+				// 						setTimeout(function() {
+				// 							spinotomatis(500,0);
+				// 						}, (speeder*6));
+				// 					}
+				// 				}else{
+				// 					setTimeout(function() {
+				// 						spinotomatis(500,0);
+				// 					}, (speeder*6));
+				// 				}
+				// 			}
+				// 		}, 200);
+				// 	}else{
+				// 		stops();
+				// 		setTimeout(function() {
+				// 			if(tampunghasil.length==0){
+				// 				if(jumlahfreespin-1==0){
+				// 					if(cekbonusall>=betrun*10){
+				// 						setTimeout(function() {
+				// 							tunggus();
+				// 							$('.winpopup').show();
+				// 							$('.popupwin').text(tipewin)
+				// 							setTimeout(function() {
+				// 								$('.winpopup').hide();
+				// 								if(jumlahspin>0){
+
+				// 								}else{
+				// 									starts();	
+				// 								}
+				// 							}, speeder*20);
+				// 						}, (speeder*2));
+				// 						setTimeout(function() {
+				// 							spinotomatis(0,0);
+				// 						}, speeder*24);
+				// 					}else{
+				// 						setTimeout(function() {
+				// 							spinotomatis(0,0);
+				// 						}, (speeder*2));
+				// 					}
+				// 				}else{
+				// 					setTimeout(function() {
+				// 						spinotomatis(0,0);
+				// 					}, (speeder*2));
+				// 				}
+				// 			}
+				// 		}, 200);	
+				// 	}
+				// }else{
+				// 	jumlahspin=0;
+				// 	spinoto=false;
+				// 	if(freeawal==true){
+				// 		// setTimeout(function() {
+				// 		tunggus();
+				// 		// }, 200);
+				// 	}else{
+				// 		setTimeout(function() {
+				// 			if(cekdatatirai.length>1){
+				// 				if(tampunghasil.length==0){
+				// 					starts();
+				// 				}else{
+				// 					tunggus();
+				// 				}
+				// 			}else{
+				// 				if(tampunghasil.length==0){
+				// 					starts();
+				// 				}
+				// 			}
+				// 			$('#startspin').html('SPIN')
+				// 		}, 200);
+				// 	}
+				// }
 			}, speed5);
     	}
 
@@ -2624,6 +3083,7 @@
 	}
 
 	if(indextirai.length>0&&freespin==true){
+		if(for1==true||for2==true||for3==true||for4==true||for5==true){
 		setTimeout(function() {
 		cekcontohfreenew.filter(function(el,ind){
 			$('.itemtirai'+el).show();
@@ -2650,6 +3110,7 @@
 			}
 		})
 		}, speeder);
+		}
 	}
 
 	// setTimeout(function() {
@@ -3232,6 +3693,7 @@
 
 	// setTimeout(function() {
 	if(indexscatter1.length>2){
+		// cekbonusall=betrun*11;
 		$('.value').css('overflow','hidden');
 		$('.normal').css('overflow','hidden');
 		if(freeawal==true){
@@ -3243,113 +3705,549 @@
 		console.log(freeawal)
 		console.log(freespin)
 		if(tampunghasil.length==0){
-			$('.value').css('overflow','hidden');
-			$('.normal').css('overflow','hidden');
-			// tunggus();
-			setTimeout(function() {
-				freespin=true;
+			if(indextirai.length>1){
+				$('.value').css('overflow','hidden');
+				$('.normal').css('overflow','hidden');
 				// tunggus();
-				$('.gelap').hide();
-				indexscatter1.filter(function(el,ind){
-					$('.value').css('overflow','hidden!important');
-					$('.item'+el).css('overflow','hidden!important');
-					$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
-					$('.item'+el+' img').addClass('bounce7');
-					$('.value').css('overflow','hidden!important');
-					$('.item'+el).css('overflow','hidden!important');
-					// tunggus();
-				})
 				setTimeout(function() {
-					console.log((jumlahfreespin-1)+'free'+oke+'oke')
-					$('.scatterpopup').show();
-					if(freeawal==true){
-						if(jumlahfreespin-1==oke){
-							$('.popupscatter').show();
-							$('.counterscatter').text((okejum)+' Free spin');
-						}else{
-							$('.popupscatter').hide();
-							$('.counterscatter').text((okejum)+' Free spin');
-						}
-					}else{
-						if(jumlahfreespin-1==oke){
-							$('.popupscatter').show();
-							$('.counterscatter').text((okejum)+' Free spin');
-						}else{
-							$('.popupscatter').hide();
-							$('.counterscatter').text((okejum)+' Free spin');
-						}
-					}
+					freespin=true;
+					// tunggus();
+					$('.gelap').hide();
+					indexscatter1.filter(function(el,ind){
+						$('.value').css('overflow','hidden!important');
+						$('.item'+el).css('overflow','hidden!important');
+						$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+						$('.item'+el+' img').addClass('bounce7');
+						$('.value').css('overflow','hidden!important');
+						$('.item'+el).css('overflow','hidden!important');
+						// tunggus();
+					})
 					setTimeout(function() {
-						// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
-				  //   	$('.popupscatter').addClass('bounce7')
-				    	setTimeout(function() {
-				    		// $('.popupscatter').css('animation','bounce4');
-				    		// $('.normal img').css('animation','bounce4');
-				    		// $('.normal').removeClass('bounce7');
-				    		$('.scatterpopup').hide();
-				    	}, speedrotateclone);
-			    	}, speeder*2);
-					// tunggus();
-					// $('.normal').removeClass('bounce7');
-					if(jumlahspin==0){
-						setTimeout(function() {
-							$('#startspin').click();
-						}, speeder*7);
-					}
-				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+speeder+speeder);
-		}else{
-			$('.value').css('overflow','hidden');
-			$('.normal').css('overflow','hidden');
-			// tunggus();
-			setTimeout(function() {
-				freespin=true;
-				$('.gelap').hide();
-				indexscatter1.filter(function(el,ind){
-					$('.value').css('overflow','hidden!important');
-					$('.item'+el).css('overflow','hidden!important');
-					$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
-					$('.item'+el+' img').addClass('bounce7');
-					$('.value').css('overflow','hidden!important');
-					$('.item'+el).css('overflow','hidden!important');
-					// tunggus();
-				})
-				
-				setTimeout(function() {
-					// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
-			  //   	$('.popupscatter').addClass('bounce7')
-			    	setTimeout(function() {
-			    		// $('.popupscatter').css('animation','bounce4');
-			    		// $('.normal img').css('animation','bounce4');
-			    		// $('.normal img').removeClass('bounce7');
-			    		$('.scatterpopup').hide();
-			    	}, speedrotateclone);
-		    	}, speeder*5);
-			// tunggus();
-				setTimeout(function() {
-					// tunggus();
-					console.log((jumlahfreespin-1)+'free'+oke+'oke')
-					$('.scatterpopup').show();
-					if(freeawal==true){
-						if(jumlahfreespin-1==oke){
-							$('.popupscatter').show();
-							$('.counterscatter').text((okejum)+' Free spin');
+						console.log((jumlahfreespin-1)+'free'+oke+'oke')
+						$('.scatterpopup').show();
+						if(freeawal==true){
+							if(jumlahfreespin-1==oke){
+								$('.popupscatter').show();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}else{
+								$('.popupscatter').hide();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}
 						}else{
-							$('.popupscatter').hide();
-							$('.counterscatter').text((okejum)+' Free spin');
+							if(jumlahfreespin-1==oke){
+								$('.popupscatter').show();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}else{
+								$('.popupscatter').hide();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}
+						}
+						setTimeout(function() {
+							// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+					  //   	$('.popupscatter').addClass('bounce7')
+					    	setTimeout(function() {
+					    		// $('.popupscatter').css('animation','bounce4');
+					    		// $('.normal img').css('animation','bounce4');
+					    		// $('.normal').removeClass('bounce7');
+					    		$('.scatterpopup').hide();
+					    	}, speedrotateclone);
+				    	}, speeder*2);
+						// tunggus();
+						// $('.normal').removeClass('bounce7');
+						if(jumlahspin==0){
+							setTimeout(function() {
+								$('#startspin').click();
+							}, speeder*7);
+						}
+					}, speedrotateclone);
+				}, (speedanimate*tampunghasil.length)+(speeder*6));
+			}else{
+				$('.value').css('overflow','hidden');
+				$('.normal').css('overflow','hidden');
+				// tunggus();
+				setTimeout(function() {
+					freespin=true;
+					// tunggus();
+					$('.gelap').hide();
+					indexscatter1.filter(function(el,ind){
+						$('.value').css('overflow','hidden!important');
+						$('.item'+el).css('overflow','hidden!important');
+						$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+						$('.item'+el+' img').addClass('bounce7');
+						$('.value').css('overflow','hidden!important');
+						$('.item'+el).css('overflow','hidden!important');
+						// tunggus();
+					})
+					setTimeout(function() {
+						console.log((jumlahfreespin-1)+'free'+oke+'oke')
+						$('.scatterpopup').show();
+						if(freeawal==true){
+							if(jumlahfreespin-1==oke){
+								$('.popupscatter').show();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}else{
+								$('.popupscatter').hide();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}
+						}else{
+							if(jumlahfreespin-1==oke){
+								$('.popupscatter').show();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}else{
+								$('.popupscatter').hide();
+								$('.counterscatter').text((okejum)+' Free spin');
+							}
+						}
+						setTimeout(function() {
+							// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+					  //   	$('.popupscatter').addClass('bounce7')
+					    	setTimeout(function() {
+					    		// $('.popupscatter').css('animation','bounce4');
+					    		// $('.normal img').css('animation','bounce4');
+					    		// $('.normal').removeClass('bounce7');
+					    		$('.scatterpopup').hide();
+					    	}, speedrotateclone);
+				    	}, speeder*2);
+						// tunggus();
+						// $('.normal').removeClass('bounce7');
+						if(jumlahspin==0){
+							setTimeout(function() {
+								$('#startspin').click();
+							}, speeder*7);
+						}
+					}, speedrotateclone);
+				}, (speedanimate*tampunghasil.length)+speeder+speeder);
+			}
+		}else{
+			if(freeawal==true){
+				if(freespin==true){
+					if(indextirai.length>1){
+						$('.value').css('overflow','hidden');
+						$('.normal').css('overflow','hidden');
+						// tunggus();
+						setTimeout(function() {
+							freespin=true;
+							$('.gelap').hide();
+							indexscatter1.filter(function(el,ind){
+								$('.value').css('overflow','hidden!important');
+								$('.item'+el).css('overflow','hidden!important');
+								$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+								$('.item'+el+' img').addClass('bounce7');
+								$('.value').css('overflow','hidden!important');
+								$('.item'+el).css('overflow','hidden!important');
+								// tunggus();
+							})
+							
+							setTimeout(function() {
+								// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+						  //   	$('.popupscatter').addClass('bounce7')
+						    	setTimeout(function() {
+						    		// $('.popupscatter').css('animation','bounce4');
+						    		// $('.normal img').css('animation','bounce4');
+						    		// $('.normal img').removeClass('bounce7');
+						    		$('.scatterpopup').hide();
+						    	}, speedrotateclone);
+					    	}, speeder*5);
+						// tunggus();
+							setTimeout(function() {
+								// tunggus();
+								console.log((jumlahfreespin-1)+'free'+oke+'oke')
+								$('.scatterpopup').show();
+								if(freeawal==true){
+									if(jumlahfreespin-1==oke){
+										$('.popupscatter').show();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}else{
+										$('.popupscatter').hide();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}
+								}else{
+									if(jumlahfreespin-1==oke){
+										$('.popupscatter').show();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}else{
+										$('.popupscatter').hide();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}
+								}
+								// $('.normal').removeClass('bounce7');
+							}, speedrotateclone);
+						}, (speedanimate*tampunghasil.length)+(speeder*6)+speedrotateclone);
+					}else{
+						$('.value').css('overflow','hidden');
+						$('.normal').css('overflow','hidden');
+						// tunggus();
+						setTimeout(function() {
+							freespin=true;
+							$('.gelap').hide();
+							indexscatter1.filter(function(el,ind){
+								$('.value').css('overflow','hidden!important');
+								$('.item'+el).css('overflow','hidden!important');
+								$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+								$('.item'+el+' img').addClass('bounce7');
+								$('.value').css('overflow','hidden!important');
+								$('.item'+el).css('overflow','hidden!important');
+								// tunggus();
+							})
+							
+							setTimeout(function() {
+								// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+						  //   	$('.popupscatter').addClass('bounce7')
+						    	setTimeout(function() {
+						    		// $('.popupscatter').css('animation','bounce4');
+						    		// $('.normal img').css('animation','bounce4');
+						    		// $('.normal img').removeClass('bounce7');
+						    		$('.scatterpopup').hide();
+						    	}, speedrotateclone);
+					    	}, speeder*5);
+						// tunggus();
+							setTimeout(function() {
+								// tunggus();
+								console.log((jumlahfreespin-1)+'free'+oke+'oke')
+								$('.scatterpopup').show();
+								if(freeawal==true){
+									if(jumlahfreespin-1==oke){
+										$('.popupscatter').show();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}else{
+										$('.popupscatter').hide();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}
+								}else{
+									if(jumlahfreespin-1==oke){
+										$('.popupscatter').show();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}else{
+										$('.popupscatter').hide();
+										$('.counterscatter').text((okejum)+' Free spin');
+									}
+								}
+								// $('.normal').removeClass('bounce7');
+							}, speedrotateclone);
+						}, (speedanimate*tampunghasil.length)+(speeder*2)+speedrotateclone);
+					}
+				}else{	
+					if(cekbonusall>=betrun*10){
+						if(indextirai.length>1){
+							$('.value').css('overflow','hidden');
+							$('.normal').css('overflow','hidden');
+							// tunggus();
+							setTimeout(function() {
+								freespin=true;
+								$('.gelap').hide();
+								indexscatter1.filter(function(el,ind){
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+									$('.item'+el+' img').addClass('bounce7');
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									// tunggus();
+								})
+								
+								setTimeout(function() {
+									// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+							  //   	$('.popupscatter').addClass('bounce7')
+							    	setTimeout(function() {
+							    		// $('.popupscatter').css('animation','bounce4');
+							    		// $('.normal img').css('animation','bounce4');
+							    		// $('.normal img').removeClass('bounce7');
+							    		$('.scatterpopup').hide();
+							    	}, speedrotateclone);
+						    	}, speeder*5);
+							// tunggus();
+								setTimeout(function() {
+									// tunggus();
+									console.log((jumlahfreespin-1)+'free'+oke+'oke')
+									$('.scatterpopup').show();
+									if(freeawal==true){
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}else{
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}
+									// $('.normal').removeClass('bounce7');
+								}, speedrotateclone);
+							}, (speedanimate*tampunghasil.length)+(speeder*30)+speedrotateclone);
+						}else{
+							$('.value').css('overflow','hidden');
+							$('.normal').css('overflow','hidden');
+							// tunggus();
+							setTimeout(function() {
+								freespin=true;
+								$('.gelap').hide();
+								indexscatter1.filter(function(el,ind){
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+									$('.item'+el+' img').addClass('bounce7');
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									// tunggus();
+								})
+								
+								setTimeout(function() {
+									// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+							  //   	$('.popupscatter').addClass('bounce7')
+							    	setTimeout(function() {
+							    		// $('.popupscatter').css('animation','bounce4');
+							    		// $('.normal img').css('animation','bounce4');
+							    		// $('.normal img').removeClass('bounce7');
+							    		$('.scatterpopup').hide();
+							    	}, speedrotateclone);
+						    	}, speeder*5);
+							// tunggus();
+								setTimeout(function() {
+									// tunggus();
+									console.log((jumlahfreespin-1)+'free'+oke+'oke')
+									$('.scatterpopup').show();
+									if(freeawal==true){
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}else{
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}
+									// $('.normal').removeClass('bounce7');
+								}, speedrotateclone);
+							}, (speedanimate*tampunghasil.length)+(speeder*28)+speedrotateclone);
 						}
 					}else{
-						if(jumlahfreespin-1==oke){
-							$('.popupscatter').show();
-							$('.counterscatter').text((okejum)+' Free spin');
+						if(indextirai.length>1){
+							$('.value').css('overflow','hidden');
+							$('.normal').css('overflow','hidden');
+							// tunggus();
+							setTimeout(function() {
+								freespin=true;
+								$('.gelap').hide();
+								indexscatter1.filter(function(el,ind){
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+									$('.item'+el+' img').addClass('bounce7');
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									// tunggus();
+								})
+								
+								setTimeout(function() {
+									// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+							  //   	$('.popupscatter').addClass('bounce7')
+							    	setTimeout(function() {
+							    		// $('.popupscatter').css('animation','bounce4');
+							    		// $('.normal img').css('animation','bounce4');
+							    		// $('.normal img').removeClass('bounce7');
+							    		$('.scatterpopup').hide();
+							    	}, speedrotateclone);
+						    	}, speeder*5);
+							// tunggus();
+								setTimeout(function() {
+									// tunggus();
+									console.log((jumlahfreespin-1)+'free'+oke+'oke')
+									$('.scatterpopup').show();
+									if(freeawal==true){
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}else{
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}
+									// $('.normal').removeClass('bounce7');
+								}, speedrotateclone);
+							}, (speedanimate*tampunghasil.length)+(speeder*6)+speedrotateclone);
 						}else{
-							$('.popupscatter').hide();
-							$('.counterscatter').text((okejum)+' Free spin');
+							$('.value').css('overflow','hidden');
+							$('.normal').css('overflow','hidden');
+							// tunggus();
+							setTimeout(function() {
+								freespin=true;
+								$('.gelap').hide();
+								indexscatter1.filter(function(el,ind){
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+									$('.item'+el+' img').addClass('bounce7');
+									$('.value').css('overflow','hidden!important');
+									$('.item'+el).css('overflow','hidden!important');
+									// tunggus();
+								})
+								
+								setTimeout(function() {
+									// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+							  //   	$('.popupscatter').addClass('bounce7')
+							    	setTimeout(function() {
+							    		// $('.popupscatter').css('animation','bounce4');
+							    		// $('.normal img').css('animation','bounce4');
+							    		// $('.normal img').removeClass('bounce7');
+							    		$('.scatterpopup').hide();
+							    	}, speedrotateclone);
+						    	}, speeder*5);
+							// tunggus();
+								setTimeout(function() {
+									// tunggus();
+									console.log((jumlahfreespin-1)+'free'+oke+'oke')
+									$('.scatterpopup').show();
+									if(freeawal==true){
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}else{
+										if(jumlahfreespin-1==oke){
+											$('.popupscatter').show();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}else{
+											$('.popupscatter').hide();
+											$('.counterscatter').text((okejum)+' Free spin');
+										}
+									}
+									// $('.normal').removeClass('bounce7');
+								}, speedrotateclone);
+							}, (speedanimate*tampunghasil.length)+(speeder*2)+speedrotateclone);
 						}
 					}
-					// $('.normal').removeClass('bounce7');
-				}, speedrotateclone);
-			}, speedanimate*tampunghasil.length+(speeder*2)+speedrotateclone);
+				}
+			}else{
+				if(indextirai.length>1){
+					$('.value').css('overflow','hidden');
+					$('.normal').css('overflow','hidden');
+					// tunggus();
+					setTimeout(function() {
+						freespin=true;
+						$('.gelap').hide();
+						indexscatter1.filter(function(el,ind){
+							$('.value').css('overflow','hidden!important');
+							$('.item'+el).css('overflow','hidden!important');
+							$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+							$('.item'+el+' img').addClass('bounce7');
+							$('.value').css('overflow','hidden!important');
+							$('.item'+el).css('overflow','hidden!important');
+							// tunggus();
+						})
+						
+						setTimeout(function() {
+							// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+					  //   	$('.popupscatter').addClass('bounce7')
+					    	setTimeout(function() {
+					    		// $('.popupscatter').css('animation','bounce4');
+					    		// $('.normal img').css('animation','bounce4');
+					    		// $('.normal img').removeClass('bounce7');
+					    		$('.scatterpopup').hide();
+					    	}, speedrotateclone);
+				    	}, speeder*5);
+					// tunggus();
+						setTimeout(function() {
+							// tunggus();
+							console.log((jumlahfreespin-1)+'free'+oke+'oke')
+							$('.scatterpopup').show();
+							if(freeawal==true){
+								if(jumlahfreespin-1==oke){
+									$('.popupscatter').show();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}else{
+									$('.popupscatter').hide();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}
+							}else{
+								if(jumlahfreespin-1==oke){
+									$('.popupscatter').show();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}else{
+									$('.popupscatter').hide();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}
+							}
+							// $('.normal').removeClass('bounce7');
+						}, speedrotateclone);
+					}, (speedanimate*tampunghasil.length)+(speeder*6)+speedrotateclone);
+				}else{
+					$('.value').css('overflow','hidden');
+					$('.normal').css('overflow','hidden');
+					// tunggus();
+					setTimeout(function() {
+						freespin=true;
+						$('.gelap').hide();
+						indexscatter1.filter(function(el,ind){
+							$('.value').css('overflow','hidden!important');
+							$('.item'+el).css('overflow','hidden!important');
+							$('.item'+el+' img').css('animation','bounce7 '+speedrotate+'s ease');
+							$('.item'+el+' img').addClass('bounce7');
+							$('.value').css('overflow','hidden!important');
+							$('.item'+el).css('overflow','hidden!important');
+							// tunggus();
+						})
+						
+						setTimeout(function() {
+							// $('.popupscatter').css('animation','bounce7 '+speedrotate+'s ease')
+					  //   	$('.popupscatter').addClass('bounce7')
+					    	setTimeout(function() {
+					    		// $('.popupscatter').css('animation','bounce4');
+					    		// $('.normal img').css('animation','bounce4');
+					    		// $('.normal img').removeClass('bounce7');
+					    		$('.scatterpopup').hide();
+					    	}, speedrotateclone);
+				    	}, speeder*5);
+					// tunggus();
+						setTimeout(function() {
+							// tunggus();
+							console.log((jumlahfreespin-1)+'free'+oke+'oke')
+							$('.scatterpopup').show();
+							if(freeawal==true){
+								if(jumlahfreespin-1==oke){
+									$('.popupscatter').show();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}else{
+									$('.popupscatter').hide();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}
+							}else{
+								if(jumlahfreespin-1==oke){
+									$('.popupscatter').show();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}else{
+									$('.popupscatter').hide();
+									$('.counterscatter').text((okejum)+' Free spin');
+								}
+							}
+							// $('.normal').removeClass('bounce7');
+						}, speedrotateclone);
+					}, (speedanimate*tampunghasil.length)+(speeder*2)+speedrotateclone);
+				}
+			}
 		}
 	}else{
 		if(freeawal==true){
@@ -3399,6 +4297,1064 @@
 	}
 	// }, speeder);
 
+	console.log(freespin+'-->freespin')
+
+	timeanimate=Number(tampunghasil.length);
+	tampunghasil.filter(function(data,incre){
+		if(data[5]=='0_1LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_1LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_1LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_1RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_1RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='0_2LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_2LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_2LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_2RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_2RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='0_3LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_3LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_3LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_3RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='0_3RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='1_1LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_1LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_1LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_1RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_1RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='1_2LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_2LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_2LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_2RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_2RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='1_3LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_3LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_3LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_3RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='1_3RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='2_1LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_1LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_1LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_1RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_1RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='2_2LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_2LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_2LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_2RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_2RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		// =========================================================================
+		if(data[5]=='2_3LFULL5'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 5, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 5, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 5, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 5, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 5, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 5, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 5, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 5, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_3LFULL4'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_3LFULL3'){
+			if(data[0]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[0]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[0]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[0]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[0]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[0]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[0]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[0]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_3RFULL4'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 4, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 4, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 4, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 4, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 4, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 4, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 4, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 4, (incre+1), timeanimate)
+			}
+		}
+		if(data[5]=='2_3RFULL3'){
+			if(data[4]==1){
+				cekbonusoneandall(1, 3, (incre+1), timeanimate)
+			}else if(data[4]==2){
+				cekbonusoneandall(2, 3, (incre+1), timeanimate)
+			}else if(data[4]==3){
+				cekbonusoneandall(3, 3, (incre+1), timeanimate)
+			}else if(data[4]==4){
+				cekbonusoneandall(4, 3, (incre+1), timeanimate)
+			}else if(data[4]==5){
+				cekbonusoneandall(5, 3, (incre+1), timeanimate)
+			}else if(data[4]==6){
+				cekbonusoneandall(6, 3, (incre+1), timeanimate)
+			}else if(data[4]==7){
+				cekbonusoneandall(7, 3, (incre+1), timeanimate)
+			}else if(data[4]==8){
+				cekbonusoneandall(8, 3, (incre+1), timeanimate)
+			}
+		}
+		
+	})
+
+	
+	console.log(freespin+'-->fre ke2')
+	if(freeawal==true){
+		if(jumlahfreespin-1==oke){
+			if(cekbonusall>=betrun*10){
+				if(indextirai.length>1){
+					setTimeout(function() {
+						tunggus();
+						$('.winpopup').show();
+						if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+							$('.popupwin').text('BIG WIN')
+						}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+							$('.popupwin').text('MEGA WIN')
+						}else if(cekbonusall>=betrun*50){
+							$('.popupwin').text('SUPER WIN')
+						}
+						setTimeout(function() {
+							$('.winpopup').hide();
+							// if(jumlahspin>0){
+
+							// }else{
+							// 	starts();	
+							// }
+						}, speeder*22);
+					}, (speedanimate*tampunghasil.length)+(speeder*10));
+				}else{
+					setTimeout(function() {
+						tunggus();
+						$('.winpopup').show();
+						if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+							$('.popupwin').text('BIG WIN')
+						}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+							$('.popupwin').text('MEGA WIN')
+						}else if(cekbonusall>=betrun*50){
+							$('.popupwin').text('SUPER WIN')
+						}
+						setTimeout(function() {
+							$('.winpopup').hide();
+							if(jumlahspin>0){
+
+							}else{
+								starts();	
+							}
+						}, speeder*22);
+					}, (speedanimate*tampunghasil.length)+(speeder*6));
+				}
+			}
+		}
+	}else{
+		if(freespin==true){
+			if(jumlahfreespin-1==0){
+				if(cekbonusall>=betrun*10){
+					if(for1==true||for2==true||for3==true||for4==true||for5==true){
+						setTimeout(function() {
+							tunggus();
+							$('.winpopup').show();
+							if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+								$('.popupwin').text('BIG WIN')
+							}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+								$('.popupwin').text('MEGA WIN')
+							}else if(cekbonusall>=betrun*50){
+								$('.popupwin').text('SUPER WIN')
+							}
+							setTimeout(function() {
+								$('.winpopup').hide();
+								if(jumlahspin>0){
+
+								}else{
+									starts();	
+								}
+							}, speeder*22);
+						}, (speedanimate*tampunghasil.length)+(speeder*10));
+					}else{
+						setTimeout(function() {
+							tunggus();
+							$('.winpopup').show();
+							if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+								$('.popupwin').text('BIG WIN')
+							}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+								$('.popupwin').text('MEGA WIN')
+							}else if(cekbonusall>=betrun*50){
+								$('.popupwin').text('SUPER WIN')
+							}
+							setTimeout(function() {
+								$('.winpopup').hide();
+								if(jumlahspin>0){
+
+								}else{
+									starts();	
+								}
+							}, speeder*22);
+						}, (speedanimate*tampunghasil.length)+(speeder*6));
+					}
+				}
+			}else if(jumlahfreespin-1==oke){
+				if(cekbonusall>=betrun*10){
+					if(indextirai.length>1){
+						setTimeout(function() {
+							tunggus();
+							$('.winpopup').show();
+							if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+								$('.popupwin').text('BIG WIN')
+							}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+								$('.popupwin').text('MEGA WIN')
+							}else if(cekbonusall>=betrun*50){
+								$('.popupwin').text('SUPER WIN')
+							}
+							setTimeout(function() {
+								$('.winpopup').hide();
+								// if(jumlahspin>0){
+
+								// }else{
+								// 	starts();	
+								// }
+							}, speeder*22);
+						}, (speedanimate*tampunghasil.length)+(speeder*10));
+					}else{
+						setTimeout(function() {
+							tunggus();
+							$('.winpopup').show();
+							if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+								$('.popupwin').text('BIG WIN')
+							}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+								$('.popupwin').text('MEGA WIN')
+							}else if(cekbonusall>=betrun*50){
+								$('.popupwin').text('SUPER WIN')
+							}
+							setTimeout(function() {
+								$('.winpopup').hide();
+								if(jumlahspin>0){
+
+								}else{
+									starts();	
+								}
+							}, speeder*22);
+						}, (speedanimate*tampunghasil.length)+(speeder*6));
+					}
+				}
+			}
+		}else{
+			if(cekbonusall>=betrun*10){
+				tunggus();
+				if(indextirai.length>1){
+					setTimeout(function() {
+						tunggus();
+						$('.winpopup').show();
+						if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+							$('.popupwin').text('BIG WIN')
+						}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+							$('.popupwin').text('MEGA WIN')
+						}else if(cekbonusall>=betrun*50){
+							$('.popupwin').text('SUPER WIN')
+						}
+						setTimeout(function() {
+							$('.winpopup').hide();
+							if(jumlahspin>0){
+
+							}else{
+								starts();	
+							}
+						}, speeder*22);
+					}, (speedanimate*tampunghasil.length)+(speeder*10));
+				}else{
+					setTimeout(function() {
+						tunggus();
+						$('.winpopup').show();
+						if(cekbonusall>=betrun*10&&cekbonusall<betrun*30){
+							$('.popupwin').text('BIG WIN')
+						}else if(cekbonusall>=betrun*30&&cekbonusall<betrun*50){
+							$('.popupwin').text('MEGA WIN')
+						}else if(cekbonusall>=betrun*50){
+							$('.popupwin').text('SUPER WIN')
+						}
+						setTimeout(function() {
+							$('.winpopup').hide();
+							if(jumlahspin>0){
+
+							}else{
+								starts();	
+							}
+						}, speeder*22);
+					}, (speedanimate*tampunghasil.length)+(speeder*6));
+				}
+			}
+		}
+	}
+	
+
 	// console.log(speedanimate*tampunghasil.length);
 
 	// if(indextirai.length>1){	
@@ -3439,54 +5395,708 @@
 // ]
 // console.log(shuffle(ff))
 
-
+	
 	timetampung = setTimeout(function() {
+	if(tampunghasil.length==0){
+		if(freeawal==true){
+			tunggus();
+			if(jumlahspin>0){
+				if(cekdatatirai.length>=2){
+					tunggus();
+					setTimeout(function() {
+						if(tampunghasil.length==0){
+							if(jumlahfreespin-1==0){
+								if(cekbonusall>=betrun*10){
+									// setTimeout(function() {
+									// 	tunggus();
+									// 	$('.winpopup').show();
+									// 	$('.popupwin').text(tipewin)
+									// 	setTimeout(function() {
+									// 		$('.winpopup').hide();
+									// 		// if(jumlahspin>0){
+
+									// 		// }else{
+									// 		// 	starts();	
+									// 		// }
+									// 	}, speeder*20);
+									// }, (speeder*2));
+									setTimeout(function() {
+										spinotomatis(500,0);
+									}, speeder*24);
+								}else{
+									setTimeout(function() {
+										spinotomatis(500,0);
+									}, (speeder*6));
+								}
+							}else{
+								setTimeout(function() {
+									spinotomatis(500,0);
+								}, (speeder*6));
+							}
+						}
+					}, 200);
+				}else{
+					// stops();
+					tunggus();
+					setTimeout(function() {
+						if(tampunghasil.length==0){
+							if(jumlahfreespin-1==0){
+								if(cekbonusall>=betrun*10){
+									// setTimeout(function() {
+									// 	tunggus();
+									// 	$('.winpopup').show();
+									// 	$('.popupwin').text(tipewin)
+									// 	setTimeout(function() {
+									// 		$('.winpopup').hide();
+									// 		if(jumlahspin>0){
+
+									// 		}else{
+									// 			starts();	
+									// 		}
+									// 	}, speeder*20);
+									// }, (speeder*2));
+									setTimeout(function() {
+										spinotomatis(0,0);
+									}, speeder*24);
+								}else{
+									setTimeout(function() {
+										spinotomatis(0,0);
+									}, (speeder*2));
+								}
+							}else{
+								setTimeout(function() {
+									spinotomatis(0,0);
+								}, (speeder*2));
+							}
+						}
+					}, 200);	
+				}
+			}else{
+				jumlahspin=0;
+				spinoto=false;
+				if(freeawal==true){
+					// setTimeout(function() {
+					tunggus();
+					// }, 200);
+				}else{
+					setTimeout(function() {
+						// if(cekdatatirai.length>1){
+						// 	if(tampunghasil.length==0){
+						// 		starts();
+						// 	}else{
+						// 		tunggus();
+						// 	}
+						// }else{
+						// 	if(tampunghasil.length==0){
+						// 		starts();
+						// 	}
+						// }
+						$('#startspin').html('SPIN')
+					}, 200);
+				}
+			}
+		}else{
+			if(freespin==true){
+				if(ran4==10&&for5==true){
+					if(jumlahspin>0){
+						if(cekdatatirai.length>=2){
+							tunggus();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										if(cekbonusall>=betrun*10){
+											setTimeout(function() {
+												tunggus();
+												// $('.winpopup').show();
+												// $('.popupwin').text(tipewin)
+												setTimeout(function() {
+													// $('.winpopup').hide();
+													if(jumlahspin>0){
+
+													}else{
+														starts();	
+													}
+												}, speeder*20);
+											}, (speeder*2));
+											setTimeout(function() {
+												spinotomatis(500,0);
+											}, speeder*24);
+										}else{
+											setTimeout(function() {
+												spinotomatis(500,0);
+											}, (speeder*6));
+										}
+									}else{
+										setTimeout(function() {
+											spinotomatis(500,0);
+										}, (speeder*4));
+									}
+								}
+							}, 200);
+						}else{
+							// stops();
+							tunggus();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										if(cekbonusall>=betrun*10){
+											setTimeout(function() {
+												tunggus();
+												// $('.winpopup').show();
+												// $('.popupwin').text(tipewin)
+												setTimeout(function() {
+													// $('.winpopup').hide();
+													if(jumlahspin>0){
+
+													}else{
+														starts();	
+													}
+												}, speeder*20);
+											}, (speeder*2));
+											setTimeout(function() {
+												spinotomatis(0,0);
+											}, speeder*24);
+										}else{
+											setTimeout(function() {
+												spinotomatis(0,0);
+											}, (speeder*2));
+										}
+									}else{
+										setTimeout(function() {
+											spinotomatis(0,0);
+										}, (speeder*0));
+									}
+								}
+							}, 200);	
+						}
+					}else{
+						jumlahspin=0;
+						spinoto=false;
+						if(freespin==true){
+							setTimeout(function() {
+								if(cekdatatirai.length>=1){
+									tunggus();
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												// freespin=false;
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
+								}else{
+									// stops();
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
+								}
+								$('#startspin').html('SPIN')
+							}, 200);
+						}else{
+							if(freeawal==true){
+								setTimeout(function() {
+									tunggus();
+								}, 200);
+							}else{
+								setTimeout(function() {
+									if(cekdatatirai.length>1){
+										if(tampunghasil.length==0){
+											starts();
+										}else{
+											tunggus();
+										}
+									}else{
+										if(tampunghasil.length==0){
+											starts();
+										}
+									}
+									$('#startspin').html('SPIN')
+								}, 200);
+							}
+						}
+					}
+				}else{
+					if(jumlahspin>0){
+						if(cekdatatirai.length>=2){
+							tunggus();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										if(cekbonusall>=betrun*10){
+											setTimeout(function() {
+												tunggus();
+												// $('.winpopup').show();
+												// $('.popupwin').text(tipewin)
+												setTimeout(function() {
+													// $('.winpopup').hide();
+													if(jumlahspin>0){
+
+													}else{
+														starts();	
+													}
+												}, speeder*20);
+											}, (speeder*2));
+											setTimeout(function() {
+												spinotomatis(500,0);
+											}, speeder*24);
+										}else{
+											setTimeout(function() {
+												spinotomatis(500,0);
+											}, (speeder*4));
+										}
+									}else{
+										setTimeout(function() {
+											spinotomatis(500,0);
+										}, (speeder*4));
+									}
+								}
+							}, 200);
+						}else{
+							// stops();
+							tunggus();
+							setTimeout(function() {
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										if(cekbonusall>=betrun*10){
+											setTimeout(function() {
+												tunggus();
+												// $('.winpopup').show();
+												// $('.popupwin').text(tipewin)
+												setTimeout(function() {
+													// $('.winpopup').hide();
+													if(jumlahspin>0){
+
+													}else{
+														starts();	
+													}
+												}, speeder*20);
+											}, (speeder*2));
+											setTimeout(function() {
+												spinotomatis(0,0);
+											}, speeder*24);
+										}else{
+											setTimeout(function() {
+												spinotomatis(0,0);
+											}, (speeder*0));
+										}
+									}else{
+										setTimeout(function() {
+											spinotomatis(0,0);
+										}, (speeder*0));
+									}
+								}
+							}, 200);	
+						}
+					}else{
+						jumlahspin=0;
+						spinoto=false;
+						if(freespin==true){
+							setTimeout(function() {
+								if(cekdatatirai.length>=1){
+									tunggus();
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
+								}else{
+									// stops();
+									setTimeout(function() {
+										if(tampunghasil.length==0){
+											if(jumlahfreespin<2){
+												starts();
+												jumlahfreespin=0;
+												$('.gelap').hide();
+												$('.value').css({
+													'color':'orange',
+													'background-color':'#04e0dd',
+													'box-shadow':'-2px -2px 4px rgba(0,0,0,.3)'
+												});
+											}
+										}
+									}, 200);
+								}
+								$('#startspin').html('SPIN')
+							}, 200);
+						}else{
+							if(freeawal==true){
+								// setTimeout(function() {
+								tunggus();
+								// }, 200);
+							}else{
+								setTimeout(function() {
+									if(cekdatatirai.length>1){
+										if(tampunghasil.length==0){
+											starts();
+										}else{
+											tunggus();
+										}
+									}else{
+										if(tampunghasil.length==0){
+											starts();
+										}
+									}
+									$('#startspin').html('SPIN')
+								}, 200);
+							}
+						}
+					}
+				}
+			}else{
+				if(jumlahspin>0){
+					if(cekdatatirai.length>=2){
+						tunggus();
+						setTimeout(function() {
+							if(tampunghasil.length==0){
+								if(jumlahfreespin-1==0){
+									if(cekbonusall>=betrun*10){
+										setTimeout(function() {
+											tunggus();
+											// $('.winpopup').show();
+											// $('.popupwin').text(tipewin)
+											setTimeout(function() {
+												// $('.winpopup').hide();
+												if(jumlahspin>0){
+
+												}else{
+													starts();	
+												}
+											}, speeder*20);
+										}, (speeder*2));
+										setTimeout(function() {
+											spinotomatis(500,0);
+										}, speeder*24);
+									}else{
+										setTimeout(function() {
+											spinotomatis(500,0);
+										}, (speeder*4));
+									}
+								}else{
+									setTimeout(function() {
+										spinotomatis(500,0);
+									}, (speeder*4));
+								}
+							}
+						}, 200);
+					}else{
+						// stops();
+						tunggus();
+						setTimeout(function() {
+							if(tampunghasil.length==0){
+								if(jumlahfreespin-1==0){
+									if(cekbonusall>=betrun*10){
+										setTimeout(function() {
+											tunggus();
+											// $('.winpopup').show();
+											// $('.popupwin').text(tipewin)
+											setTimeout(function() {
+												// $('.winpopup').hide();
+												if(jumlahspin>0){
+
+												}else{
+													starts();	
+												}
+											}, speeder*20);
+										}, (speeder*2));
+										setTimeout(function() {
+											spinotomatis(0,0);
+										}, speeder*24);
+									}else{
+										setTimeout(function() {
+											spinotomatis(0,0);
+										}, (speeder*0));
+									}
+								}else{
+									setTimeout(function() {
+										spinotomatis(0,0);
+									}, (speeder*0));
+								}
+							}
+						}, 200);	
+					}
+				}else{
+					jumlahspin=0;
+					spinoto=false;
+					if(freeawal==true){
+						// setTimeout(function() {
+						tunggus();
+						// }, 200);
+					}else{
+						setTimeout(function() {
+							if(cekdatatirai.length>1){
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										tunggus();
+									}else if(jumlahfreespin-1==0){
+										tunggus();
+									}else{
+										starts();
+									}
+								}else{
+									tunggus();
+								}
+							}else{
+								if(tampunghasil.length==0){
+									if(jumlahfreespin-1==0){
+										tunggus();
+									}else if(jumlahfreespin-1==0){
+										tunggus();
+									}else{
+										starts();
+									}
+								}
+							}
+							$('#startspin').html('SPIN')
+						}, 200);
+					}
+				}
+			}
+		}
+	}else{
 	var facak=shuffle(tampunghasil);
 	facak.filter(function(data,incre){
 		timeanimate=Number(tampunghasil.length);
 		// console.log(freeawal)
+		if(incre+1==tampunghasil.length){
+		console.log(indextirai.length+'-indextirai');
+		console.log(cekbonusall+'-bonusall');
+		}
 		if(freeawal==true){
-			// console.log(freeawal)
-			// if(jumlahfreespin>0&&freeawal==true){
-			// 	if((incre+1)==timeanimate){
-			// 		spinotomatis(timeanimate,incre+1);
-			// 	}
-			// }
 			if((incre+1)==timeanimate){
-				if(indextirai>1){
-					setTimeout(function() {
-						if(jumlahfreespin-1==oke){
-							bonusall=0;
-							$('.increcount').html('');
-						}
-						$('#startspin').click();
-					}, timeanimate*speeder+(speeder*9)+speedrotateclone+speedrotateclone);
-				}else{
-				setTimeout(function() {
-					if(jumlahfreespin-1==oke){
-						bonusall=0;
-						$('.increcount').html('');
+				if(jumlahfreespin-1==oke){
+					// bonusall=0;
+					// cekbonusall=0;
+					$('.increcount').html('');
+					if(indextirai.length>1){
+						setTimeout(function() {
+							// if(jumlahfreespin-1==oke){
+								// bonusall=0;
+								// cekbonusall=0;
+								// $('.increcount').html('');
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										$('#startspin').click();
+									}, speeder*26);
+								}else{
+									setTimeout(function() {
+										$('#startspin').click();
+									}, speeder*2);
+								}
+							// }
+						}, timeanimate*speeder+(speeder*12)+speedrotateclone+speedrotateclone);
+					}else{
+						setTimeout(function() {
+							// if(jumlahfreespin-1==oke){
+							// 	bonusall=0;
+							// 	cekbonusall=0;
+							// 	$('.increcount').html('');
+							// }
+							if(cekbonusall>=betrun*10){
+								setTimeout(function() {
+									$('#startspin').click();
+								}, speeder*26);
+							}else{
+								setTimeout(function() {
+									$('#startspin').click();
+								}, speeder*2);
+							}
+						}, timeanimate*speeder+(speeder*8)+speedrotateclone+speedrotateclone);
 					}
-					$('#startspin').click();
-				}, timeanimate*speeder+(speeder*9)+speedrotateclone+speedrotateclone);
+				}else{
+					if(indextirai.length>0){
+						setTimeout(function() {
+							// if(jumlahfreespin-1==oke){
+							// 	bonusall=0;
+							// 	cekbonusall=0;
+							// 	$('.increcount').html('');
+								// if(cekbonusall>=betrun*10){
+								// 	setTimeout(function() {
+								// 		$('#startspin').click();
+								// 	}, speeder*22);
+								// }else{
+									setTimeout(function() {
+										$('#startspin').click();
+									}, speeder*2);
+								// }
+							// }else{
+							// 	setTimeout(function() {
+							// 		$('#startspin').click();
+							// 	}, speeder*4);
+							// }
+						}, timeanimate*speeder+(speeder*6)+speedrotateclone+speedrotateclone);
+					}else{
+						setTimeout(function() {
+							// if(jumlahfreespin-1==oke){
+							// 	bonusall=0;
+							// 	cekbonusall=0;
+							// 	$('.increcount').html('');
+							// }
+							// if(cekbonusall>=betrun*10){
+							// 	setTimeout(function() {
+							// 		$('#startspin').click();
+							// 	}, speeder*22);
+							// }else{
+								setTimeout(function() {
+									$('#startspin').click();
+								}, speeder*2);
+							// }
+						}, timeanimate*speeder+(speeder*6)+speedrotateclone+speedrotateclone);
+					}
 				}
 			}
 		}else{
 			if(jumlahspin>0){
-				if(jumlahfreespin>0){
-					if((incre+1)==timeanimate){
-						spinotomatis(timeanimate,incre+1);
+				if(freespin==true){
+					if(for1==true||for2==true||for3==true||for4==true||for5==true){
+						if(jumlahfreespin-1==0){
+							if((incre+1)==timeanimate){
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										// bonusall=0;
+										// cekbonusall=0;
+										spinotomatis(timeanimate,incre+1);
+									}, speeder*22);
+								}
+							}
+						}else{
+							if((incre+1)==timeanimate){
+								// setTimeout(function() {
+									spinotomatis(timeanimate,incre+1);
+								// }, speeder*6);
+							}
+						}
+					}else{
+						if(indextirai.length>1){
+							if(jumlahfreespin-1==0){
+								if((incre+1)==timeanimate){
+									if(cekbonusall>=betrun*10){
+										setTimeout(function() {
+											// bonusall=0;
+											// cekbonusall=0;
+											spinotomatis(timeanimate,incre+1);
+										}, speeder*22);
+									}
+								}
+							}else{
+								if((incre+1)==timeanimate){
+									// setTimeout(function() {
+										spinotomatis(timeanimate,incre+1);
+									// }, speeder*6);
+								}
+							}
+						}else{
+							if(jumlahfreespin-1==0){
+								if((incre+1)==timeanimate){
+									if(cekbonusall>=betrun*10){
+										setTimeout(function() {
+											spinotomatis(timeanimate,incre+1);
+										}, speeder*22);
+									}
+								}
+							}else{
+								if((incre+1)==timeanimate){
+									// setTimeout(function() {
+										spinotomatis(timeanimate,incre+1);
+									// }, speeder*6);
+								}
+							}
+						}
 					}
 				}else{
-					if((incre+1)==timeanimate){
-						spinotomatis(timeanimate,incre+1);
+					if(indextirai.length>1){
+						if((incre+1)==timeanimate){
+							if(cekbonusall>=betrun*10){
+								setTimeout(function() {
+									spinotomatis(timeanimate,incre+1);
+								}, speeder*22);
+							}else{
+								if((incre+1)==timeanimate){
+									// setTimeout(function() {
+										spinotomatis(timeanimate,incre+1);
+									// }, speeder*6);
+								}
+							}
+						}
+					}else{
+						if((incre+1)==timeanimate){
+							if(cekbonusall>=betrun*10){
+								setTimeout(function() {
+									spinotomatis(timeanimate,incre+1);
+								}, speeder*22);
+							}else{
+								if((incre+1)==timeanimate){
+									// setTimeout(function() {
+										spinotomatis(timeanimate,incre+1);
+									// }, speeder*6);
+								}
+							}
+						}
 					}
 				}
 			}else{
 				setTimeout(function() {
-				if(jumlahfreespin>1){
-					if((incre+1)==timeanimate){
-						spinotomatis(timeanimate,incre+1);
+				if(freespin==true){
+					if(for1==true||for2==true||for3==true||for4==true||for5==true){
+						if(jumlahfreespin-1==0){
+							if((incre+1)==timeanimate){
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										// bonusall=0;
+										// cekbonusall=0;
+										spinotomatis(timeanimate,incre+1);
+									}, speeder*22);
+								}
+							}
+						}else{
+							if((incre+1)==timeanimate){
+								// setTimeout(function() {
+									spinotomatis(timeanimate,incre+1);
+								// }, speeder*6);
+							}
+						}
+					}else{
+						if(jumlahfreespin-1==0){
+							if((incre+1)==timeanimate){
+								if(cekbonusall>=betrun*10){
+									setTimeout(function() {
+										// bonusall=0;
+										// cekbonusall=0;
+										spinotomatis(timeanimate,incre+1);
+									}, speeder*22);
+								}
+							}
+						}else{
+							if((incre+1)==timeanimate){
+								spinotomatis(timeanimate,incre+1);
+							}
+						}
 					}
 				}else{
 					// if((incre+1)==timeanimate){
@@ -6261,7 +8871,8 @@
 			}
 		}, speedanimate*(incre+1));
 	})
-	}, speed5+100);
+	}
+	}, speed5);
 	
 	})
 
